@@ -29,3 +29,15 @@ test("errors de sintaxi", () => {
   assert.throws(() => parse("(2+3"), ParseError);
   assert.throws(() => parse("2@3"), ParseError);
 });
+
+test("√ es pot apilar", () => {
+  assert.deepEqual(parse("√√9"), ["sqrt", ["sqrt", ["num", 9]]]);
+});
+
+test("cadena buida llança", () => {
+  assert.throws(() => parse(""), ParseError);
+});
+
+test("tokens sobrants llancen", () => {
+  assert.throws(() => parse("2 3"), ParseError);
+});
