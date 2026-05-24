@@ -23,6 +23,9 @@ HANDPICKED = [
     ("sqrt", ("num", 1)),                                  # arrel de 1 (exclос)
     ("pow", ("num", 0), ("num", 0)),                       # 0^0
     ("pow", ("num", 9), ("num", 7)),                       # >= CAP
+    ("add", ("num", 999999), ("num", 1)),                  # add >= CAP
+    ("mul", ("num", 999), ("num", 9999)),                  # mul >= CAP
+    ("sub", ("num", 0), ("num", 1000000)),                 # sub <= -CAP
     ("pow", ("num", 2), ("sub", ("num", 1), ("num", 3))),  # exponent negatiu
 ]
 
