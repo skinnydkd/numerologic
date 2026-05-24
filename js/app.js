@@ -12,7 +12,16 @@ const els = {
   panel: $("panel"), practiceNew: $("practiceNew"), newPractice: $("newPractice"),
 };
 
-const pool = await fetch("data/puzzles.json").then((r) => r.json());
+let pool;
+try {
+  const res = await fetch("data/puzzles.json");
+  if (!res.ok) throw new Error("HTTP " + res.status);
+  pool = await res.json();
+} catch (e) {
+  document.querySelector(".pl").innerHTML =
+    '<p style="text-align:center;color:#dc2626;padding:20px">No s&apos;ha pogut carregar el joc. Recarrega la pàgina.</p>';
+  throw e;
+}
 
 let mode = "daily";
 let poolIndex = 0;

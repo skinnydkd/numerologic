@@ -64,7 +64,7 @@ const MSG = {
   duplicate: () => "Ja la tens",
   wrong: () => "No arriba a l'objectiu",
   invalid: () => "No és vàlida",
-  notInList: () => "No és del repte d'avui",
+  notInList: () => "No és una solució del repte",
 };
 export function flash(el, result) {
   el.className = "flash " + (FLASH[result.status] || "error");
