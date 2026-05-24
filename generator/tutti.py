@@ -55,6 +55,8 @@ def tutti_exists(digits, target):
     Early-exit: retorna en trobar l'objectiu sense materialitzar el conjunt complet.
     """
     n = len(digits)
+    if n == 1:
+        return digits[0] == target
     full = (1 << n) - 1
     cache = {}
     sub = full

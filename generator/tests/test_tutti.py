@@ -21,3 +21,14 @@ def test_requires_using_all_digits():
 
 def test_seven_digits_sum():
     assert tutti_exists([1, 2, 3, 4, 5, 6, 7], 28) is True  # 1+2+3+4+5+6+7
+
+
+def test_single_digit():
+    # cas n==1: el dígit mateix és l'únic valor assolible
+    assert tutti_exists([5], 5) is True
+    assert tutti_exists([5], 6) is False
+
+
+def test_tutti_via_final_sqrt():
+    # sqrt(3**2) = 3, usant tots dos dígits -> exercita el camí d'sqrt final inline
+    assert tutti_exists([2, 3], 3) is True
