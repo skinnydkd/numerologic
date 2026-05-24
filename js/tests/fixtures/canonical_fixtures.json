@@ -1,0 +1,1199 @@
+[
+  {
+    "ast": [
+      "num",
+      3
+    ],
+    "canonical": "3",
+    "value": 3,
+    "valid": true
+  },
+  {
+    "ast": [
+      "sqrt",
+      [
+        "num",
+        9
+      ]
+    ],
+    "canonical": "r(9)",
+    "value": 3,
+    "valid": true
+  },
+  {
+    "ast": [
+      "sub",
+      [
+        "num",
+        5
+      ],
+      [
+        "num",
+        3
+      ]
+    ],
+    "canonical": "(- 5 3)",
+    "value": 2,
+    "valid": true
+  },
+  {
+    "ast": [
+      "div",
+      [
+        "num",
+        8
+      ],
+      [
+        "num",
+        4
+      ]
+    ],
+    "canonical": "(/ 8 4)",
+    "value": 2,
+    "valid": true
+  },
+  {
+    "ast": [
+      "pow",
+      [
+        "num",
+        2
+      ],
+      [
+        "num",
+        3
+      ]
+    ],
+    "canonical": "(^ 2 3)",
+    "value": 8,
+    "valid": true
+  },
+  {
+    "ast": [
+      "mul",
+      [
+        "mul",
+        [
+          "num",
+          3
+        ],
+        [
+          "num",
+          4
+        ]
+      ],
+      [
+        "num",
+        2
+      ]
+    ],
+    "canonical": "(* 2 3 4)",
+    "value": 24,
+    "valid": true
+  },
+  {
+    "ast": [
+      "add",
+      [
+        "add",
+        [
+          "num",
+          1
+        ],
+        [
+          "num",
+          2
+        ]
+      ],
+      [
+        "num",
+        3
+      ]
+    ],
+    "canonical": "(+ 1 2 3)",
+    "value": 6,
+    "valid": true
+  },
+  {
+    "ast": [
+      "mul",
+      [
+        "num",
+        3
+      ],
+      [
+        "num",
+        8
+      ]
+    ],
+    "canonical": "(* 3 8)",
+    "value": 24,
+    "valid": true
+  },
+  {
+    "ast": [
+      "mul",
+      [
+        "num",
+        4
+      ],
+      [
+        "num",
+        6
+      ]
+    ],
+    "canonical": "(* 4 6)",
+    "value": 24,
+    "valid": true
+  },
+  {
+    "ast": [
+      "div",
+      [
+        "num",
+        7
+      ],
+      [
+        "num",
+        2
+      ]
+    ],
+    "canonical": "(/ 7 2)",
+    "value": null,
+    "valid": false
+  },
+  {
+    "ast": [
+      "div",
+      [
+        "num",
+        4
+      ],
+      [
+        "num",
+        0
+      ]
+    ],
+    "canonical": "(/ 4 0)",
+    "value": null,
+    "valid": false
+  },
+  {
+    "ast": [
+      "sqrt",
+      [
+        "num",
+        8
+      ]
+    ],
+    "canonical": "r(8)",
+    "value": null,
+    "valid": false
+  },
+  {
+    "ast": [
+      "sqrt",
+      [
+        "num",
+        1
+      ]
+    ],
+    "canonical": "r(1)",
+    "value": null,
+    "valid": false
+  },
+  {
+    "ast": [
+      "pow",
+      [
+        "num",
+        0
+      ],
+      [
+        "num",
+        0
+      ]
+    ],
+    "canonical": "(^ 0 0)",
+    "value": null,
+    "valid": false
+  },
+  {
+    "ast": [
+      "pow",
+      [
+        "num",
+        9
+      ],
+      [
+        "num",
+        7
+      ]
+    ],
+    "canonical": "(^ 9 7)",
+    "value": null,
+    "valid": false
+  },
+  {
+    "ast": [
+      "add",
+      [
+        "num",
+        999999
+      ],
+      [
+        "num",
+        1
+      ]
+    ],
+    "canonical": "(+ 1 999999)",
+    "value": null,
+    "valid": false
+  },
+  {
+    "ast": [
+      "mul",
+      [
+        "num",
+        999
+      ],
+      [
+        "num",
+        9999
+      ]
+    ],
+    "canonical": "(* 999 9999)",
+    "value": null,
+    "valid": false
+  },
+  {
+    "ast": [
+      "sub",
+      [
+        "num",
+        0
+      ],
+      [
+        "num",
+        1000000
+      ]
+    ],
+    "canonical": "(- 0 1000000)",
+    "value": null,
+    "valid": false
+  },
+  {
+    "ast": [
+      "pow",
+      [
+        "num",
+        2
+      ],
+      [
+        "sub",
+        [
+          "num",
+          1
+        ],
+        [
+          "num",
+          3
+        ]
+      ]
+    ],
+    "canonical": "(^ 2 (- 1 3))",
+    "value": null,
+    "valid": false
+  },
+  {
+    "ast": [
+      "add",
+      [
+        "num",
+        2
+      ],
+      [
+        "num",
+        2
+      ]
+    ],
+    "canonical": "(+ 2 2)",
+    "value": 4,
+    "valid": true
+  },
+  {
+    "ast": [
+      "sub",
+      [
+        "num",
+        2
+      ],
+      [
+        "num",
+        2
+      ]
+    ],
+    "canonical": "(- 2 2)",
+    "value": 0,
+    "valid": true
+  },
+  {
+    "ast": [
+      "mul",
+      [
+        "num",
+        2
+      ],
+      [
+        "num",
+        2
+      ]
+    ],
+    "canonical": "(* 2 2)",
+    "value": 4,
+    "valid": true
+  },
+  {
+    "ast": [
+      "div",
+      [
+        "num",
+        2
+      ],
+      [
+        "num",
+        2
+      ]
+    ],
+    "canonical": "(/ 2 2)",
+    "value": 1,
+    "valid": true
+  },
+  {
+    "ast": [
+      "pow",
+      [
+        "num",
+        2
+      ],
+      [
+        "num",
+        2
+      ]
+    ],
+    "canonical": "(^ 2 2)",
+    "value": 4,
+    "valid": true
+  },
+  {
+    "ast": [
+      "sqrt",
+      [
+        "add",
+        [
+          "num",
+          2
+        ],
+        [
+          "num",
+          2
+        ]
+      ]
+    ],
+    "canonical": "r((+ 2 2))",
+    "value": 2,
+    "valid": true
+  },
+  {
+    "ast": [
+      "sqrt",
+      [
+        "mul",
+        [
+          "num",
+          2
+        ],
+        [
+          "num",
+          2
+        ]
+      ]
+    ],
+    "canonical": "r((* 2 2))",
+    "value": 2,
+    "valid": true
+  },
+  {
+    "ast": [
+      "sqrt",
+      [
+        "pow",
+        [
+          "num",
+          2
+        ],
+        [
+          "num",
+          2
+        ]
+      ]
+    ],
+    "canonical": "r((^ 2 2))",
+    "value": 2,
+    "valid": true
+  },
+  {
+    "ast": [
+      "add",
+      [
+        "num",
+        2
+      ],
+      [
+        "num",
+        3
+      ]
+    ],
+    "canonical": "(+ 2 3)",
+    "value": 5,
+    "valid": true
+  },
+  {
+    "ast": [
+      "sub",
+      [
+        "num",
+        2
+      ],
+      [
+        "num",
+        3
+      ]
+    ],
+    "canonical": "(- 2 3)",
+    "value": -1,
+    "valid": true
+  },
+  {
+    "ast": [
+      "mul",
+      [
+        "num",
+        2
+      ],
+      [
+        "num",
+        3
+      ]
+    ],
+    "canonical": "(* 2 3)",
+    "value": 6,
+    "valid": true
+  },
+  {
+    "ast": [
+      "pow",
+      [
+        "num",
+        2
+      ],
+      [
+        "num",
+        3
+      ]
+    ],
+    "canonical": "(^ 2 3)",
+    "value": 8,
+    "valid": true
+  },
+  {
+    "ast": [
+      "sub",
+      [
+        "num",
+        3
+      ],
+      [
+        "num",
+        2
+      ]
+    ],
+    "canonical": "(- 3 2)",
+    "value": 1,
+    "valid": true
+  },
+  {
+    "ast": [
+      "pow",
+      [
+        "num",
+        3
+      ],
+      [
+        "num",
+        2
+      ]
+    ],
+    "canonical": "(^ 3 2)",
+    "value": 9,
+    "valid": true
+  },
+  {
+    "ast": [
+      "sqrt",
+      [
+        "pow",
+        [
+          "num",
+          3
+        ],
+        [
+          "num",
+          2
+        ]
+      ]
+    ],
+    "canonical": "r((^ 3 2))",
+    "value": 3,
+    "valid": true
+  },
+  {
+    "ast": [
+      "add",
+      [
+        "num",
+        2
+      ],
+      [
+        "num",
+        5
+      ]
+    ],
+    "canonical": "(+ 2 5)",
+    "value": 7,
+    "valid": true
+  },
+  {
+    "ast": [
+      "sub",
+      [
+        "num",
+        2
+      ],
+      [
+        "num",
+        5
+      ]
+    ],
+    "canonical": "(- 2 5)",
+    "value": -3,
+    "valid": true
+  },
+  {
+    "ast": [
+      "mul",
+      [
+        "num",
+        2
+      ],
+      [
+        "num",
+        5
+      ]
+    ],
+    "canonical": "(* 2 5)",
+    "value": 10,
+    "valid": true
+  },
+  {
+    "ast": [
+      "pow",
+      [
+        "num",
+        2
+      ],
+      [
+        "num",
+        5
+      ]
+    ],
+    "canonical": "(^ 2 5)",
+    "value": 32,
+    "valid": true
+  },
+  {
+    "ast": [
+      "sub",
+      [
+        "num",
+        5
+      ],
+      [
+        "num",
+        2
+      ]
+    ],
+    "canonical": "(- 5 2)",
+    "value": 3,
+    "valid": true
+  },
+  {
+    "ast": [
+      "pow",
+      [
+        "num",
+        5
+      ],
+      [
+        "num",
+        2
+      ]
+    ],
+    "canonical": "(^ 5 2)",
+    "value": 25,
+    "valid": true
+  },
+  {
+    "ast": [
+      "sqrt",
+      [
+        "pow",
+        [
+          "num",
+          5
+        ],
+        [
+          "num",
+          2
+        ]
+      ]
+    ],
+    "canonical": "r((^ 5 2))",
+    "value": 5,
+    "valid": true
+  },
+  {
+    "ast": [
+      "add",
+      [
+        "num",
+        3
+      ],
+      [
+        "num",
+        3
+      ]
+    ],
+    "canonical": "(+ 3 3)",
+    "value": 6,
+    "valid": true
+  },
+  {
+    "ast": [
+      "sub",
+      [
+        "num",
+        3
+      ],
+      [
+        "num",
+        3
+      ]
+    ],
+    "canonical": "(- 3 3)",
+    "value": 0,
+    "valid": true
+  },
+  {
+    "ast": [
+      "mul",
+      [
+        "num",
+        3
+      ],
+      [
+        "num",
+        3
+      ]
+    ],
+    "canonical": "(* 3 3)",
+    "value": 9,
+    "valid": true
+  },
+  {
+    "ast": [
+      "div",
+      [
+        "num",
+        3
+      ],
+      [
+        "num",
+        3
+      ]
+    ],
+    "canonical": "(/ 3 3)",
+    "value": 1,
+    "valid": true
+  },
+  {
+    "ast": [
+      "pow",
+      [
+        "num",
+        3
+      ],
+      [
+        "num",
+        3
+      ]
+    ],
+    "canonical": "(^ 3 3)",
+    "value": 27,
+    "valid": true
+  },
+  {
+    "ast": [
+      "sqrt",
+      [
+        "mul",
+        [
+          "num",
+          3
+        ],
+        [
+          "num",
+          3
+        ]
+      ]
+    ],
+    "canonical": "r((* 3 3))",
+    "value": 3,
+    "valid": true
+  },
+  {
+    "ast": [
+      "add",
+      [
+        "num",
+        3
+      ],
+      [
+        "num",
+        5
+      ]
+    ],
+    "canonical": "(+ 3 5)",
+    "value": 8,
+    "valid": true
+  },
+  {
+    "ast": [
+      "sub",
+      [
+        "num",
+        3
+      ],
+      [
+        "num",
+        5
+      ]
+    ],
+    "canonical": "(- 3 5)",
+    "value": -2,
+    "valid": true
+  },
+  {
+    "ast": [
+      "mul",
+      [
+        "num",
+        3
+      ],
+      [
+        "num",
+        5
+      ]
+    ],
+    "canonical": "(* 3 5)",
+    "value": 15,
+    "valid": true
+  },
+  {
+    "ast": [
+      "pow",
+      [
+        "num",
+        3
+      ],
+      [
+        "num",
+        5
+      ]
+    ],
+    "canonical": "(^ 3 5)",
+    "value": 243,
+    "valid": true
+  },
+  {
+    "ast": [
+      "sub",
+      [
+        "num",
+        5
+      ],
+      [
+        "num",
+        3
+      ]
+    ],
+    "canonical": "(- 5 3)",
+    "value": 2,
+    "valid": true
+  },
+  {
+    "ast": [
+      "pow",
+      [
+        "num",
+        5
+      ],
+      [
+        "num",
+        3
+      ]
+    ],
+    "canonical": "(^ 5 3)",
+    "value": 125,
+    "valid": true
+  },
+  {
+    "ast": [
+      "add",
+      [
+        "num",
+        5
+      ],
+      [
+        "num",
+        5
+      ]
+    ],
+    "canonical": "(+ 5 5)",
+    "value": 10,
+    "valid": true
+  },
+  {
+    "ast": [
+      "sub",
+      [
+        "num",
+        5
+      ],
+      [
+        "num",
+        5
+      ]
+    ],
+    "canonical": "(- 5 5)",
+    "value": 0,
+    "valid": true
+  },
+  {
+    "ast": [
+      "mul",
+      [
+        "num",
+        5
+      ],
+      [
+        "num",
+        5
+      ]
+    ],
+    "canonical": "(* 5 5)",
+    "value": 25,
+    "valid": true
+  },
+  {
+    "ast": [
+      "div",
+      [
+        "num",
+        5
+      ],
+      [
+        "num",
+        5
+      ]
+    ],
+    "canonical": "(/ 5 5)",
+    "value": 1,
+    "valid": true
+  },
+  {
+    "ast": [
+      "pow",
+      [
+        "num",
+        5
+      ],
+      [
+        "num",
+        5
+      ]
+    ],
+    "canonical": "(^ 5 5)",
+    "value": 3125,
+    "valid": true
+  },
+  {
+    "ast": [
+      "sqrt",
+      [
+        "mul",
+        [
+          "num",
+          5
+        ],
+        [
+          "num",
+          5
+        ]
+      ]
+    ],
+    "canonical": "r((* 5 5))",
+    "value": 5,
+    "valid": true
+  },
+  {
+    "ast": [
+      "add",
+      [
+        "num",
+        2
+      ],
+      [
+        "add",
+        [
+          "num",
+          2
+        ],
+        [
+          "num",
+          2
+        ]
+      ]
+    ],
+    "canonical": "(+ 2 2 2)",
+    "value": 6,
+    "valid": true
+  },
+  {
+    "ast": [
+      "sub",
+      [
+        "num",
+        2
+      ],
+      [
+        "add",
+        [
+          "num",
+          2
+        ],
+        [
+          "num",
+          2
+        ]
+      ]
+    ],
+    "canonical": "(- 2 (+ 2 2))",
+    "value": -2,
+    "valid": true
+  },
+  {
+    "ast": [
+      "mul",
+      [
+        "num",
+        2
+      ],
+      [
+        "add",
+        [
+          "num",
+          2
+        ],
+        [
+          "num",
+          2
+        ]
+      ]
+    ],
+    "canonical": "(* (+ 2 2) 2)",
+    "value": 8,
+    "valid": true
+  },
+  {
+    "ast": [
+      "pow",
+      [
+        "num",
+        2
+      ],
+      [
+        "add",
+        [
+          "num",
+          2
+        ],
+        [
+          "num",
+          2
+        ]
+      ]
+    ],
+    "canonical": "(^ 2 (+ 2 2))",
+    "value": 16,
+    "valid": true
+  },
+  {
+    "ast": [
+      "add",
+      [
+        "num",
+        2
+      ],
+      [
+        "sub",
+        [
+          "num",
+          2
+        ],
+        [
+          "num",
+          2
+        ]
+      ]
+    ],
+    "canonical": "(+ (- 2 2) 2)",
+    "value": 2,
+    "valid": true
+  },
+  {
+    "ast": [
+      "sub",
+      [
+        "num",
+        2
+      ],
+      [
+        "sub",
+        [
+          "num",
+          2
+        ],
+        [
+          "num",
+          2
+        ]
+      ]
+    ],
+    "canonical": "(- 2 (- 2 2))",
+    "value": 2,
+    "valid": true
+  },
+  {
+    "ast": [
+      "mul",
+      [
+        "num",
+        2
+      ],
+      [
+        "sub",
+        [
+          "num",
+          2
+        ],
+        [
+          "num",
+          2
+        ]
+      ]
+    ],
+    "canonical": "(* (- 2 2) 2)",
+    "value": 0,
+    "valid": true
+  },
+  {
+    "ast": [
+      "pow",
+      [
+        "num",
+        2
+      ],
+      [
+        "sub",
+        [
+          "num",
+          2
+        ],
+        [
+          "num",
+          2
+        ]
+      ]
+    ],
+    "canonical": "(^ 2 (- 2 2))",
+    "value": 1,
+    "valid": true
+  },
+  {
+    "ast": [
+      "add",
+      [
+        "num",
+        2
+      ],
+      [
+        "mul",
+        [
+          "num",
+          2
+        ],
+        [
+          "num",
+          2
+        ]
+      ]
+    ],
+    "canonical": "(+ (* 2 2) 2)",
+    "value": 6,
+    "valid": true
+  },
+  {
+    "ast": [
+      "sub",
+      [
+        "num",
+        2
+      ],
+      [
+        "mul",
+        [
+          "num",
+          2
+        ],
+        [
+          "num",
+          2
+        ]
+      ]
+    ],
+    "canonical": "(- 2 (* 2 2))",
+    "value": -2,
+    "valid": true
+  }
+]
