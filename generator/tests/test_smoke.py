@@ -1,2 +1,2 @@
-def test_smoke():
-    assert 1 + 1 == 2
+def test_imports():
+    from generator.engine import evaluate, canonical, InvalidExpr, CAP  # noqa: F401
