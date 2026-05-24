@@ -1,5 +1,6 @@
 import math
 from generator.puzzles import solution_points, build_ranks, make_puzzle, RANK_PCTS
+from generator.tutti import tutti_exists
 
 
 def test_solution_points_basic():
@@ -30,6 +31,8 @@ def test_make_puzzle_in_band_with_tutti():
     assert pz["hasTutti"] is True
     assert "goldenSolutions" not in pz
     assert isinstance(pz["solutions"][0], str)
+    # la garantia de tutti és real, no un camp hardcodejat
+    assert tutti_exists(pz["digits"], pz["target"]) is True
 
 
 def test_make_puzzle_returns_none_when_no_target_in_band():

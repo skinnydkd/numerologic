@@ -32,8 +32,9 @@ def make_puzzle(digits, central_index, band=(40, 120), max_leaves=4, max_tutti_t
     """Construeix un repte amb tutti garantit per a aquests dígits/central, o None.
 
     Tria l'objectiu més ric dins la banda que tinga tutti, comprovant fins a
-    `max_tutti_tries` candidats per ordre de riquesa. Retorna None si la banda és
-    buida o si cap dels candidats provats té tutti.
+    `max_tutti_tries` candidats per ordre de riquesa (límit per equilibrar qualitat
+    del repte i cost de generació; la comprovació de tutti és ~6 s cadascuna).
+    Retorna None si la banda és buida o si cap dels candidats provats té tutti.
     """
     digits = list(digits)
     central = digits[central_index]
@@ -50,7 +51,7 @@ def make_puzzle(digits, central_index, band=(40, 120), max_leaves=4, max_tutti_t
     if not candidates:
         return None
 
-    # ordena per riquesa (més solucions primer; desempat pel valor més baix)
+    # ordena per riquesa (més solucions primer); desempat determinista pel valor més baix
     candidates.sort(key=lambda t: (len(t[1]), -t[0]), reverse=True)
 
     chosen = None
