@@ -1,5 +1,7 @@
 # Solució d'Or i tancament del Pla 1 — Implementation Plan
 
+> ⚠️ **SUPERSEDED (parcialment):** la part del cim ("Solució d'Or") es reemplaça pel pla `2026-05-24-tutti-real.md` (tutti real). Les Tasques 1 i 2 d'aquest pla ja es van executar (Solució d'Or + `max_leaves=4`); `max_leaves=4` es conserva, la part "d'Or" es revisa al nou pla. Es manté per a la història.
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** Substituir el bonus *Numerogram* (inassolible) per la **Solució d'Or**, fixar `max_leaves=4` per resoldre el `MemoryError` del generador, generar el pool real `data/puzzles.json` i tancar el Pla 1 (motor + generador) amb un PR cap a `main`.

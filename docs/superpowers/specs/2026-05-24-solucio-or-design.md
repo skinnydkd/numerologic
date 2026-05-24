@@ -1,7 +1,7 @@
 # Numerològic — Disseny: la "Solució d'Or"
 
 **Data:** 2026-05-24
-**Estat:** Aprovat per l'usuari
+**Estat:** ⚠️ SUPERSEDED per `2026-05-24-tutti-real-design.md` — les dades del pool real van demostrar que la "Solució d'Or" (la solució amb més punts) **no és rara** (marcava ~112 de ~120 solucions per repte). Es va comprovar que el tutti autèntic és factible i es va adoptar en el seu lloc. Aquest document es manté per a la història.
 **Autor:** Pau + Claude
 **Substitueix:** el concepte *Numerogram* del disseny original (§5 de `2026-05-24-numerologic-design.md`).
 
