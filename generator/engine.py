@@ -52,3 +52,39 @@ def evaluate(ast):
     a = evaluate(ast[1])
     b = evaluate(ast[2])
     return combine(k, a, b)
+
+
+def _flatten(ast, k):
+    """Aplana fills del mateix operador commutatiu i retorna les seves cadenes canòniques."""
+    parts = []
+    for child in (ast[1], ast[2]):
+        if child[0] == k:
+            parts.extend(_flatten(child, k))
+        else:
+            parts.append(canonical(child))
+    return parts
+
+
+def canonical(ast):
+    """Retorna la cadena canònica determinista d'un AST (clau de deduplicació)."""
+    k = ast[0]
+    if k == 'num':
+        return str(ast[1])
+    if k == 'sqrt':
+        return "r(" + canonical(ast[1]) + ")"
+    if k == 'add':
+        return "(+ " + " ".join(sorted(_flatten(ast, 'add'))) + ")"
+    if k == 'mul':
+        return "(* " + " ".join(sorted(_flatten(ast, 'mul'))) + ")"
+    sym = {'sub': '-', 'div': '/', 'pow': '^'}[k]
+    return "(" + sym + " " + canonical(ast[1]) + " " + canonical(ast[2]) + ")"
+
+
+def has_pow_or_sqrt(ast):
+    """True si l'AST conté alguna potència o arrel (per al bonus de punts)."""
+    k = ast[0]
+    if k == 'num':
+        return False
+    if k in ('pow', 'sqrt'):
+        return True
+    return any(has_pow_or_sqrt(c) for c in ast[1:])
