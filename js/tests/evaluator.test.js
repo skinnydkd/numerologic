@@ -37,3 +37,14 @@ test("cap de valor", () => {
   assert.throws(() => evaluate(["pow", ["num", 9], ["num", 7]]), InvalidExpr);
   assert.equal(CAP, 1_000_000);
 });
+
+test("cap aplica a totes les operacions", () => {
+  // mul que supera el cap
+  assert.throws(() => evaluate(["mul", ["num", 999], ["num", 9999]]), InvalidExpr);
+});
+
+test("divisió exacta amb negatius (paritat amb Python //)", () => {
+  assert.equal(evaluate(["div", ["num", 6], ["num", -2]]), -3);
+  assert.equal(evaluate(["div", ["num", -8], ["num", 4]]), -2);
+  assert.throws(() => evaluate(["div", ["num", -7], ["num", 2]]), InvalidExpr);
+});

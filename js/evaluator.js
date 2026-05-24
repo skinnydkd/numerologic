@@ -4,7 +4,12 @@
 export const CAP = 1_000_000;
 export const MAX_EXPONENT = 19;
 
-export class InvalidExpr extends Error {}
+export class InvalidExpr extends Error {
+  constructor(...args) {
+    super(...args);
+    this.name = "InvalidExpr";
+  }
+}
 
 export function combine(op, a, b) {
   let v;
