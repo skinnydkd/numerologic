@@ -53,7 +53,9 @@ def main():
         seed=args.seed,
         start_date=args.start_date,
     )
-    os.makedirs(os.path.dirname(args.out), exist_ok=True)
+    dirpart = os.path.dirname(args.out)
+    if dirpart:
+        os.makedirs(dirpart, exist_ok=True)
     with open(args.out, "w", encoding="utf-8") as f:
         json.dump(pool, f, ensure_ascii=False, separators=(",", ":"))
     print(f"Escrits {len(pool['puzzles'])} reptes a {args.out}")
