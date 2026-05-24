@@ -46,6 +46,7 @@ def make_puzzle(digits, central_index, band=(40, 120), max_leaves=4, max_tutti_t
         if central in m["used"]:
             by_value[m["value"]].append((c, m))
 
+    # `band` és el rang del NOMBRE DE SOLUCIONS acceptable per repte (no del valor objectiu)
     lo, hi = band
     candidates = [(v, items) for v, items in by_value.items() if lo <= len(items) <= hi]
     if not candidates:

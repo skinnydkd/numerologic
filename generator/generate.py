@@ -39,7 +39,8 @@ def build_pool(count, band=(40, 120), max_leaves=4, seed=0, start_date="2026-06-
 def main():
     parser = argparse.ArgumentParser(description="Genera el pool de reptes de Numerològic.")
     parser.add_argument("--count", type=int, default=60)
-    parser.add_argument("--band", type=int, nargs=2, default=[40, 120], metavar=("LO", "HI"))
+    parser.add_argument("--band", type=int, nargs=2, default=[40, 120], metavar=("LO", "HI"),
+                        help="rang del NOMBRE DE SOLUCIONS per repte (no el valor objectiu)")
     parser.add_argument("--max-leaves", type=int, default=4)
     parser.add_argument("--seed", type=int, default=0)
     parser.add_argument("--start-date", default="2026-06-01")
