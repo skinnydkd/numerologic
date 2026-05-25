@@ -4,7 +4,12 @@ const PREFIX = "numerologic:p:";
 
 export function loadProgress(store, poolIndex) {
   const raw = store.getItem(PREFIX + poolIndex);
-  return raw ? JSON.parse(raw) : null;
+  if (!raw) return null;
+  try {
+    return JSON.parse(raw);
+  } catch {
+    return null;
+  }
 }
 
 export function saveProgress(store, poolIndex, progress) {

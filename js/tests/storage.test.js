@@ -29,3 +29,9 @@ test("índexs diferents no es barregen", () => {
   assert.equal(loadProgress(store, 1).found.length, 0);
   assert.equal(loadProgress(store, 2).found.length, 1);
 });
+
+test("valor corrupte -> null (no llança)", () => {
+  const store = fakeStore();
+  store.setItem("numerologic:p:9", "{no json");
+  assert.equal(loadProgress(store, 9), null);
+});

@@ -15,7 +15,12 @@ export function createGame(puzzle, savedProgress = null) {
 
   if (savedProgress) {
     for (const f of savedProgress.found || []) {
-      const ast = parse(f.text);
+      let ast;
+      try {
+        ast = parse(f.text);
+      } catch {
+        continue; // omet entrades corruptes en lloc de bloquejar la partida
+      }
       found.set(f.canonical, {
         text: f.text,
         points: solutionPoints(countLeaves(ast), hasPowOrSqrt(ast)),
