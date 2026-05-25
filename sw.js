@@ -1,5 +1,5 @@
 // Service worker cache-first: app shell + puzzles.json. Offline-first.
-const CACHE = "numerologic-v2";
+const CACHE = "numerologic-v3";
 const ASSETS = [
   "./",
   "./index.html",

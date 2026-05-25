@@ -4,13 +4,16 @@ import { loadProgress, saveProgress } from "./storage.js";
 import { dailyIndex, practiceIndex } from "./modes.js";
 import * as ui from "./ui.js";
 import { buildShareText } from "./share.js";
+import { parse } from "./parser.js";
+import { evaluate } from "./evaluator.js";
 
 const $ = (id) => document.getElementById(id);
 const els = {
   target: $("target"), display: $("display"), flash: $("flash"),
   hive: $("hive"), ops: $("ops"), del: $("del"), shuffle: $("shuffle"),
   send: $("send"), count: $("count"), rankBtn: $("rankBtn"), tutti: $("tutti"),
-  panel: $("panel"), share: $("share"), practiceNew: $("practiceNew"), newPractice: $("newPractice"),
+  panel: $("panel"), share: $("share"), result: $("result"),
+  practiceNew: $("practiceNew"), newPractice: $("newPractice"),
 };
 
 let pool;
@@ -33,6 +36,30 @@ function dailyIdx() {
   return dailyIndex(pool.startDate, Date.now(), pool.puzzles.length);
 }
 
+// Mostra l'expressió i el seu resultat en viu (= valor, verd si = objectiu; = ? si no quadra).
+function showExpr() {
+  ui.setDisplay(els.display, expr);
+  updateResult();
+}
+
+function updateResult() {
+  if (!expr) {
+    els.result.textContent = "";
+    els.result.className = "result";
+    return;
+  }
+  let value;
+  try {
+    value = evaluate(parse(expr));
+  } catch {
+    els.result.textContent = "= ?";
+    els.result.className = "result";
+    return;
+  }
+  els.result.textContent = "= " + value;
+  els.result.className = "result" + (value === game.puzzle.target ? " hit" : "");
+}
+
 function start(index) {
   poolIndex = index;
   const puzzle = pool.puzzles[index];
@@ -41,7 +68,7 @@ function start(index) {
   ui.setTarget(els.target, puzzle.target);
   ui.renderHive(els.hive, puzzle.digits, puzzle.centralIndex, addToken);
   ui.renderOps(els.ops, addToken);
-  ui.setDisplay(els.display, expr);
+  showExpr();
   els.flash.textContent = "";
   refreshFooter();
 }
@@ -56,12 +83,12 @@ function refreshFooter() {
 
 function addToken(t) {
   expr += t;
-  ui.setDisplay(els.display, expr);
+  showExpr();
 }
 
 function del() {
   expr = expr.slice(0, -1);
-  ui.setDisplay(els.display, expr);
+  showExpr();
 }
 
 function send() {
@@ -72,7 +99,7 @@ function send() {
     saveProgress(localStorage, poolIndex, game.progress());
     refreshFooter();
     expr = "";
-    ui.setDisplay(els.display, expr);
+    showExpr();
   }
 }
 
@@ -135,7 +162,7 @@ document.querySelectorAll(".mode").forEach((b) =>
 document.addEventListener("keydown", (e) => {
   if (e.key === "Enter") { send(); e.preventDefault(); }
   else if (e.key === "Backspace") { del(); e.preventDefault(); }
-  else if (e.key === "Escape") { expr = ""; ui.setDisplay(els.display, expr); }
+  else if (e.key === "Escape") { expr = ""; showExpr(); }
   else if (/^[1-9]$/.test(e.key)) addToken(e.key);
   else if ("+-*/^()".includes(e.key)) addToken(e.key);
   else if (e.key === "r") addToken("√");
