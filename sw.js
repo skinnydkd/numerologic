@@ -1,5 +1,5 @@
 // Service worker cache-first: app shell + puzzles.json. Offline-first.
-const CACHE = "numerologic-v6";
+const CACHE = "numerologic-v7";
 const ASSETS = [
   "./",
   "./index.html",
@@ -20,6 +20,7 @@ const ASSETS = [
   "./manifest.json",
   "./icon.svg",
   "./icon-180.png",
+  "./favicon.svg",
 ];
 
 self.addEventListener("install", (e) => {
