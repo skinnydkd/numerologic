@@ -98,3 +98,19 @@ export function ranksHTML(ranks, score) {
     .join("");
   return `<ul>${items}</ul>`;
 }
+
+export function instructionsHTML() {
+  return `
+    <p>Combina els <b>7 dígits</b> del rusc per arribar al número <b>objectiu</b>.</p>
+    <ul>
+      <li>Toca les cel·les i els operadors (o usa el teclat) i prem <b>Envia</b>.</li>
+      <li>Cada expressió ha d'usar el <b>dígit central</b> (el coral) com a mínim un cop.</li>
+      <li>Pots <b>repetir</b> dígits del rusc.</li>
+      <li>Operacions: <b>+ − × ÷</b>, potència <b>^</b>, arrel <b>√</b> i parèntesis.</li>
+      <li>Divisions i arrels han de ser <b>exactes</b> (8÷4 ✓, 7÷2 ✗; √9 ✓, √8 ✗).</li>
+      <li>Els resultats intermedis poden ser negatius; el final ha de ser l'objectiu.</li>
+      <li>Cada solució nova suma punts (operands + bonus si usa ^ o √) i puja de <b>rang</b>.</li>
+      <li><b>★ Tutti</b>: una solució que usa els <b>7 dígits</b> diferents — bonus especial.</li>
+      <li>Comparteix el resultat sense desvelar cap solució.</li>
+    </ul>`;
+}
