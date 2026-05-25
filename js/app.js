@@ -142,3 +142,7 @@ document.addEventListener("keydown", (e) => {
 });
 
 start(dailyIdx());
+
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("sw.js").catch(() => {});
+}
