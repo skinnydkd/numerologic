@@ -85,3 +85,8 @@ test("progress() i restauració amb createGame", () => {
   assert.equal(g2.score(), 3);
   assert.equal(g2.tuttiFound, true);
 });
+
+test("progrés corrupte no peta (omet entrades dolentes)", () => {
+  const g = createGame(puzzle(), { found: [{ canonical: "x", text: "@@@" }], tuttiFound: false });
+  assert.equal(g.found.size, 0);
+});

@@ -1,0 +1,11 @@
+{
+  "name": "Numerològic",
+  "short_name": "Numerològic",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#58b4c4",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}
