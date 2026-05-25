@@ -3,13 +3,14 @@ import { createGame } from "./game.js";
 import { loadProgress, saveProgress } from "./storage.js";
 import { dailyIndex, practiceIndex } from "./modes.js";
 import * as ui from "./ui.js";
+import { buildShareText } from "./share.js";
 
 const $ = (id) => document.getElementById(id);
 const els = {
   target: $("target"), display: $("display"), flash: $("flash"),
   hive: $("hive"), ops: $("ops"), del: $("del"), shuffle: $("shuffle"),
   send: $("send"), count: $("count"), rankBtn: $("rankBtn"), tutti: $("tutti"),
-  panel: $("panel"), practiceNew: $("practiceNew"), newPractice: $("newPractice"),
+  panel: $("panel"), share: $("share"), practiceNew: $("practiceNew"), newPractice: $("newPractice"),
 };
 
 let pool;
@@ -107,6 +108,26 @@ els.rankBtn.addEventListener("click", () =>
 els.newPractice.addEventListener("click", () =>
   start(practiceIndex(Math.random, pool.puzzles.length, dailyIdx()))
 );
+els.share.addEventListener("click", async () => {
+  const text = buildShareText({
+    number: poolIndex + 1,
+    rankName: game.rank(),
+    found: game.found.size,
+    total: game.puzzle.solutions.length,
+    tuttiFound: game.tuttiFound,
+  });
+  try {
+    if (navigator.share) {
+      await navigator.share({ text });
+    } else {
+      await navigator.clipboard.writeText(text);
+      els.flash.className = "flash found";
+      els.flash.textContent = "Copiat!";
+    }
+  } catch {
+    // l'usuari ha cancel·lat o no s'ha pogut compartir; ignora
+  }
+});
 document.querySelectorAll(".mode").forEach((b) =>
   b.addEventListener("click", () => setMode(b.dataset.mode))
 );
