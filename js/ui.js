@@ -101,17 +101,38 @@ export function ranksHTML(ranks, score) {
 
 export function instructionsHTML() {
   return `
-    <p>Combina els <b>7 dígits</b> del rusc per arribar al número <b>objectiu</b>.</p>
+    <p>Numerològic és un <b>Paraulògic matemàtic</b>: cada dia hi ha un número <b>objectiu</b> i un rusc de <b>7 dígits</b>. L'objectiu és descobrir <b>totes</b> les expressions que hi arriben.</p>
+
+    <p><b>Com es juga</b></p>
     <ul>
-      <li>Toca les cel·les i els operadors (o usa el teclat) i prem <b>Envia</b>.</li>
+      <li>Construeix una expressió tocant les <b>cel·les</b> del rusc i els <b>operadors</b> (o amb el <b>teclat</b>), i prem <b>Envia</b>.</li>
       <li>Cada expressió ha d'usar el <b>dígit central</b> (el coral) com a mínim un cop.</li>
-      <li>Pots <b>repetir</b> dígits del rusc.</li>
-      <li>Operacions: <b>+ − × ÷</b>, potència <b>^</b>, arrel <b>√</b> i parèntesis.</li>
-      <li>Divisions i arrels han de ser <b>exactes</b> (8÷4 ✓, 7÷2 ✗; √9 ✓, √8 ✗).</li>
-      <li>Els resultats intermedis poden ser negatius; el final ha de ser l'objectiu.</li>
-      <li>Cada solució nova suma punts (operands + bonus si usa ^ o √) i puja de <b>rang</b>.</li>
-      <li><b>★ Tutti</b>: una solució que usa els <b>7 dígits</b> diferents — bonus especial.</li>
-      <li>Comparteix el resultat sense desvelar cap solució.</li>
+      <li>Pots <b>reutilitzar</b> els dígits del rusc tantes vegades com vulguis.</li>
+      <li><b>Esborra</b> treu l'últim símbol; <b>⟳ Remena</b> reordena les cel·les.</li>
+    </ul>
+
+    <p><b>Operacions i regles</b></p>
+    <ul>
+      <li>Pots usar <b>+ − × ÷</b>, potència <b>^</b>, arrel <b>√</b> i parèntesis <b>( )</b>.</li>
+      <li>Les <b>divisions</b> i les <b>arrels</b> han de ser exactes (8÷4 ✓, 7÷2 ✗; √9 ✓, √8 ✗).</li>
+      <li>Els resultats <b>intermedis</b> poden ser negatius; només cal que el resultat <b>final</b> sigui l'objectiu.</li>
+      <li>Sota l'expressió veuràs el seu <b>resultat en viu</b> (es posa verd quan encertes).</li>
+    </ul>
+
+    <p><b>Punts, rangs i tutti</b></p>
+    <ul>
+      <li>Cada solució <b>nova</b> suma punts: <b>1 per operand</b>, <b>+2</b> si usa potència o arrel.</li>
+      <li>Acumulant punts puges de <b>rang</b> (de Principiant a Totes).</li>
+      <li><b>★ Tutti</b>: una solució que fa servir <b>els 7 dígits</b> diferents. És especial i dona bonus.</li>
+      <li>La mateixa solució no compta dues vegades (3×4 i 4×3 són la mateixa).</li>
+    </ul>
+
+    <p><b>Més</b></p>
+    <ul>
+      <li><b>Dificultat</b> (Fàcil/Mitjà/Difícil): segons quantes solucions necessiten operacions avançades.</li>
+      <li><b>Pistes</b>: recompte de solucions per operands i per operació, sense desvelar-ne cap.</li>
+      <li><b>Modes</b>: repte <b>diari</b> (igual per a tothom) i <b>pràctica</b> lliure.</li>
+      <li><b>Comparteix</b> el resultat sense revelar cap solució.</li>
     </ul>`;
 }
 

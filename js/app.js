@@ -69,7 +69,7 @@ function start(index) {
   game = createGame(puzzle, loadProgress(localStorage, index));
   expr = "";
   ui.setTarget(els.target, puzzle.target);
-  const dlevel = difficulty(puzzle.target);
+  const dlevel = difficulty(puzzle.hints);
   els.difficulty.innerHTML = `<span class="${DIFF_CLASS[dlevel]}">${dlevel}</span>`;
   ui.renderHive(els.hive, puzzle.digits, puzzle.centralIndex, addToken);
   ui.renderOps(els.ops, addToken);
