@@ -1,3 +1,10 @@
+@font-face {
+  font-family: "Anton";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/anton.woff2") format("woff2");
+}
 * { box-sizing: border-box; }
 body {
   margin: 0; background: #f1f5f9; font-family: system-ui, sans-serif; color: #1f2937;
@@ -8,8 +15,8 @@ body {
   border-radius: 18px; padding: 16px 16px 20px; box-shadow: 0 8px 26px rgba(0,0,0,.06);
 }
 .topbar { display: flex; justify-content: space-between; align-items: center; }
-.logo { font-weight: 800; font-size: 22px; letter-spacing: 1px; color: #1f2937; }
-.logo .o { color: #ec5a52; display: inline-block; border: 2px solid #ec5a52; border-radius: 999px; padding: 0 .12em; line-height: 1.05; }
+.logo { font-family: "Anton", "Arial Black", sans-serif; font-weight: 400; font-size: 26px; letter-spacing: 1px; color: #141414; }
+.logo .o { color: #e8362a; }
 .logo .gic { color: #58b4c4; }
 .modes { display: flex; gap: 6px; }
 .mode {
