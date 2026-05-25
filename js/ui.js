@@ -114,3 +114,18 @@ export function instructionsHTML() {
       <li>Comparteix el resultat sense desvelar cap solució.</li>
     </ul>`;
 }
+
+export function hintsHTML(hints) {
+  if (!hints) return "<p>Aquest repte no té pistes.</p>";
+  const OPS = [["add", "+"], ["sub", "−"], ["mul", "×"], ["div", "÷"], ["pow", "^"], ["sqrt", "√"]];
+  const total = Object.values(hints.byLeaves).reduce((a, b) => a + b, 0);
+  const leaves = Object.entries(hints.byLeaves)
+    .map(([n, c]) => `<li>${n} operands: <b>${c}</b></li>`)
+    .join("");
+  const ops = OPS.map(([k, sym]) => `<li>${sym} : <b>${hints.byOp[k]}</b></li>`).join("");
+  return `
+    <p><b>Solucions per nombre d'operands</b></p>
+    <ul>${leaves}<li>Total: <b>${total}</b></li></ul>
+    <p><b>Solucions que usen cada operació</b></p>
+    <ul>${ops}</ul>`;
+}

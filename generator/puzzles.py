@@ -28,6 +28,37 @@ def build_ranks(total):
     return [(name, math.ceil(pct / 100 * total)) for name, pct in RANK_PCTS]
 
 
+OP_NAMES = ("add", "sub", "mul", "div", "pow", "sqrt")
+
+
+def _ops_used(ast, acc):
+    """Acumula a `acc` els noms d'operacions presents a l'AST."""
+    k = ast[0]
+    if k == "num":
+        return
+    acc.add(k)
+    for child in ast[1:]:
+        if isinstance(child, tuple):
+            _ops_used(child, acc)
+
+
+def compute_hints(items):
+    """Estadístiques per a les Pistes (sense desvelar solucions): recompte de solucions
+    per nombre d'operands i per operació usada."""
+    by_leaves = {}
+    by_op = {op: 0 for op in OP_NAMES}
+    for _c, m in items:
+        by_leaves[m["leaves"]] = by_leaves.get(m["leaves"], 0) + 1
+        ops = set()
+        _ops_used(m["ast"], ops)
+        for op in ops:
+            by_op[op] += 1
+    return {
+        "byLeaves": {str(k): by_leaves[k] for k in sorted(by_leaves)},
+        "byOp": by_op,
+    }
+
+
 def make_puzzle(digits, central_index, band=(40, 120), max_leaves=4, max_tutti_tries=5,
                 target_range=(-9999, 9999)):
     """Construeix un repte amb tutti garantit per a aquests dígits/central, o None.
@@ -85,4 +116,5 @@ def make_puzzle(digits, central_index, band=(40, 120), max_leaves=4, max_tutti_t
         "totalPoints": total,
         "ranks": build_ranks(total),
         "hasTutti": True,
+        "hints": compute_hints(items),
     }
