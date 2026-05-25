@@ -6,15 +6,18 @@ import * as ui from "./ui.js";
 import { buildShareText } from "./share.js";
 import { parse } from "./parser.js";
 import { evaluate } from "./evaluator.js";
+import { difficulty } from "./difficulty.js";
 
 const $ = (id) => document.getElementById(id);
 const els = {
   target: $("target"), display: $("display"), flash: $("flash"),
   hive: $("hive"), ops: $("ops"), del: $("del"), shuffle: $("shuffle"),
   send: $("send"), count: $("count"), rankBtn: $("rankBtn"), tutti: $("tutti"),
-  panel: $("panel"), share: $("share"), result: $("result"),
+  panel: $("panel"), share: $("share"), result: $("result"), difficulty: $("difficulty"),
   practiceNew: $("practiceNew"), newPractice: $("newPractice"),
 };
+
+const DIFF_CLASS = { "Fàcil": "facil", "Mitjà": "mitja", "Difícil": "dificil" };
 
 let pool;
 try {
@@ -66,6 +69,8 @@ function start(index) {
   game = createGame(puzzle, loadProgress(localStorage, index));
   expr = "";
   ui.setTarget(els.target, puzzle.target);
+  const dlevel = difficulty(puzzle.target);
+  els.difficulty.innerHTML = `<span class="${DIFF_CLASS[dlevel]}">${dlevel}</span>`;
   ui.renderHive(els.hive, puzzle.digits, puzzle.centralIndex, addToken);
   ui.renderOps(els.ops, addToken);
   showExpr();

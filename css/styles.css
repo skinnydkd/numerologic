@@ -18,6 +18,11 @@ body {
 
 .goal { text-align: center; color: #6b7280; font-size: 13px; margin-top: 12px; }
 .goal b { display: block; font-size: 38px; color: #1f2937; line-height: 1.15; }
+.difficulty { text-align: center; margin-top: 6px; }
+.difficulty span { display: inline-block; padding: 2px 12px; border-radius: 999px; font-size: 12px; font-weight: 700; }
+.difficulty .facil { background: #dcfce7; color: #166534; }
+.difficulty .mitja { background: #fef3c7; color: #92400e; }
+.difficulty .dificil { background: #fee2e2; color: #991b1b; }
 .disp { text-align: center; font-size: 26px; letter-spacing: 2px; margin: 12px 0 4px; min-height: 34px; }
 .cursor { color: #58b4c4; }
 .result { text-align: center; min-height: 24px; font-size: 18px; font-weight: 600; color: #94a3b8; }
