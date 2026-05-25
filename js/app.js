@@ -14,7 +14,7 @@ const els = {
   hive: $("hive"), ops: $("ops"), del: $("del"), shuffle: $("shuffle"),
   send: $("send"), count: $("count"), rankBtn: $("rankBtn"), tutti: $("tutti"),
   panel: $("panel"), share: $("share"), result: $("result"), difficulty: $("difficulty"),
-  help: $("help"), practiceNew: $("practiceNew"), newPractice: $("newPractice"),
+  help: $("help"), pistes: $("pistes"), practiceNew: $("practiceNew"), newPractice: $("newPractice"),
 };
 
 const DIFF_CLASS = { "Fàcil": "facil", "Mitjà": "mitja", "Difícil": "dificil" };
@@ -142,6 +142,9 @@ els.newPractice.addEventListener("click", () =>
 );
 els.help.addEventListener("click", () =>
   ui.openPanel(els.panel, "Com jugar", ui.instructionsHTML())
+);
+els.pistes.addEventListener("click", () =>
+  ui.openPanel(els.panel, "Pistes", ui.hintsHTML(game.puzzle.hints))
 );
 els.share.addEventListener("click", async () => {
   const text = buildShareText({

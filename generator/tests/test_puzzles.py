@@ -45,3 +45,13 @@ def test_make_puzzle_respects_target_range():
                      target_range=(100, 999))
     assert pz is not None
     assert 100 <= pz["target"] <= 999
+
+
+def test_make_puzzle_includes_hints():
+    pz = make_puzzle([1, 2, 3, 4, 5, 6, 7], central_index=2, band=(5, 9999), max_leaves=4)
+    assert pz is not None
+    h = pz["hints"]
+    assert set(h["byOp"].keys()) == {"add", "sub", "mul", "div", "pow", "sqrt"}
+    assert all(isinstance(v, int) for v in h["byOp"].values())
+    # cada solució compta exactament un cop al recompte per operands
+    assert sum(h["byLeaves"].values()) == len(pz["solutions"])
