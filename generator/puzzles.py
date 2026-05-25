@@ -28,12 +28,14 @@ def build_ranks(total):
     return [(name, math.ceil(pct / 100 * total)) for name, pct in RANK_PCTS]
 
 
-def make_puzzle(digits, central_index, band=(40, 120), max_leaves=4, max_tutti_tries=5):
+def make_puzzle(digits, central_index, band=(40, 120), max_leaves=4, max_tutti_tries=5,
+                target_range=(-9999, 9999)):
     """Construeix un repte amb tutti garantit per a aquests dígits/central, o None.
 
     Tria l'objectiu més ric dins la banda que tinga tutti, comprovant fins a
     `max_tutti_tries` candidats per ordre de riquesa (límit per equilibrar qualitat
     del repte i cost de generació; la comprovació de tutti és ~6 s cadascuna).
+    `target_range` limita el valor de l'objectiu (lo <= valor <= hi).
     Retorna None si la banda és buida o si cap dels candidats provats té tutti.
     """
     digits = list(digits)
@@ -48,7 +50,11 @@ def make_puzzle(digits, central_index, band=(40, 120), max_leaves=4, max_tutti_t
 
     # `band` és el rang del NOMBRE DE SOLUCIONS acceptable per repte (no del valor objectiu)
     lo, hi = band
-    candidates = [(v, items) for v, items in by_value.items() if lo <= len(items) <= hi]
+    tlo, thi = target_range
+    candidates = [
+        (v, items) for v, items in by_value.items()
+        if lo <= len(items) <= hi and tlo <= v <= thi
+    ]
     if not candidates:
         return None
 

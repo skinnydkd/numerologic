@@ -38,3 +38,10 @@ def test_make_puzzle_in_band_with_tutti():
 def test_make_puzzle_returns_none_when_no_target_in_band():
     pz = make_puzzle([1, 2, 3, 4, 5, 6, 7], central_index=0, band=(10**9, 10**9), max_leaves=3)
     assert pz is None
+
+
+def test_make_puzzle_respects_target_range():
+    pz = make_puzzle([1, 2, 3, 4, 5, 6, 7], central_index=2, band=(5, 9999), max_leaves=4,
+                     target_range=(100, 999))
+    assert pz is not None
+    assert 100 <= pz["target"] <= 999

@@ -23,7 +23,9 @@ def build_pool(count, band=(40, 120), max_leaves=4, seed=0, start_date="2026-06-
         centrals = list(range(7))
         rng.shuffle(centrals)
         for ci in centrals:
-            pz = make_puzzle(digits, ci, band=band, max_leaves=max_leaves)
+            # el primer repte del pool: positiu i amable (100-999); la resta: |objectiu| <= 9999
+            tr = (100, 999) if not puzzles else (-9999, 9999)
+            pz = make_puzzle(digits, ci, band=band, max_leaves=max_leaves, target_range=tr)
             if pz is None:
                 continue
             key = (pz["target"], tuple(pz["digits"]), pz["centralIndex"])
