@@ -20,6 +20,8 @@ body {
 .goal b { display: block; font-size: 38px; color: #1f2937; line-height: 1.15; }
 .disp { text-align: center; font-size: 26px; letter-spacing: 2px; margin: 12px 0 4px; min-height: 34px; }
 .cursor { color: #58b4c4; }
+.result { text-align: center; min-height: 24px; font-size: 18px; font-weight: 600; color: #94a3b8; }
+.result.hit { color: #16a34a; }
 .flash { text-align: center; min-height: 22px; font-size: 14px; font-weight: 600; }
 .flash.found { color: #16a34a; }
 .flash.tutti { color: #eab308; }
