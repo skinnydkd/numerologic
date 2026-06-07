@@ -1,4 +1,5 @@
 // Punt d'entrada: carrega el pool, gestiona modes, connecta game/ui/storage.
+import { inject } from '@vercel/analytics';
 import { createGame } from "./game.js";
 import { loadProgress, saveProgress } from "./storage.js";
 import { dailyIndex, practiceIndex } from "./modes.js";
@@ -7,6 +8,9 @@ import { buildShareText } from "./share.js";
 import { parse } from "./parser.js";
 import { evaluate } from "./evaluator.js";
 import { difficulty } from "./difficulty.js";
+
+// Initialize Vercel Analytics
+inject();
 
 const $ = (id) => document.getElementById(id);
 const els = {
