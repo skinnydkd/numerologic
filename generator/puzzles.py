@@ -118,4 +118,8 @@ def make_puzzle(digits, central_index, band=(40, 120), max_leaves=4, max_tutti_t
         "ranks": build_ranks(total),
         "hasTutti": True,
         "hints": compute_hints(items),
+        "rules": {
+            "allowRepeat": variant.allow_repeat,
+            "ops": list(variant.ops) + (["sqrt"] if variant.use_sqrt else []),
+        },
     }

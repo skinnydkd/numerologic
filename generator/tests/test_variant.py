@@ -57,6 +57,10 @@ def test_make_puzzle_under_variant():
     assert tutti_exists(pz["digits"], pz["target"], variant=BASIC_NOREPEAT) is True
     assert pz["hints"]["byOp"]["pow"] == 0
     assert pz["hints"]["byOp"]["sqrt"] == 0
+    # el repte porta marcades les regles de la variant (el client les llegeix)
+    assert pz["rules"]["allowRepeat"] is False
+    assert "pow" not in pz["rules"]["ops"]
+    assert "sqrt" not in pz["rules"]["ops"]
 
 
 def test_build_pool_under_variant():
