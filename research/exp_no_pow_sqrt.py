@@ -4,26 +4,17 @@ Compara l'explosió combinatòria amb el conjunt complet d'operacions vs només 
 import time
 import tracemalloc
 
-import generator.solver as solver
-from generator.engine import InvalidExpr
+from generator.solver import generate
+from generator.engine import FULL
 
-
-def _no_sqrt(v):
-    raise InvalidExpr
+VARIANT_B = FULL._replace(ops=("add", "sub", "mul", "div"), use_sqrt=False)  # només +-*/, amb repeticions
 
 
 def count(digits, k, reduced):
-    # Reinicia l'estat global del solver per a cada execució.
-    if reduced:
-        solver.OPS = ('add', 'sub', 'mul', 'div')
-        solver.do_sqrt = _no_sqrt
-    else:
-        solver.OPS = ('add', 'sub', 'mul', 'div', 'pow')
-        import generator.engine as engine
-        solver.do_sqrt = engine.do_sqrt
+    variant = VARIANT_B if reduced else FULL
     tracemalloc.start()
     t0 = time.perf_counter()
-    out = solver.generate(digits, max_leaves=k)
+    out = generate(digits, max_leaves=k, variant=variant)
     dt = time.perf_counter() - t0
     _, peak = tracemalloc.get_traced_memory()
     tracemalloc.stop()

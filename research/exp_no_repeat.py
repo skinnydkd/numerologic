@@ -3,19 +3,18 @@ Cada dígit s'usa com a molt un cop dins l'expressió. Manté TOTES les operacio
 """
 import time
 import tracemalloc
-from itertools import combinations
 
-import generator.solver as solver
+from generator.solver import generate
+from generator.engine import FULL
 
 DIGITS = (1, 2, 3, 4, 5, 6, 7)
+VARIANT_A = FULL._replace(allow_repeat=False)  # ops completes, sense repetir dígits
 
 
 def run(k):
-    # No-repeat: al nivell superior, tria k dígits DIFERENTS (combinations, no _with_replacement).
-    solver.combinations_with_replacement = lambda it, r: combinations(it, r)
     tracemalloc.start()
     t0 = time.perf_counter()
-    out = solver.generate(DIGITS, max_leaves=k)
+    out = generate(DIGITS, max_leaves=k, variant=VARIANT_A)
     dt = time.perf_counter() - t0
     _, peak = tracemalloc.get_traced_memory()
     tracemalloc.stop()

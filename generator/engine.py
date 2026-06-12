@@ -1,8 +1,17 @@
 """Motor d'avaluació i canonicalització d'expressions de Numerològic."""
 import math
+from collections import namedtuple
 
 CAP = 1_000_000          # |valor| ha de quedar estrictament per sota d'aquest cap
 MAX_EXPONENT = 19        # 2**19 < CAP; evita potències absurdes
+
+# Regles de generació configurables (les passa tot el pipeline).
+#   ops:          operadors binaris permesos (subconjunt de add/sub/mul/div/pow)
+#   use_sqrt:     si s'augmenta amb arrel quadrada (operador unari, no afegeix fulles)
+#   allow_repeat: si un dígit del rusc es pot usar més d'un cop dins d'una expressió
+Variant = namedtuple("Variant", ["ops", "use_sqrt", "allow_repeat"])
+FULL = Variant(("add", "sub", "mul", "div", "pow"), True, True)        # regles actuals del joc
+BASIC_NOREPEAT = Variant(("add", "sub", "mul", "div"), False, False)   # variant: només +-*/, sense repetir
 
 
 class InvalidExpr(Exception):

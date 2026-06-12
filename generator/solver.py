@@ -2,9 +2,7 @@
 from functools import lru_cache
 from itertools import combinations, combinations_with_replacement
 
-from generator.engine import combine, do_sqrt, canonical, InvalidExpr
-
-OPS = ('add', 'sub', 'mul', 'div', 'pow')
+from generator.engine import combine, do_sqrt, canonical, InvalidExpr, FULL
 
 
 def _splits(ms):
@@ -23,8 +21,8 @@ def _splits(ms):
             yield left, right
 
 
-def _build(digits, max_leaves):
-    """Retorna una funcio results(ms) memoitzada per a aquest conjunt de digits."""
+def _build(variant):
+    """Retorna una funcio results(ms) memoitzada per a aquesta variant de regles."""
 
     @lru_cache(maxsize=None)
     def results(ms):
@@ -39,7 +37,7 @@ def _build(digits, max_leaves):
                 R = results(tuple(sorted(right)))
                 for lv, la in L.values():
                     for rv, ra in R.values():
-                        for op in OPS:
+                        for op in variant.ops:
                             try:
                                 v = combine(op, lv, rv)
                             except InvalidExpr:
@@ -49,30 +47,33 @@ def _build(digits, max_leaves):
                             if c not in out:
                                 out[c] = (v, ast)
         # augmentacio amb arrel (no afegeix fulles): sqrt de cada entrada existent
-        for v, ast in list(out.values()):
-            try:
-                sv = do_sqrt(v)
-            except InvalidExpr:
-                continue
-            sast = ('sqrt', ast)
-            sc = canonical(sast)
-            if sc not in out:
-                out[sc] = (sv, sast)
+        if variant.use_sqrt:
+            for v, ast in list(out.values()):
+                try:
+                    sv = do_sqrt(v)
+                except InvalidExpr:
+                    continue
+                sast = ('sqrt', ast)
+                sc = canonical(sast)
+                if sc not in out:
+                    out[sc] = (sv, sast)
         return out
 
     return results
 
 
-def generate(digits, max_leaves=6):
+def generate(digits, max_leaves=6, variant=FULL):
     """Totes les expressions valides amb 2..max_leaves operands sobre `digits`.
 
+    `variant` (engine.Variant) controla operadors, arrel i repeticio de digits.
     Retorna dict: canonical -> {"value", "ast", "leaves", "used"} amb used = frozenset de digits diferents.
     """
     digits = list(digits)
-    results = _build(tuple(sorted(digits)), max_leaves)
+    results = _build(variant)
+    choose = combinations_with_replacement if variant.allow_repeat else combinations
     out = {}
     for k in range(2, max_leaves + 1):
-        for ms in combinations_with_replacement(sorted(digits), k):
+        for ms in choose(sorted(digits), k):
             for c, (v, ast) in results(tuple(ms)).items():
                 if c in out:
                     continue
