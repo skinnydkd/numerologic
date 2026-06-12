@@ -3,7 +3,7 @@ import math
 from collections import defaultdict
 
 from generator.solver import generate
-from generator.engine import has_pow_or_sqrt
+from generator.engine import has_pow_or_sqrt, FULL
 from generator.tutti import tutti_exists
 
 # (nom, percentatge sobre el total de punts)
@@ -60,18 +60,19 @@ def compute_hints(items):
 
 
 def make_puzzle(digits, central_index, band=(40, 120), max_leaves=4, max_tutti_tries=5,
-                target_range=(-9999, 9999)):
+                target_range=(-9999, 9999), variant=FULL):
     """Construeix un repte amb tutti garantit per a aquests dígits/central, o None.
 
     Tria l'objectiu més ric dins la banda que tinga tutti, comprovant fins a
     `max_tutti_tries` candidats per ordre de riquesa (límit per equilibrar qualitat
     del repte i cost de generació; la comprovació de tutti és ~6 s cadascuna).
     `target_range` limita el valor de l'objectiu (lo <= valor <= hi).
+    `variant` (engine.Variant) fixa les regles (operadors, arrel, repeticio).
     Retorna None si la banda és buida o si cap dels candidats provats té tutti.
     """
     digits = list(digits)
     central = digits[central_index]
-    all_sols = generate(digits, max_leaves=max_leaves)
+    all_sols = generate(digits, max_leaves=max_leaves, variant=variant)
 
     # agrupa per valor, només solucions que facin servir el central
     by_value = defaultdict(list)
@@ -94,7 +95,7 @@ def make_puzzle(digits, central_index, band=(40, 120), max_leaves=4, max_tutti_t
 
     chosen = None
     for v, items in candidates[:max_tutti_tries]:
-        if tutti_exists(digits, v):
+        if tutti_exists(digits, v, variant=variant):
             chosen = (v, items)
             break
     if chosen is None:
@@ -117,4 +118,8 @@ def make_puzzle(digits, central_index, band=(40, 120), max_leaves=4, max_tutti_t
         "ranks": build_ranks(total),
         "hasTutti": True,
         "hints": compute_hints(items),
+        "rules": {
+            "allowRepeat": variant.allow_repeat,
+            "ops": list(variant.ops) + (["sqrt"] if variant.use_sqrt else []),
+        },
     }

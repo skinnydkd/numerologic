@@ -69,10 +69,10 @@ function start(index) {
   game = createGame(puzzle, loadProgress(localStorage, index));
   expr = "";
   ui.setTarget(els.target, puzzle.target);
-  const dlevel = difficulty(puzzle.hints);
+  const dlevel = difficulty(puzzle.hints, puzzle.rules);
   els.difficulty.innerHTML = `<span class="${DIFF_CLASS[dlevel]}">${dlevel}</span>`;
   ui.renderHive(els.hive, puzzle.digits, puzzle.centralIndex, addToken);
-  ui.renderOps(els.ops, addToken);
+  ui.renderOps(els.ops, addToken, puzzle.rules);
   showExpr();
   els.flash.textContent = "";
   refreshFooter();
@@ -141,10 +141,10 @@ els.newPractice.addEventListener("click", () =>
   start(practiceIndex(Math.random, pool.puzzles.length, dailyIdx()))
 );
 els.help.addEventListener("click", () =>
-  ui.openPanel(els.panel, "Com jugar", ui.instructionsHTML())
+  ui.openPanel(els.panel, "Com jugar", ui.instructionsHTML(game.puzzle.rules))
 );
 els.pistes.addEventListener("click", () =>
-  ui.openPanel(els.panel, "Pistes", ui.hintsHTML(game.puzzle.hints))
+  ui.openPanel(els.panel, "Pistes", ui.hintsHTML(game.puzzle.hints, game.puzzle.rules))
 );
 els.share.addEventListener("click", async () => {
   const text = buildShareText({
