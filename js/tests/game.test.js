@@ -60,7 +60,7 @@ test("tutti (els 7 dígits) -> tutti amb bonus", () => {
   assert.equal(r.status, "tutti");
   assert.equal(r.points, TUTTI_BONUS);
   assert.equal(g.tuttiFound, true);
-  assert.equal(g.score(), 0); // el tutti no compta a la puntuacio
+  assert.equal(g.score(), TUTTI_BONUS); // el tutti suma 10 punts al total
   assert.equal(g.tuttiBonus(), TUTTI_BONUS);
 });
 
@@ -84,7 +84,7 @@ test("progress() i restauració amb createGame", () => {
   const p = g.progress();
   const g2 = createGame(puzzle(), p);
   assert.equal(g2.found.size, 1);
-  assert.equal(g2.score(), 3);
+  assert.equal(g2.score(), 3 + TUTTI_BONUS); // 3 de la solució + 10 del tutti
   assert.equal(g2.tuttiFound, true);
 });
 

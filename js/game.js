@@ -59,6 +59,7 @@ export function createGame(puzzle, savedProgress = null) {
   function score() {
     let s = 0;
     for (const { points } of found.values()) s += points;
+    if (tuttiFound) s += TUTTI_BONUS; // el tutti suma 10 punts al total (no els 7 operands)
     return s;
   }
 
