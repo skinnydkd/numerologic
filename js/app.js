@@ -81,7 +81,7 @@ function start(index) {
 function refreshFooter() {
   ui.updateFooter({
     countEl: els.count, rankEl: els.rankBtn, tuttiEl: els.tutti,
-    found: game.found.size, total: game.puzzle.solutions.length,
+    found: game.found.size, score: game.score(),
     rankName: game.rank(), tuttiFound: game.tuttiFound,
   });
 }
@@ -103,6 +103,8 @@ function send() {
   if (res.status === "found" || res.status === "tutti") {
     saveProgress(localStorage, poolIndex, game.progress());
     refreshFooter();
+  }
+  if (res.status === "found" || res.status === "tutti" || res.status === "duplicate") {
     expr = "";
     showExpr();
   }
@@ -151,7 +153,7 @@ els.share.addEventListener("click", async () => {
     number: poolIndex + 1,
     rankName: game.rank(),
     found: game.found.size,
-    total: game.puzzle.solutions.length,
+    score: game.score(),
     tuttiFound: game.tuttiFound,
   });
   try {

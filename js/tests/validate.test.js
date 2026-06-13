@@ -24,3 +24,13 @@ test("regla del motor (divisió inexacta)", () => {
   const r = validate(["div", ["num", 5], ["num", 2]], rusc);
   assert.equal(r.ok, false);
 });
+
+test("variant sense repetir: dígit repetit -> invàlid", () => {
+  const r = validate(["add", ["num", 5], ["num", 5]], { ...rusc, allowRepeat: false });
+  assert.equal(r.ok, false);
+});
+
+test("variant amb operadors restringits: potència no permesa -> invàlid", () => {
+  const r = validate(["pow", ["num", 5], ["num", 2]], { ...rusc, ops: ["add", "sub", "mul", "div"] });
+  assert.equal(r.ok, false);
+});

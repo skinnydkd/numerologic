@@ -64,7 +64,7 @@ export function setDisplay(el, text) {
 
 const FLASH = {
   found: "found", tutti: "tutti", duplicate: "dup",
-  wrong: "error", invalid: "error", notInList: "error",
+  wrong: "error", invalid: "error",
 };
 const MSG = {
   found: (p) => `Trobada! +${p}`,
@@ -72,15 +72,14 @@ const MSG = {
   duplicate: () => "Ja la tens",
   wrong: () => "No arriba a l'objectiu",
   invalid: () => "No és vàlida",
-  notInList: () => "No és una solució del repte",
 };
 export function flash(el, result) {
   el.className = "flash " + (FLASH[result.status] || "error");
   el.textContent = MSG[result.status](result.points);
 }
 
-export function updateFooter({ countEl, rankEl, tuttiEl, found, total, rankName, tuttiFound }) {
-  countEl.textContent = `Has trobat ${found} de ${total} solucions.`;
+export function updateFooter({ countEl, rankEl, tuttiEl, found, score, rankName, tuttiFound }) {
+  countEl.textContent = `Has trobat ${found} solucions (${score} punts).`;
   rankEl.textContent = rankName;
   tuttiEl.textContent = tuttiFound ? "★ Tutti trobat!" : "★ Tutti pendent";
   tuttiEl.classList.toggle("done", tuttiFound);
@@ -171,7 +170,7 @@ export function hintsHTML(hints, rules) {
     .join("");
   const ops = OPS.map(([k, sym]) => `<li>${sym} : <b>${hints.byOp[k]}</b></li>`).join("");
   return `
-    <p><b>Solucions per nombre d'operands</b></p>
+    <p><b>Solucions per nombre d'operands</b> <small>(de fins a 4)</small></p>
     <ul>${leaves}<li>Total: <b>${total}</b></li></ul>
     <p><b>Solucions que usen cada operació</b></p>
     <ul>${ops}</ul>`;
