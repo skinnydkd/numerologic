@@ -9,7 +9,9 @@ export const TUTTI_BONUS = 10;
 export function createGame(puzzle, savedProgress = null) {
   const { digits, target } = puzzle;
   const central = digits[puzzle.centralIndex];
-  const solutionSet = new Set(puzzle.solutions);
+  const rules = puzzle.rules || {};
+  const allowRepeat = rules.allowRepeat !== false;
+  const ops = rules.ops || null;
   const found = new Map(); // canonical -> { text, points }
   let tuttiFound = false;
 
@@ -37,7 +39,7 @@ export function createGame(puzzle, savedProgress = null) {
       if (e instanceof ParseError) return { status: "invalid" };
       throw e;
     }
-    const v = validate(ast, { digits, central });
+    const v = validate(ast, { digits, central, allowRepeat, ops });
     if (!v.ok) return { status: "invalid" };
     if (v.value !== target) return { status: "wrong" };
 
@@ -48,13 +50,10 @@ export function createGame(puzzle, savedProgress = null) {
     }
 
     const c = canonical(ast);
-    if (solutionSet.has(c)) {
-      if (found.has(c)) return { status: "duplicate" };
-      const points = solutionPoints(countLeaves(ast), hasPowOrSqrt(ast));
-      found.set(c, { text: inputText, points });
-      return { status: "found", points, canonical: c };
-    }
-    return { status: "notInList" };
+    if (found.has(c)) return { status: "duplicate" };
+    const points = solutionPoints(countLeaves(ast), hasPowOrSqrt(ast));
+    found.set(c, { text: inputText, points });
+    return { status: "found", points, canonical: c };
   }
 
   function score() {
