@@ -22,10 +22,10 @@ export function validate(ast, { digits, central, allowRepeat = true, ops = null 
 
   const allowed = new Set(digits);
   for (const d of leaves) {
-    if (!allowed.has(d)) return { ok: false, reason: "dígit fora del rusc: " + d };
+    if (!allowed.has(d)) return { ok: false, reason: `El dígit ${d} no és al rusc` };
   }
   if (!leaves.includes(central)) {
-    return { ok: false, reason: "no usa el dígit central" };
+    return { ok: false, reason: `Has d'usar el dígit central (${central})` };
   }
 
   // Variant sense repetir: cap dígit no es pot usar més vegades que la seva multiplicitat al rusc.
@@ -36,7 +36,7 @@ export function validate(ast, { digits, central, allowRepeat = true, ops = null 
     for (const d of leaves) {
       const n = (seen.get(d) || 0) + 1;
       seen.set(d, n);
-      if (n > (cap.get(d) || 0)) return { ok: false, reason: "dígit repetit: " + d };
+      if (n > (cap.get(d) || 0)) return { ok: false, reason: `No pots repetir el dígit ${d}` };
     }
   }
 
@@ -46,7 +46,8 @@ export function validate(ast, { digits, central, allowRepeat = true, ops = null 
     const used = new Set();
     collectOps(ast, used);
     for (const op of used) {
-      if (!allowedOps.has(op)) return { ok: false, reason: "operador no permès: " + op };
+      if (op === "neg") continue; // el menys unari sempre es permet (no és cap operador del rusc)
+      if (!allowedOps.has(op)) return { ok: false, reason: "Aquest operador no es pot usar avui" };
     }
   }
 
@@ -54,7 +55,7 @@ export function validate(ast, { digits, central, allowRepeat = true, ops = null 
   try {
     value = evaluate(ast);
   } catch (e) {
-    if (e instanceof InvalidExpr) return { ok: false, reason: "expressió no vàlida" };
+    if (e instanceof InvalidExpr) return { ok: false, reason: "Operació no vàlida (divisió no exacta?)" };
     throw e;
   }
   return { ok: true, value };

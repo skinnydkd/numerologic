@@ -53,3 +53,17 @@ test("operador no permès per la variant (potència) -> invalid", () => {
   const r = g.submit("4^1+3+6+7+5"); // = 25, dígits OK, però usa ^ no permès
   assert.equal(r.status, "invalid");
 });
+
+test("quan és invàlida, retorna el motiu (sense central)", () => {
+  const g = createGame(puzzle());
+  const r = g.submit("3+4"); // no usa el dígit central (5)
+  assert.equal(r.status, "invalid");
+  assert.match(r.reason, /central/);
+});
+
+test("menys unari: (3-8)×(-5) = 25 -> found", () => {
+  const g = createGame(puzzle());
+  const r = g.submit("(3-8)*(-5)"); // (-5)*(-5) = 25, central 5
+  assert.equal(r.status, "found");
+  assert.equal(r.points, 3);
+});

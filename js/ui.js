@@ -71,11 +71,17 @@ const MSG = {
   tutti: (p) => `★ TUTTI! +${p}`,
   duplicate: () => "Ja la tens",
   wrong: () => "No arriba a l'objectiu",
-  invalid: () => "No és vàlida",
+  invalid: (p, reason) => reason || "No és vàlida",
 };
+let flashTimer = null;
 export function flash(el, result) {
   el.className = "flash " + (FLASH[result.status] || "error");
-  el.textContent = MSG[result.status](result.points);
+  el.textContent = MSG[result.status](result.points, result.reason);
+  if (flashTimer) clearTimeout(flashTimer);
+  flashTimer = setTimeout(() => {
+    el.className = "flash";
+    el.textContent = "";
+  }, 3000);
 }
 
 export function updateFooter({ countEl, rankEl, tuttiEl, found, score, rankName, tuttiFound }) {
@@ -125,7 +131,7 @@ export function instructionsHTML(rules) {
     ? `<li><b>Dificultat</b> (Fàcil/Mitjà/Difícil): segons quantes solucions necessiten operacions avançades.</li>`
     : `<li><b>Dificultat</b> (Fàcil/Mitjà/Difícil): segons quantes solucions depenen de la <b>divisió</b>.</li>`;
   return `
-    <p>Numerològic és un <b>Paraulògic matemàtic</b>: cada dia hi ha un número <b>objectiu</b> i un rusc de <b>7 dígits</b>. L'objectiu és descobrir <b>totes</b> les expressions que hi arriben.</p>
+    <p>Numerològic és un <b>Paraulògic matemàtic</b>: cada dia hi ha un número <b>objectiu</b> i un rusc de <b>7 dígits</b>. Has de trobar <b>expressions</b> que hi arribin: <b>qualsevol</b> expressió vàlida compta i suma punts (no cal encertar cap llista amagada, i no hi ha límit de longitud).</p>
 
     <p><b>Com es juga</b></p>
     <ul>
@@ -147,8 +153,8 @@ export function instructionsHTML(rules) {
     <ul>
       ${pointsLine}
       <li>Acumulant punts puges de <b>rang</b> (de Principiant a Totes).</li>
-      <li><b>★ Tutti</b>: una solució que fa servir <b>els 7 dígits</b> diferents. És especial i dona bonus.</li>
-      <li>La mateixa solució no compta dues vegades (3×4 i 4×3 són la mateixa).</li>
+      <li><b>★ Tutti</b>: una solució que fa servir <b>els 7 dígits</b> diferents. Val <b>10 punts</b>.</li>
+      <li>La mateixa solució no compta dues vegades (3×4 i 4×3 són la mateixa); si la repeteixes, l'expressió s'esborra sola.</li>
     </ul>
 
     <p><b>Més</b></p>

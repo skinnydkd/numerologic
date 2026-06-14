@@ -40,6 +40,7 @@ export function evaluate(ast) {
   const k = ast[0];
   if (k === "num") return ast[1];
   if (k === "sqrt") return doSqrt(evaluate(ast[1]));
+  if (k === "neg") return -evaluate(ast[1]); // menys unari (p. ex. ×(−7))
   const a = evaluate(ast[1]);
   const b = evaluate(ast[2]);
   return combine(k, a, b);
