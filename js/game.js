@@ -40,7 +40,7 @@ export function createGame(puzzle, savedProgress = null) {
       throw e;
     }
     const v = validate(ast, { digits, central, allowRepeat, ops });
-    if (!v.ok) return { status: "invalid" };
+    if (!v.ok) return { status: "invalid", reason: v.reason };
     if (v.value !== target) return { status: "wrong" };
 
     if (usesAllDigits(ast, digits)) {

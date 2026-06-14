@@ -50,6 +50,10 @@ export function parse(str) {
       next();
       return ["sqrt", parseUnary()];
     }
+    if (peek() && peek().type === "-") {
+      next();
+      return ["neg", parseUnary()]; // menys unari: −7, ×(−7), etc.
+    }
     return parseAtom();
   }
   function parseAtom() {

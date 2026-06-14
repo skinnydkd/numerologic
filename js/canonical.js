@@ -18,6 +18,7 @@ export function canonical(ast) {
   const k = ast[0];
   if (k === "num") return String(ast[1]);
   if (k === "sqrt") return "r(" + canonical(ast[1]) + ")";
+  if (k === "neg") return "(~ " + canonical(ast[1]) + ")"; // menys unari (només al client)
   if (k === "add") return "(+ " + flatten(ast, "add").sort().join(" ") + ")";
   if (k === "mul") return "(* " + flatten(ast, "mul").sort().join(" ") + ")";
   const sym = { sub: "-", div: "/", pow: "^" }[k];
