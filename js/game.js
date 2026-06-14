@@ -25,7 +25,9 @@ export function createGame(puzzle, savedProgress = null) {
       }
       found.set(f.canonical, {
         text: f.text,
-        points: solutionPoints(countLeaves(ast), hasPowOrSqrt(ast)),
+        points: usesAllDigits(ast, digits)
+          ? TUTTI_BONUS // el tutti val 10 punts (no els 7 operands)
+          : solutionPoints(countLeaves(ast), hasPowOrSqrt(ast)),
       });
     }
     tuttiFound = Boolean(savedProgress.tuttiFound);
@@ -46,7 +48,9 @@ export function createGame(puzzle, savedProgress = null) {
     if (usesAllDigits(ast, digits)) {
       if (tuttiFound) return { status: "duplicate" };
       tuttiFound = true;
-      return { status: "tutti", points: TUTTI_BONUS };
+      const c = canonical(ast);
+      found.set(c, { text: inputText, points: TUTTI_BONUS }); // el tutti és una solució de 10 punts
+      return { status: "tutti", points: TUTTI_BONUS, canonical: c };
     }
 
     const c = canonical(ast);
@@ -59,7 +63,6 @@ export function createGame(puzzle, savedProgress = null) {
   function score() {
     let s = 0;
     for (const { points } of found.values()) s += points;
-    if (tuttiFound) s += TUTTI_BONUS; // el tutti suma 10 punts al total (no els 7 operands)
     return s;
   }
 

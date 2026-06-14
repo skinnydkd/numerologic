@@ -83,7 +83,7 @@ test("progress() i restauració amb createGame", () => {
   g.submit("1+2+3+4+5+6+7");
   const p = g.progress();
   const g2 = createGame(puzzle(), p);
-  assert.equal(g2.found.size, 1);
+  assert.equal(g2.found.size, 2); // la solució normal + el tutti
   assert.equal(g2.score(), 3 + TUTTI_BONUS); // 3 de la solució + 10 del tutti
   assert.equal(g2.tuttiFound, true);
 });
@@ -91,4 +91,14 @@ test("progress() i restauració amb createGame", () => {
 test("progrés corrupte no peta (omet entrades dolentes)", () => {
   const g = createGame(puzzle(), { found: [{ canonical: "x", text: "@@@" }], tuttiFound: false });
   assert.equal(g.found.size, 0);
+});
+
+test("la suma de punts del panell quadra amb score (tutti inclòs)", () => {
+  const g = createGame(puzzle());
+  g.submit("1*4*7");          // +3
+  g.submit("1+2+3+4+5+6+7");  // tutti +10
+  let sum = 0;
+  for (const { points } of g.found.values()) sum += points;
+  assert.equal(sum, g.score());  // els ítems de la llista han de sumar el total
+  assert.equal(g.found.size, 2); // el tutti és una solució trobada més
 });
