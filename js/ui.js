@@ -99,10 +99,9 @@ export function updateFooter({ countEl, rankEl, tuttiEl, breviEl,
   tuttiEl.textContent = tuttiFound ? "★ Tutti trobat!" : "★ Tutti pendent";
   tuttiEl.classList.toggle("done", tuttiFound);
   if (breviEl && breviTotal > 0) {
-    const done = "◼".repeat(breviFound);
-    const left = "◻".repeat(Math.max(0, breviTotal - breviFound));
+    const label = breviComplete ? "✦ Brevi complet!" : "✦ Brevi pendent";
     const streakTxt = streak > 0 ? ` · 🔥 Ratxa ${streak}` : "";
-    breviEl.textContent = `Brevi ${done}${left} ${breviFound}/${breviTotal}${streakTxt}`;
+    breviEl.textContent = `${label} (${breviFound}/${breviTotal})${streakTxt}`;
     breviEl.classList.toggle("done", breviComplete);
   } else if (breviEl) {
     breviEl.textContent = "";
