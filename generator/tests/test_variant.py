@@ -64,7 +64,7 @@ def test_make_puzzle_under_variant():
 
 
 def test_build_pool_under_variant():
-    pool = build_pool(count=2, band=(5, 9999), max_leaves=4, seed=0, variant=BASIC_NOREPEAT)
+    pool = build_pool(count=2, max_leaves=4, seed=0, variant=BASIC_NOREPEAT)
     assert len(pool["puzzles"]) >= 1
     for pz in pool["puzzles"]:
         for c in pz["solutions"]:
