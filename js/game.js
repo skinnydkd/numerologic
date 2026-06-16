@@ -5,7 +5,8 @@ import { canonical } from "./canonical.js";
 import { solutionPoints, hasPowOrSqrt, countLeaves, usesAllDigits, breviFoundCount } from "./score.js";
 
 export const TUTTI_BONUS = 10;
-export const BREVI_BONUS = 10;
+export const BREVI_BONUS = 10;   // bonus per completar TOTES les solucions Brevi
+export const BREVI_POINTS = 10;  // punts de CADA solució Brevi (com el tutti)
 
 export function createGame(puzzle, savedProgress = null) {
   const { digits, target } = puzzle;
@@ -18,6 +19,13 @@ export function createGame(puzzle, savedProgress = null) {
   const breviOps = puzzle.brevi ? puzzle.brevi.operands : null;
   const breviTotal = puzzle.brevi ? puzzle.brevi.count : 0;
 
+  // Punts d'una solució: tutti i Brevi (les més curtes) valen 10; la resta, 1 per operand (+2 amb ^/√).
+  function pointsFor(leaves, isTutti, ast) {
+    if (isTutti) return TUTTI_BONUS;
+    if (breviOps && leaves === breviOps) return BREVI_POINTS;
+    return solutionPoints(leaves, hasPowOrSqrt(ast));
+  }
+
   if (savedProgress) {
     for (const f of savedProgress.found || []) {
       let ast;
@@ -27,13 +35,8 @@ export function createGame(puzzle, savedProgress = null) {
         continue; // omet entrades corruptes en lloc de bloquejar la partida
       }
       const isTutti = usesAllDigits(ast, digits);
-      found.set(f.canonical, {
-        text: f.text,
-        points: isTutti
-          ? TUTTI_BONUS // el tutti val 10 punts (no els 7 operands)
-          : solutionPoints(countLeaves(ast), hasPowOrSqrt(ast)),
-        leaves: isTutti ? digits.length : countLeaves(ast),
-      });
+      const leaves = isTutti ? digits.length : countLeaves(ast);
+      found.set(f.canonical, { text: f.text, points: pointsFor(leaves, isTutti, ast), leaves });
     }
     tuttiFound = Boolean(savedProgress.tuttiFound);
   }
@@ -61,7 +64,7 @@ export function createGame(puzzle, savedProgress = null) {
     const c = canonical(ast);
     if (found.has(c)) return { status: "duplicate" };
     const leaves = countLeaves(ast);
-    const points = solutionPoints(leaves, hasPowOrSqrt(ast));
+    const points = pointsFor(leaves, false, ast);
     found.set(c, { text: inputText, points, leaves });
     return { status: "found", points, canonical: c };
   }

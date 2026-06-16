@@ -161,14 +161,9 @@ export function instructionsHTML(rules) {
   const exactLine = advanced
     ? `<li>Les <b>divisions</b> i les <b>arrels</b> han de ser exactes (8÷4 ✓, 7÷2 ✗; √9 ✓, √8 ✗).</li>`
     : `<li>Les <b>divisions</b> han de ser exactes (8÷4 ✓, 7÷2 ✗).</li>`;
-  const pointsLine = advanced
-    ? `<li>Cada solució <b>nova</b> suma punts: <b>1 per operand</b>, <b>+2</b> si usa potència o arrel.</li>`
-    : `<li>Cada solució <b>nova</b> suma punts: <b>1 per operand</b>.</li>`;
-  const diffLine = advanced
-    ? `<li><b>Dificultat</b> (Fàcil/Mitjà/Difícil): segons quantes solucions necessiten operacions avançades.</li>`
-    : `<li><b>Dificultat</b> (Fàcil/Mitjà/Difícil): segons quantes solucions depenen de la <b>divisió</b>.</li>`;
+  const pointsBonus = advanced ? ", <b>+2</b> si usa potència o arrel" : "";
   return `
-    <p>Numerològic és un <b>Paraulògic matemàtic</b>: cada dia hi ha un número <b>objectiu</b> i un rusc de <b>7 dígits</b>. Has de trobar <b>expressions</b> que hi arribin: <b>qualsevol</b> expressió vàlida compta i suma punts (no cal encertar cap llista amagada, i no hi ha límit de longitud).</p>
+    <p>Numerològic és un <b>Paraulògic matemàtic</b>: cada dia hi ha un número <b>objectiu</b> i un <b>rusc</b> de 5–7 dígits (en els reptes difícils algunes cel·les queden <b>grises</b>, és a dir buides). Troba <b>expressions</b> que hi arribin: <b>qualsevol</b> expressió vàlida compta i suma punts (no cal encertar cap llista amagada, i no hi ha límit de longitud).</p>
 
     <p><b>Com es juga</b></p>
     <ul>
@@ -186,34 +181,44 @@ export function instructionsHTML(rules) {
       <li>Sota l'expressió veuràs el seu <b>resultat en viu</b> (es posa verd quan encertes).</li>
     </ul>
 
-    <p><b>Punts, rangs i tutti</b></p>
+    <p><b>Punts, Brevi i tutti</b></p>
     <ul>
-      ${pointsLine}
+      <li>Cada solució <b>nova</b> suma punts: <b>1 per operand</b>${pointsBonus}.</li>
+      <li><b>✦ Brevi</b>: les solucions amb <b>menys operands</b> (les més curtes i difícils de veure) — l'objectiu del dia. Cadascuna val <b>10 punts</b>, i completar-les <b>totes</b> en suma <b>10</b> més.</li>
+      <li><b>★ Tutti</b>: una solució que fa servir <b>tots els dígits</b> del rusc. Val <b>10 punts</b>.</li>
       <li>Acumulant punts puges de <b>rang</b> (de Principiant a Totes).</li>
-      <li><b>★ Tutti</b>: una solució que fa servir <b>els 7 dígits</b> diferents. Val <b>10 punts</b>.</li>
       <li>La mateixa solució no compta dues vegades (3×4 i 4×3 són la mateixa); si la repeteixes, l'expressió s'esborra sola.</li>
     </ul>
 
     <p><b>Més</b></p>
     <ul>
-      ${diffLine}
-      <li><b>Pistes</b>: recompte de solucions per operands i per operació, sense desvelar-ne cap.</li>
+      <li><b>Dificultat</b> (Fàcil/Mitjà/Difícil): els reptes difícils tenen objectius més <b>grans</b>, <b>menys dígits</b> (amb cel·les grises) i <b>menys solucions</b>.</li>
+      <li><b>Ratxa</b> 🔥: dies seguits completant el Brevi.</li>
+      <li><b>Pistes</b>: quantes solucions hi ha del Brevi i per nombre d'operands i operació, sense desvelar-ne cap.</li>
       <li><b>Modes</b>: repte <b>diari</b> (igual per a tothom) i <b>pràctica</b> lliure.</li>
       <li><b>Comparteix</b> el resultat sense revelar cap solució.</li>
     </ul>`;
 }
 
-export function hintsHTML(hints, rules) {
+export function hintsHTML(hints, rules, brevi) {
   if (!hints) return "<p>Aquest repte no té pistes.</p>";
   let OPS = [["add", "+"], ["sub", "−"], ["mul", "×"], ["div", "÷"], ["pow", "^"], ["sqrt", "√"]];
   if (!allowsAdvanced(rules)) OPS = OPS.filter(([k]) => k !== "pow" && k !== "sqrt");
   const total = Object.values(hints.byLeaves).reduce((a, b) => a + b, 0);
+  const breviOps = brevi ? brevi.operands : null;
+  const breviLine = brevi
+    ? `<p>✦ <b>Brevi</b>: ${brevi.count} ${brevi.count === 1 ? "solució" : "solucions"} de <b>${brevi.operands} operands</b> — les més curtes. Troba-les totes!</p>`
+    : "";
   const leaves = Object.entries(hints.byLeaves)
-    .map(([n, c]) => `<li>${n} operands: <b>${c}</b></li>`)
+    .map(([n, c]) => {
+      const tag = Number(n) === breviOps ? ` <b>· Brevi</b>` : "";
+      return `<li>${n} operands${tag}: <b>${c}</b></li>`;
+    })
     .join("");
   const ops = OPS.map(([k, sym]) => `<li>${sym} : <b>${hints.byOp[k]}</b></li>`).join("");
   return `
-    <p><b>Solucions per nombre d'operands</b> <small>(de fins a 4)</small></p>
+    ${breviLine}
+    <p><b>Solucions per nombre d'operands</b></p>
     <ul>${leaves}<li>Total: <b>${total}</b></li></ul>
     <p><b>Solucions que usen cada operació</b></p>
     <ul>${ops}</ul>`;

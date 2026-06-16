@@ -19,7 +19,8 @@ const els = {
   brevi: $("brevi"),
 };
 
-const DIFF_CLASS = { "Fàcil": "facil", "Mitjà": "mitja", "Difícil": "dificil" };
+const DIFF_LABEL = { facil: "Fàcil", mitja: "Mitjà", dificil: "Difícil" };
+const DIFF_CLASS = { "Fàcil": "facil", "Mitjà": "mitja", "Difícil": "dificil" }; // fallback heurístic
 
 let pool;
 try {
@@ -71,8 +72,9 @@ function start(index) {
   game = createGame(puzzle, loadProgress(localStorage, index));
   expr = "";
   ui.setTarget(els.target, puzzle.target);
-  const dlevel = difficulty(puzzle.hints, puzzle.rules);
-  els.difficulty.innerHTML = `<span class="${DIFF_CLASS[dlevel]}">${dlevel}</span>`;
+  // dificultat: usa el camp del repte (espectre real del generador); si no hi és, l'heurística del client
+  const dkey = DIFF_LABEL[puzzle.difficulty] ? puzzle.difficulty : DIFF_CLASS[difficulty(puzzle.hints, puzzle.rules)];
+  els.difficulty.innerHTML = `<span class="${dkey}">${DIFF_LABEL[dkey]}</span>`;
   ui.renderHive(els.hive, puzzle.digits, puzzle.centralIndex, addToken);
   ui.renderOps(els.ops, addToken, puzzle.rules);
   showExpr();
@@ -160,7 +162,7 @@ els.help.addEventListener("click", () =>
   ui.openPanel(els.panel, "Com jugar", ui.instructionsHTML(game.puzzle.rules))
 );
 els.pistes.addEventListener("click", () =>
-  ui.openPanel(els.panel, "Pistes", ui.hintsHTML(game.puzzle.hints, game.puzzle.rules))
+  ui.openPanel(els.panel, "Pistes", ui.hintsHTML(game.puzzle.hints, game.puzzle.rules, game.puzzle.brevi))
 );
 els.share.addEventListener("click", async () => {
   const text = buildShareText({

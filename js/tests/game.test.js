@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { createGame, TUTTI_BONUS, BREVI_BONUS } from "../game.js";
+import { createGame, TUTTI_BONUS, BREVI_BONUS, BREVI_POINTS } from "../game.js";
 
 function puzzle() {
   return {
@@ -125,14 +125,21 @@ test("una solució de 3 operands compta com a Brevi", () => {
   assert.equal(g.breviComplete(), false);
 });
 
+test("cada solució Brevi val BREVI_POINTS", () => {
+  const g = createGame(breviPuzzle());
+  g.submit("(6-1)*4"); // brevi: val 10, no 3
+  const entry = [...g.found.values()][0];
+  assert.equal(entry.points, BREVI_POINTS);
+});
+
 test("completar el Brevi -> breviComplete i bonus", () => {
   const g = createGame(breviPuzzle());
-  g.submit("(6-1)*4"); // brevi 1/2
-  g.submit("5+6+9");   // brevi 2/2
+  g.submit("(6-1)*4"); // brevi 1/2 (10)
+  g.submit("5+6+9");   // brevi 2/2 (10)
   assert.equal(g.breviFound(), 2);
   assert.equal(g.breviComplete(), true);
   assert.equal(g.breviBonus(), BREVI_BONUS);
-  assert.equal(g.score(), 3 + 3 + BREVI_BONUS); // 3+3 de les solucions + bonus
+  assert.equal(g.score(), BREVI_POINTS + BREVI_POINTS + BREVI_BONUS); // 10+10 + bonus
 });
 
 test("una solució més llarga no compta com a Brevi", () => {
