@@ -1,6 +1,10 @@
 import math
 from generator.puzzles import solution_points, build_ranks, make_puzzle, RANK_PCTS
 from generator.tutti import tutti_exists
+from generator.engine import Variant
+
+# regles reals del banc: +−×÷, sense arrel, sense repetició
+BASIC = Variant(('add', 'sub', 'mul', 'div'), False, False)
 
 
 def test_solution_points_basic():
@@ -22,7 +26,8 @@ def test_build_ranks_thresholds():
 
 
 def test_make_puzzle_in_band_with_tutti():
-    pz = make_puzzle([1, 2, 3, 4, 5, 6, 7], central_index=2, band=(5, 9999), max_leaves=4)
+    pz = make_puzzle([1, 2, 3, 4, 5, 6, 7], central_index=2, band=(5, 9999), max_leaves=4,
+                     variant=BASIC)
     assert pz is not None
     assert 5 <= len(pz["solutions"]) <= 9999
     assert pz["digits"] == [1, 2, 3, 4, 5, 6, 7]
@@ -32,7 +37,7 @@ def test_make_puzzle_in_band_with_tutti():
     assert "goldenSolutions" not in pz
     assert isinstance(pz["solutions"][0], str)
     # la garantia de tutti és real, no un camp hardcodejat
-    assert tutti_exists(pz["digits"], pz["target"]) is True
+    assert tutti_exists(pz["digits"], pz["target"], variant=BASIC) is True
 
 
 def test_make_puzzle_returns_none_when_no_target_in_band():
@@ -42,16 +47,31 @@ def test_make_puzzle_returns_none_when_no_target_in_band():
 
 def test_make_puzzle_respects_target_range():
     pz = make_puzzle([1, 2, 3, 4, 5, 6, 7], central_index=2, band=(5, 9999), max_leaves=4,
-                     target_range=(100, 999))
+                     target_range=(100, 999), variant=BASIC)
     assert pz is not None
     assert 100 <= pz["target"] <= 999
 
 
 def test_make_puzzle_includes_hints():
-    pz = make_puzzle([1, 2, 3, 4, 5, 6, 7], central_index=2, band=(5, 9999), max_leaves=4)
+    pz = make_puzzle([1, 2, 3, 4, 5, 6, 7], central_index=2, band=(5, 9999), max_leaves=4,
+                     variant=BASIC)
     assert pz is not None
     h = pz["hints"]
     assert set(h["byOp"].keys()) == {"add", "sub", "mul", "div", "pow", "sqrt"}
     assert all(isinstance(v, int) for v in h["byOp"].values())
     # cada solució compta exactament un cop al recompte per operands
-    assert sum(h["byLeaves"].values()) == len(pz["solutions"])
+    assert sum(int(v) for v in h["byLeaves"].values()) == len(pz["solutions"])
+
+
+def test_make_puzzle_includes_brevi_and_difficulty():
+    pz = make_puzzle([1, 3, 4, 5, 6, 7, 9], central_index=4,
+                     band=(5, 9999), max_leaves=4, variant=BASIC,
+                     target_range=(20, 20), difficulty="facil")
+    assert pz is not None
+    assert pz["target"] == 20
+    assert pz["brevi"]["operands"] == 3
+    assert pz["brevi"]["count"] == 2
+    assert pz["difficulty"] == "facil"
+    assert pz["maxOperands"] == 4
+    assert sum(int(v) for v in pz["hints"]["byLeaves"].values()) == len(pz["solutions"])
+    assert pz["brevi"]["count"] <= len(pz["solutions"])
