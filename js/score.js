@@ -32,3 +32,13 @@ export function usesAllDigits(ast, digits) {
   for (const d of needed) if (!used.has(d)) return false;
   return true;
 }
+
+// Nombre de solucions trobades amb el recompte d'operands del Brevi (el tier mínim).
+// Com que cap solució té menys operands, qualsevol amb aquest recompte ÉS del Brevi.
+export function breviFoundCount(foundMap, breviOperands) {
+  let n = 0;
+  for (const { leaves } of foundMap.values()) {
+    if (leaves === breviOperands) n++;
+  }
+  return n;
+}

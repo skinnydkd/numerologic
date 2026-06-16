@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { createGame, TUTTI_BONUS } from "../game.js";
+import { createGame, TUTTI_BONUS, BREVI_BONUS } from "../game.js";
 
 function puzzle() {
   return {
@@ -101,4 +101,48 @@ test("la suma de punts del panell quadra amb score (tutti inclòs)", () => {
   for (const { points } of g.found.values()) sum += points;
   assert.equal(sum, g.score());  // els ítems de la llista han de sumar el total
   assert.equal(g.found.size, 2); // el tutti és una solució trobada més
+});
+
+// --- Brevi (Pla 2) ---
+
+function breviPuzzle() {
+  return {
+    target: 20,
+    digits: [1, 3, 4, 5, 6, 7, 9],
+    centralIndex: 4, // central = 6
+    brevi: { operands: 3, count: 2 }, // (6-1)*4 i 5+6+9
+    ranks: [["Principiant", 0], ["Totes", 100]],
+    rules: { allowRepeat: false, ops: ["add", "sub", "mul", "div"] },
+  };
+}
+
+test("una solució de 3 operands compta com a Brevi", () => {
+  const g = createGame(breviPuzzle());
+  assert.equal(g.breviFound(), 0);
+  const r = g.submit("(6-1)*4"); // = 20, 3 operands, central 6
+  assert.equal(r.status, "found");
+  assert.equal(g.breviFound(), 1);
+  assert.equal(g.breviComplete(), false);
+});
+
+test("completar el Brevi -> breviComplete i bonus", () => {
+  const g = createGame(breviPuzzle());
+  g.submit("(6-1)*4"); // brevi 1/2
+  g.submit("5+6+9");   // brevi 2/2
+  assert.equal(g.breviFound(), 2);
+  assert.equal(g.breviComplete(), true);
+  assert.equal(g.breviBonus(), BREVI_BONUS);
+  assert.equal(g.score(), 3 + 3 + BREVI_BONUS); // 3+3 de les solucions + bonus
+});
+
+test("una solució més llarga no compta com a Brevi", () => {
+  const g = createGame(breviPuzzle());
+  const r = g.submit("6*4-(3+1)"); // = 20, 4 operands
+  assert.equal(r.status, "found");
+  assert.equal(g.breviFound(), 0);
+});
+
+test("BREVI_BONUS és un nombre positiu", () => {
+  assert.equal(typeof BREVI_BONUS, "number");
+  assert.ok(BREVI_BONUS > 0);
 });
