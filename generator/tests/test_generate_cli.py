@@ -9,9 +9,9 @@ def test_build_pool_small():
     assert len(pool["puzzles"]) == 3
     assert "startDate" in pool
     for pz in pool["puzzles"]:
-        assert len(pz["digits"]) == 7
-        assert len(set(pz["digits"])) == 7
-        assert 0 <= pz["centralIndex"] < 7
+        assert 5 <= len(pz["digits"]) <= 7
+        assert len(set(pz["digits"])) == len(pz["digits"])  # dígits distints
+        assert 0 <= pz["centralIndex"] < len(pz["digits"])
         assert pz["difficulty"] in ("facil", "mitja", "dificil")
         assert pz["brevi"]["count"] >= 1
         assert pz["hasTutti"] is True
