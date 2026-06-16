@@ -64,11 +64,14 @@ body {
 
 .foot { text-align: center; margin-top: 16px; }
 .found { background: none; border: none; color: #374151; font-size: 14px; cursor: pointer; }
-.meta { color: #6b7280; font-size: 13px; margin-top: 6px; }
+.status, .links { color: #6b7280; font-size: 13px; }
+.status { margin-top: 8px; }
+.links { margin-top: 6px; }
 .rankbtn { background: none; border: none; color: #1f2937; font-weight: 600; cursor: pointer; font-size: 13px; }
 .star { color: #eab308; }
 .star.done { color: #eab308; font-weight: 700; }
-.brevi { color: #eab308; font-size: 13px; margin-top: 6px; }
+.brevi { color: #eab308; }
+.brevi::before { content: " · "; color: #6b7280; }
 .brevi:empty { display: none; }
 .brevi.done { color: #eab308; font-weight: 700; }
 
