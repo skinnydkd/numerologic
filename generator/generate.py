@@ -10,25 +10,35 @@ from generator.engine import Variant, FULL
 
 DIGITS = list(range(1, 10))  # 1..9
 
+# Espectre de dificultat: (etiqueta, target_range, banda del nombre de solucions k≤4).
+# Tots amb 7 dígits — els hexàgons grisos (menys dígits) es diferixen al Pla 2 (client),
+# perquè el client actual trencaria amb <7 cel·les.
+PROFILES = [
+    ("facil",   (10, 99),   (40, 120)),
+    ("mitja",   (60, 299),  (8, 40)),
+    ("dificil", (150, 999), (1, 12)),
+]
 
-def build_pool(count, band=(40, 120), max_leaves=4, seed=0, start_date="2026-06-01", variant=FULL):
-    """Construeix un pool de `count` reptes diferents dins la banda."""
+
+def build_pool(count, max_leaves=4, seed=0, start_date="2026-06-01", variant=FULL):
+    """Construeix `count` reptes dosificant l'espectre de dificultat (ciclant perfils)."""
     rng = random.Random(seed)
     digit_sets = list(combinations(DIGITS, 7))
     rng.shuffle(digit_sets)
-
     puzzles = []
     seen = set()
-    for ds in digit_sets:
-        digits = list(ds)
-        centrals = list(range(7))
+    di = 0
+    attempts = 0
+    while len(puzzles) < count and attempts < count * 200:
+        attempts += 1
+        difficulty, tr, band = PROFILES[len(puzzles) % len(PROFILES)]
+        ds = list(digit_sets[di % len(digit_sets)])
+        di += 1
+        centrals = [i for i in range(7) if ds[i] != 1]  # el central mai pot ser 1 (×1/÷1 trivial)
         rng.shuffle(centrals)
         for ci in centrals:
-            if digits[ci] == 1:
-                continue  # el central mai pot ser 1: ×1/÷1 el fan trivial d'incloure
-            # el primer repte del pool: positiu i amable (100-999); la resta: |objectiu| <= 9999
-            tr = (100, 999) if not puzzles else (-9999, 9999)
-            pz = make_puzzle(digits, ci, band=band, max_leaves=max_leaves, target_range=tr, variant=variant)
+            pz = make_puzzle(ds, ci, band=band, max_leaves=max_leaves,
+                             target_range=tr, variant=variant, difficulty=difficulty)
             if pz is None:
                 continue
             key = (pz["target"], tuple(pz["digits"]), pz["centralIndex"])
@@ -36,8 +46,7 @@ def build_pool(count, band=(40, 120), max_leaves=4, seed=0, start_date="2026-06-
                 continue
             seen.add(key)
             puzzles.append(pz)
-            if len(puzzles) >= count:
-                return {"startDate": start_date, "puzzles": puzzles}
+            break
     return {"startDate": start_date, "puzzles": puzzles}
 
 
@@ -61,12 +70,11 @@ def main():
 
     pool = build_pool(
         count=args.count,
-        band=tuple(args.band),
         max_leaves=args.max_leaves,
         seed=args.seed,
         start_date=args.start_date,
         variant=variant,
-    )
+    )  # nota: la banda i el rang d'objectiu venen ara del perfil de dificultat (PROFILES)
     dirpart = os.path.dirname(args.out)
     if dirpart:
         os.makedirs(dirpart, exist_ok=True)
