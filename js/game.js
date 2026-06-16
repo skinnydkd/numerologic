@@ -2,9 +2,10 @@
 import { parse, ParseError } from "./parser.js";
 import { validate } from "./validate.js";
 import { canonical } from "./canonical.js";
-import { solutionPoints, hasPowOrSqrt, countLeaves, usesAllDigits } from "./score.js";
+import { solutionPoints, hasPowOrSqrt, countLeaves, usesAllDigits, breviFoundCount } from "./score.js";
 
 export const TUTTI_BONUS = 10;
+export const BREVI_BONUS = 10;
 
 export function createGame(puzzle, savedProgress = null) {
   const { digits, target } = puzzle;
@@ -12,8 +13,10 @@ export function createGame(puzzle, savedProgress = null) {
   const rules = puzzle.rules || {};
   const allowRepeat = rules.allowRepeat !== false;
   const ops = rules.ops || null;
-  const found = new Map(); // canonical -> { text, points }
+  const found = new Map(); // canonical -> { text, points, leaves }
   let tuttiFound = false;
+  const breviOps = puzzle.brevi ? puzzle.brevi.operands : null;
+  const breviTotal = puzzle.brevi ? puzzle.brevi.count : 0;
 
   if (savedProgress) {
     for (const f of savedProgress.found || []) {
@@ -23,11 +26,13 @@ export function createGame(puzzle, savedProgress = null) {
       } catch {
         continue; // omet entrades corruptes en lloc de bloquejar la partida
       }
+      const isTutti = usesAllDigits(ast, digits);
       found.set(f.canonical, {
         text: f.text,
-        points: usesAllDigits(ast, digits)
+        points: isTutti
           ? TUTTI_BONUS // el tutti val 10 punts (no els 7 operands)
           : solutionPoints(countLeaves(ast), hasPowOrSqrt(ast)),
+        leaves: isTutti ? digits.length : countLeaves(ast),
       });
     }
     tuttiFound = Boolean(savedProgress.tuttiFound);
@@ -49,19 +54,30 @@ export function createGame(puzzle, savedProgress = null) {
       if (tuttiFound) return { status: "duplicate" };
       tuttiFound = true;
       const c = canonical(ast);
-      found.set(c, { text: inputText, points: TUTTI_BONUS }); // el tutti és una solució de 10 punts
+      found.set(c, { text: inputText, points: TUTTI_BONUS, leaves: digits.length }); // el tutti és una solució de 10 punts
       return { status: "tutti", points: TUTTI_BONUS, canonical: c };
     }
 
     const c = canonical(ast);
     if (found.has(c)) return { status: "duplicate" };
-    const points = solutionPoints(countLeaves(ast), hasPowOrSqrt(ast));
-    found.set(c, { text: inputText, points });
+    const leaves = countLeaves(ast);
+    const points = solutionPoints(leaves, hasPowOrSqrt(ast));
+    found.set(c, { text: inputText, points, leaves });
     return { status: "found", points, canonical: c };
   }
 
+  function breviFound() {
+    return breviOps ? breviFoundCount(found, breviOps) : 0;
+  }
+  function breviComplete() {
+    return breviTotal > 0 && breviFound() >= breviTotal;
+  }
+  function breviBonus() {
+    return breviComplete() ? BREVI_BONUS : 0;
+  }
+
   function score() {
-    let s = 0;
+    let s = breviBonus();
     for (const { points } of found.values()) s += points;
     return s;
   }
@@ -93,6 +109,9 @@ export function createGame(puzzle, savedProgress = null) {
     score,
     rank,
     tuttiBonus,
+    breviFound,
+    breviComplete,
+    breviBonus,
     progress,
     get found() {
       return found;

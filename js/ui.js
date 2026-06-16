@@ -14,6 +14,7 @@ const OPS = [
 export function renderHive(container, digits, centralIndex, onCell) {
   container.innerHTML = "";
   const peripherals = digits.filter((_, i) => i !== centralIndex);
+  while (peripherals.length < 6) peripherals.push(null); // cel·les buides (grises) per a ruscos <7
   const central = digits[centralIndex];
   const layout = [
     [peripherals[0], peripherals[1]],
@@ -25,10 +26,16 @@ export function renderHive(container, digits, centralIndex, onCell) {
     r.className = "hrow";
     for (const cell of row) {
       const btn = document.createElement("button");
-      const value = typeof cell === "object" ? cell.center : cell;
-      btn.className = "hex" + (typeof cell === "object" ? " center" : "");
-      btn.textContent = String(value);
-      btn.addEventListener("click", () => onCell(String(value)));
+      const isCenter = typeof cell === "object" && cell !== null;
+      const value = isCenter ? cell.center : cell;
+      if (value === null || value === undefined) {
+        btn.className = "hex empty";
+        btn.disabled = true;
+      } else {
+        btn.className = "hex" + (isCenter ? " center" : "");
+        btn.textContent = String(value);
+        btn.addEventListener("click", () => onCell(String(value)));
+      }
       r.appendChild(btn);
     }
     container.appendChild(r);
@@ -84,11 +91,21 @@ export function flash(el, result) {
   }, 3000);
 }
 
-export function updateFooter({ countEl, rankEl, tuttiEl, found, score, rankName, tuttiFound }) {
+export function updateFooter({ countEl, rankEl, tuttiEl, breviEl,
+                              found, score, rankName, tuttiFound,
+                              breviFound, breviTotal, breviComplete, streak }) {
   countEl.textContent = `Has trobat ${found} solucions (${score} punts).`;
   rankEl.textContent = rankName;
   tuttiEl.textContent = tuttiFound ? "★ Tutti trobat!" : "★ Tutti pendent";
   tuttiEl.classList.toggle("done", tuttiFound);
+  if (breviEl && breviTotal > 0) {
+    const label = breviComplete ? "✦ Brevi complet!" : "✦ Brevi pendent";
+    const streakTxt = streak > 0 ? ` · 🔥 Ratxa ${streak}` : "";
+    breviEl.textContent = `${label} (${breviFound}/${breviTotal})${streakTxt}`;
+    breviEl.classList.toggle("done", breviComplete);
+  } else if (breviEl) {
+    breviEl.textContent = "";
+  }
 }
 
 export function openPanel(panelEl, title, innerHTML) {
@@ -103,6 +120,26 @@ export function foundListHTML(foundMap) {
     .map((f) => `<li>${pretty(f.text)} <small>(+${f.points})</small></li>`)
     .join("");
   return `<ul>${items}</ul>`;
+}
+
+// Taula de compleció: trobat/total per nombre d'operands. `byLeaves` = totals (claus string),
+// `foundMap` = solucions trobades (amb camp `leaves`), `breviOperands` = el tier del Brevi (es marca).
+export function completionHTML(byLeaves, foundMap, breviOperands) {
+  const foundByLeaves = {};
+  for (const { leaves } of foundMap.values()) {
+    foundByLeaves[leaves] = (foundByLeaves[leaves] || 0) + 1;
+  }
+  const rows = Object.keys(byLeaves)
+    .map(Number)
+    .sort((a, b) => a - b)
+    .map((k) => {
+      const total = byLeaves[String(k)];
+      const f = foundByLeaves[k] || 0;
+      const tag = k === breviOperands ? " <b>· Brevi</b>" : "";
+      return `<li>${k} operands${tag}: <b>${f}</b> / ${total}</li>`;
+    })
+    .join("");
+  return `<ul>${rows}</ul>` + foundListHTML(foundMap);
 }
 
 export function ranksHTML(ranks, score) {

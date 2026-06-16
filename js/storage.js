@@ -15,3 +15,21 @@ export function loadProgress(store, poolIndex) {
 export function saveProgress(store, poolIndex, progress) {
   store.setItem(PREFIX + poolIndex, JSON.stringify(progress));
 }
+
+const STREAK_KEY = "numerologic:streak";
+
+export function loadStreak(store) {
+  try {
+    return JSON.parse(store.getItem(STREAK_KEY)) || null;
+  } catch {
+    return null;
+  }
+}
+
+export function saveStreak(store, data) {
+  try {
+    store.setItem(STREAK_KEY, JSON.stringify(data));
+  } catch {
+    /* quota plena o emmagatzematge no disponible (privat): ignora */
+  }
+}

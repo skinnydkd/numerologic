@@ -3,38 +3,34 @@ import argparse
 import json
 import os
 import random
-from itertools import combinations
 
 from generator.puzzles import make_puzzle
 from generator.engine import Variant, FULL
 
 DIGITS = list(range(1, 10))  # 1..9
 
-# Espectre de dificultat: (etiqueta, target_range, banda del nombre de solucions k≤4).
-# Tots amb 7 dígits — els hexàgons grisos (menys dígits) es diferixen al Pla 2 (client),
-# perquè el client actual trencaria amb <7 cel·les.
+# Espectre de dificultat: (etiqueta, nombre de dígits actius, target_range, banda de solucions k≤4).
+# n_digits<7 → hexàgons grisos (menys dígits = més encadenament i tutti més rar).
 PROFILES = [
-    ("facil",   (10, 99),   (40, 120)),
-    ("mitja",   (60, 299),  (8, 40)),
-    ("dificil", (150, 999), (1, 12)),
+    ("facil",   7, (10, 99),   (40, 120)),
+    ("mitja",   6, (60, 299),  (8, 40)),
+    ("dificil", 5, (150, 999), (1, 12)),
 ]
 
 
 def build_pool(count, max_leaves=4, seed=0, start_date="2026-06-01", variant=FULL):
     """Construeix `count` reptes dosificant l'espectre de dificultat (ciclant perfils)."""
     rng = random.Random(seed)
-    digit_sets = list(combinations(DIGITS, 7))
-    rng.shuffle(digit_sets)
     puzzles = []
     seen = set()
-    di = 0
     attempts = 0
-    while len(puzzles) < count and attempts < count * 200:
+    while len(puzzles) < count and attempts < count * 400:
         attempts += 1
-        difficulty, tr, band = PROFILES[len(puzzles) % len(PROFILES)]
-        ds = list(digit_sets[di % len(digit_sets)])
-        di += 1
-        centrals = [i for i in range(7) if ds[i] != 1]  # el central mai pot ser 1 (×1/÷1 trivial)
+        difficulty, n_digits, tr, band = PROFILES[len(puzzles) % len(PROFILES)]
+        ds = sorted(rng.sample(DIGITS, n_digits))
+        centrals = [i for i in range(n_digits) if ds[i] != 1]  # el central mai pot ser 1 (×1/÷1 trivial)
+        if not centrals:
+            continue
         rng.shuffle(centrals)
         for ci in centrals:
             pz = make_puzzle(ds, ci, band=band, max_leaves=max_leaves,

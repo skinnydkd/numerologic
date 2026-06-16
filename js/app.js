@@ -1,6 +1,7 @@
 // Punt d'entrada: carrega el pool, gestiona modes, connecta game/ui/storage.
 import { createGame } from "./game.js";
-import { loadProgress, saveProgress } from "./storage.js";
+import { loadProgress, saveProgress, loadStreak, saveStreak } from "./storage.js";
+import { computeStreak, streakDisplay, todayStr } from "./streak.js";
 import { dailyIndex, practiceIndex } from "./modes.js";
 import * as ui from "./ui.js";
 import { buildShareText } from "./share.js";
@@ -15,6 +16,7 @@ const els = {
   send: $("send"), count: $("count"), rankBtn: $("rankBtn"), tutti: $("tutti"),
   panel: $("panel"), share: $("share"), result: $("result"), difficulty: $("difficulty"),
   help: $("help"), pistes: $("pistes"), practiceNew: $("practiceNew"), newPractice: $("newPractice"),
+  brevi: $("brevi"),
 };
 
 const DIFF_CLASS = { "Fàcil": "facil", "Mitjà": "mitja", "Difícil": "dificil" };
@@ -79,10 +81,14 @@ function start(index) {
 }
 
 function refreshFooter() {
+  const brevi = game.puzzle.brevi;
   ui.updateFooter({
-    countEl: els.count, rankEl: els.rankBtn, tuttiEl: els.tutti,
+    countEl: els.count, rankEl: els.rankBtn, tuttiEl: els.tutti, breviEl: els.brevi,
     found: game.found.size, score: game.score(),
     rankName: game.rank(), tuttiFound: game.tuttiFound,
+    breviFound: game.breviFound(), breviTotal: brevi ? brevi.count : 0,
+    breviComplete: game.breviComplete(),
+    streak: streakDisplay(loadStreak(localStorage), todayStr(Date.now())),
   });
 }
 
@@ -98,10 +104,17 @@ function del() {
 
 function send() {
   if (!expr) return;
+  const wasBreviComplete = game.breviComplete();
   const res = game.submit(expr);
   ui.flash(els.flash, res);
   if (res.status === "found" || res.status === "tutti") {
     saveProgress(localStorage, poolIndex, game.progress());
+    // ratxa: només en mode diari i just quan el Brevi acaba de completar-se
+    if (mode === "daily" && !wasBreviComplete && game.breviComplete()) {
+      saveStreak(localStorage, computeStreak(loadStreak(localStorage), todayStr(Date.now())));
+      els.flash.className = "flash tutti";
+      els.flash.textContent = "✦ Brevi complet!";
+    }
     refreshFooter();
   }
   if (res.status === "found" || res.status === "tutti" || res.status === "duplicate") {
@@ -134,7 +147,8 @@ els.shuffle.addEventListener("click", () => {
   ui.renderHive(els.hive, shuffled, p.centralIndex, addToken);
 });
 els.count.addEventListener("click", () =>
-  ui.openPanel(els.panel, "Solucions trobades", ui.foundListHTML(game.found))
+  ui.openPanel(els.panel, "Compleció", ui.completionHTML(
+    game.puzzle.hints.byLeaves, game.found, game.puzzle.brevi ? game.puzzle.brevi.operands : null))
 );
 els.rankBtn.addEventListener("click", () =>
   ui.openPanel(els.panel, "Rangs", ui.ranksHTML(game.puzzle.ranks, game.score()))
@@ -155,6 +169,8 @@ els.share.addEventListener("click", async () => {
     found: game.found.size,
     score: game.score(),
     tuttiFound: game.tuttiFound,
+    breviComplete: game.breviComplete(),
+    streak: streakDisplay(loadStreak(localStorage), todayStr(Date.now())),
   });
   try {
     if (navigator.share) {
