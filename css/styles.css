@@ -68,6 +68,9 @@ body {
 .rankbtn { background: none; border: none; color: #1f2937; font-weight: 600; cursor: pointer; font-size: 13px; }
 .star { color: #eab308; }
 .star.done { color: #eab308; font-weight: 700; }
+.brevi { color: #6b7280; font-size: 13px; margin-top: 6px; }
+.brevi:empty { display: none; }
+.brevi.done { color: #16a34a; font-weight: 700; }
 
 .panel { position: fixed; inset: 0; background: rgba(15,23,42,.45); display: flex; align-items: center; justify-content: center; padding: 20px; }
 .panel-card { background: #fff; border-radius: 14px; padding: 18px 20px; max-width: 360px; width: 100%; max-height: 70vh; overflow: auto; }

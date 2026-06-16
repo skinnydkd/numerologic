@@ -91,11 +91,22 @@ export function flash(el, result) {
   }, 3000);
 }
 
-export function updateFooter({ countEl, rankEl, tuttiEl, found, score, rankName, tuttiFound }) {
+export function updateFooter({ countEl, rankEl, tuttiEl, breviEl,
+                              found, score, rankName, tuttiFound,
+                              breviFound, breviTotal, breviComplete, streak }) {
   countEl.textContent = `Has trobat ${found} solucions (${score} punts).`;
   rankEl.textContent = rankName;
   tuttiEl.textContent = tuttiFound ? "★ Tutti trobat!" : "★ Tutti pendent";
   tuttiEl.classList.toggle("done", tuttiFound);
+  if (breviEl && breviTotal > 0) {
+    const done = "◼".repeat(breviFound);
+    const left = "◻".repeat(Math.max(0, breviTotal - breviFound));
+    const streakTxt = streak > 0 ? ` · 🔥 Ratxa ${streak}` : "";
+    breviEl.textContent = `Brevi ${done}${left} ${breviFound}/${breviTotal}${streakTxt}`;
+    breviEl.classList.toggle("done", breviComplete);
+  } else if (breviEl) {
+    breviEl.textContent = "";
+  }
 }
 
 export function openPanel(panelEl, title, innerHTML) {
@@ -110,6 +121,26 @@ export function foundListHTML(foundMap) {
     .map((f) => `<li>${pretty(f.text)} <small>(+${f.points})</small></li>`)
     .join("");
   return `<ul>${items}</ul>`;
+}
+
+// Taula de compleció: trobat/total per nombre d'operands. `byLeaves` = totals (claus string),
+// `foundMap` = solucions trobades (amb camp `leaves`), `breviOperands` = el tier del Brevi (es marca).
+export function completionHTML(byLeaves, foundMap, breviOperands) {
+  const foundByLeaves = {};
+  for (const { leaves } of foundMap.values()) {
+    foundByLeaves[leaves] = (foundByLeaves[leaves] || 0) + 1;
+  }
+  const rows = Object.keys(byLeaves)
+    .map(Number)
+    .sort((a, b) => a - b)
+    .map((k) => {
+      const total = byLeaves[String(k)];
+      const f = foundByLeaves[k] || 0;
+      const tag = k === breviOperands ? " <b>· Brevi</b>" : "";
+      return `<li>${k} operands${tag}: <b>${f}</b> / ${total}</li>`;
+    })
+    .join("");
+  return `<ul>${rows}</ul>` + foundListHTML(foundMap);
 }
 
 export function ranksHTML(ranks, score) {
