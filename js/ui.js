@@ -14,6 +14,7 @@ const OPS = [
 export function renderHive(container, digits, centralIndex, onCell) {
   container.innerHTML = "";
   const peripherals = digits.filter((_, i) => i !== centralIndex);
+  while (peripherals.length < 6) peripherals.push(null); // cel·les buides (grises) per a ruscos <7
   const central = digits[centralIndex];
   const layout = [
     [peripherals[0], peripherals[1]],
@@ -25,10 +26,16 @@ export function renderHive(container, digits, centralIndex, onCell) {
     r.className = "hrow";
     for (const cell of row) {
       const btn = document.createElement("button");
-      const value = typeof cell === "object" ? cell.center : cell;
-      btn.className = "hex" + (typeof cell === "object" ? " center" : "");
-      btn.textContent = String(value);
-      btn.addEventListener("click", () => onCell(String(value)));
+      const isCenter = typeof cell === "object" && cell !== null;
+      const value = isCenter ? cell.center : cell;
+      if (value === null || value === undefined) {
+        btn.className = "hex empty";
+        btn.disabled = true;
+      } else {
+        btn.className = "hex" + (isCenter ? " center" : "");
+        btn.textContent = String(value);
+        btn.addEventListener("click", () => onCell(String(value)));
+      }
       r.appendChild(btn);
     }
     container.appendChild(r);

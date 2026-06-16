@@ -52,6 +52,8 @@ body {
 }
 .hex.center { background: #ec5a52; }
 .hex:active { filter: brightness(.92); }
+.hex.empty { background: #e2e8f0; cursor: default; }
+.hex.empty:active { filter: none; }
 
 .ops { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin: 6px 0 12px; }
 .op { padding: 11px 0; border: 1.5px solid #e2e8f0; border-radius: 999px; background: #fff; color: #334155; font-size: 19px; cursor: pointer; }
