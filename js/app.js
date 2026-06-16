@@ -169,6 +169,8 @@ els.share.addEventListener("click", async () => {
     found: game.found.size,
     score: game.score(),
     tuttiFound: game.tuttiFound,
+    breviComplete: game.breviComplete(),
+    streak: streakDisplay(loadStreak(localStorage), todayStr(Date.now())),
   });
   try {
     if (navigator.share) {
