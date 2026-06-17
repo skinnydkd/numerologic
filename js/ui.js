@@ -189,7 +189,7 @@ export function instructionsHTML(rules) {
       <li>Cada solució <b>nova</b> suma punts: <b>1 per operand</b>${pointsBonus}.</li>
       <li><b>✦ Brevi</b>: les solucions amb <b>menys operands</b> (les més curtes i difícils de veure) — l'objectiu del dia. Cadascuna val <b>10 punts</b>, i completar-les <b>totes</b> en suma <b>10</b> més.</li>
       <li><b>★ Tutti</b>: una solució que fa servir <b>tots els dígits</b> del rusc. Cadascun val <b>10 punts</b> i en pots trobar <b>més d'un</b>.</li>
-      <li>Acumulant punts puges de <b>rang</b> (de Principiant a Totes).</li>
+      <li>Acumulant punts puges de <b>rang</b> (de Principiant a Llegenda).</li>
       <li>La mateixa solució no compta dues vegades (3×4 i 4×3 són la mateixa); si la repeteixes, l'expressió s'esborra sola.</li>
     </ul>
 
