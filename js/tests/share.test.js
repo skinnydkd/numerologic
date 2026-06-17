@@ -16,6 +16,13 @@ test("buildShareText amb tutti", () => {
   );
 });
 
+test("buildShareText amb diversos tuttis -> ×N", () => {
+  assert.equal(
+    buildShareText({ number: 12, rankName: "Geni", score: 460, found: 102, tuttiFound: true, tuttiCount: 3 }),
+    "Numerològic #12 · Geni\n460 punts · 102 solucions\n★ Tutti ×3\nhttps://numerologic.cat"
+  );
+});
+
 test("buildShareText amb Brevi i ratxa", () => {
   assert.equal(
     buildShareText({ number: 5, rankName: "Expert", score: 30, found: 6,
