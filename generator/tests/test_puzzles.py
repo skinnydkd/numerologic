@@ -18,11 +18,11 @@ def test_solution_points_pow_sqrt_bonus():
 def test_build_ranks_thresholds():
     ranks = build_ranks(total=100)
     names = [r[0] for r in ranks]
-    assert names[0] == "Principiant" and names[-1] == "Totes"
+    assert names[0] == "Principiant" and names[-1] == "Llegenda"
     assert ranks[0][1] == 0
     assert ranks[-1][1] == 100
-    be = dict(ranks)["Bé"]
-    assert be == math.ceil(0.10 * 100)
+    aprenent = dict(ranks)["Aprenent"]
+    assert aprenent == math.ceil(0.10 * 100)
 
 
 def test_make_puzzle_in_band_with_tutti():
@@ -75,3 +75,16 @@ def test_make_puzzle_includes_brevi_and_difficulty():
     assert pz["maxOperands"] == 4
     assert sum(int(v) for v in pz["hints"]["byLeaves"].values()) == len(pz["solutions"])
     assert pz["brevi"]["count"] <= len(pz["solutions"])
+
+
+def test_game_total_points_brevi_and_tutti_worth_ten():
+    """totalPoints usa l'escala del joc: Brevi i tutti valen 10, +10 per Brevi complet."""
+    from generator.puzzles import game_total_points
+    digits = [2, 3, 4, 5]
+    counted = {
+        "a": ("mul", ("num", 2), ("num", 3)),  # 2 operands = Brevi
+        "b": ("add", ("mul", ("num", 2), ("num", 3)), ("num", 4)),  # 3 operands
+        "t": ("add", ("add", ("num", 2), ("num", 3)), ("add", ("num", 4), ("num", 5))),  # tutti
+    }
+    # Brevi=10, 3-operands=3, tutti=10, +10 bonus = 33
+    assert game_total_points(counted, brevi_ops=2, digits=digits) == 33

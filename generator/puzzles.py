@@ -10,13 +10,20 @@ from generator.enumerate_solutions import counted_and_brevi
 # (nom, percentatge sobre el total de punts)
 RANK_PCTS = [
     ("Principiant", 0),
-    ("Bé", 10),
-    ("Molt bé", 25),
+    ("Aprenent", 10),
+    ("Avançat", 25),
     ("Expert", 45),
     ("Mestre", 65),
     ("Geni", 85),
-    ("Totes", 100),
+    ("Llegenda", 100),
 ]
+
+# Punts de joc (han de coincidir amb js/game.js): cada solució Brevi i cada tutti valen 10;
+# completar tot el Brevi suma un bonus. El denominador dels rangs (totalPoints) usa aquesta
+# mateixa escala perquè els rangs mesurin el progrés REAL del jugador.
+BREVI_POINTS = 10
+TUTTI_POINTS = 10
+BREVI_COMPLETE_BONUS = 10
 
 
 def solution_points(leaves, uses_pow_sqrt):
@@ -71,6 +78,28 @@ def _leaves_of(ast):
     return out
 
 
+def _uses_all_digits(ast, digits):
+    """True si l'expressió fa servir tots els dígits del rusc (un tutti)."""
+    return set(_leaves_of(ast)) == set(digits)
+
+
+def game_total_points(counted, brevi_ops, digits):
+    """Punts màxims del repte a l'escala REAL del joc (js/game.js::pointsFor): cada
+    solució Brevi o tutti val 10; la resta, els seus operands (+2 amb ^/√). Inclou el
+    bonus de Brevi complet, que sempre s'assoleix en trobar-ho tot. És el denominador
+    dels rangs, de manera que 'Llegenda' (100%) significa progrés real, no punts base."""
+    total = BREVI_COMPLETE_BONUS
+    for ast in counted.values():
+        leaves = len(_leaves_of(ast))
+        if _uses_all_digits(ast, digits):
+            total += TUTTI_POINTS
+        elif leaves == brevi_ops:
+            total += BREVI_POINTS
+        else:
+            total += solution_points(leaves, has_pow_or_sqrt(ast))
+    return total
+
+
 def make_puzzle(digits, central_index, band=(40, 120), max_leaves=4, max_tutti_tries=5,
                 target_range=(-9999, 9999), variant=FULL, difficulty="mitja"):
     """Construeix un repte amb tutti garantit per a aquests dígits/central, o None.
@@ -112,10 +141,7 @@ def make_puzzle(digits, central_index, band=(40, 120), max_leaves=4, max_tutti_t
             continue
         counted = res["counted"]
         solutions = sorted(counted.keys())
-        total = sum(
-            solution_points(len(_leaves_of(ast)), has_pow_or_sqrt(ast))
-            for ast in counted.values()
-        )
+        total = game_total_points(counted, res["brevi"]["operands"], digits)
         return {
             "target": v,
             "digits": digits,
