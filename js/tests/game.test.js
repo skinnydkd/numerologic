@@ -70,6 +70,28 @@ test("tutti repetit -> duplicate", () => {
   assert.equal(g.submit("1+2+3+4+5+6+7").status, "duplicate");
 });
 
+test("dos tuttis diferents -> tots dos compten (bug: el 2n sortia com a duplicate)", () => {
+  const g = createGame(puzzle());
+  const r1 = g.submit("1+2+3+4+5+6+7"); // tutti 1: 1+...+7 = 28
+  assert.equal(r1.status, "tutti");
+  const r2 = g.submit("1*2*3+4+5+6+7"); // tutti 2: 6+4+5+6+7 = 28, forma canònica diferent
+  assert.equal(r2.status, "tutti"); // no és duplicate: és un tutti nou
+  assert.equal(r2.points, TUTTI_BONUS);
+  assert.equal(g.found.size, 2); // tots dos tuttis compten
+  assert.equal(g.score(), 2 * TUTTI_BONUS); // 20 punts
+  assert.equal(g.tuttiCount, 2); // recompte de tuttis
+});
+
+test("restauració amb dos tuttis manté el recompte", () => {
+  const g = createGame(puzzle());
+  g.submit("1+2+3+4+5+6+7");
+  g.submit("1*2*3+4+5+6+7");
+  const g2 = createGame(puzzle(), g.progress());
+  assert.equal(g2.found.size, 2);
+  assert.equal(g2.score(), 2 * TUTTI_BONUS);
+  assert.equal(g2.tuttiCount, 2);
+});
+
 test("rang segons la puntuació", () => {
   const g = createGame(puzzle());
   assert.equal(g.rank(), "Principiant");

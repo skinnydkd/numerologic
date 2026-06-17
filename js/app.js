@@ -87,7 +87,7 @@ function refreshFooter() {
   ui.updateFooter({
     countEl: els.count, rankEl: els.rankBtn, tuttiEl: els.tutti, breviEl: els.brevi,
     found: game.found.size, score: game.score(),
-    rankName: game.rank(), tuttiFound: game.tuttiFound,
+    rankName: game.rank(), tuttiFound: game.tuttiFound, tuttiCount: game.tuttiCount,
     breviFound: game.breviFound(), breviTotal: brevi ? brevi.count : 0,
     breviComplete: game.breviComplete(),
     streak: streakDisplay(loadStreak(localStorage), todayStr(Date.now())),
@@ -171,6 +171,7 @@ els.share.addEventListener("click", async () => {
     found: game.found.size,
     score: game.score(),
     tuttiFound: game.tuttiFound,
+    tuttiCount: game.tuttiCount,
     breviComplete: game.breviComplete(),
     streak: streakDisplay(loadStreak(localStorage), todayStr(Date.now())),
   });

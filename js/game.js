@@ -36,7 +36,7 @@ export function createGame(puzzle, savedProgress = null) {
       }
       const isTutti = usesAllDigits(ast, digits);
       const leaves = isTutti ? digits.length : countLeaves(ast);
-      found.set(f.canonical, { text: f.text, points: pointsFor(leaves, isTutti, ast), leaves });
+      found.set(f.canonical, { text: f.text, points: pointsFor(leaves, isTutti, ast), leaves, isTutti });
     }
     tuttiFound = Boolean(savedProgress.tuttiFound);
   }
@@ -54,10 +54,10 @@ export function createGame(puzzle, savedProgress = null) {
     if (v.value !== target) return { status: "wrong" };
 
     if (usesAllDigits(ast, digits)) {
-      if (tuttiFound) return { status: "duplicate" };
-      tuttiFound = true;
       const c = canonical(ast);
-      found.set(c, { text: inputText, points: TUTTI_BONUS, leaves: digits.length }); // el tutti és una solució de 10 punts
+      if (found.has(c)) return { status: "duplicate" }; // dedup per forma canònica, no per la bandera global
+      tuttiFound = true;
+      found.set(c, { text: inputText, points: TUTTI_BONUS, leaves: digits.length, isTutti: true }); // cada tutti és una solució de 10 punts
       return { status: "tutti", points: TUTTI_BONUS, canonical: c };
     }
 
@@ -99,6 +99,12 @@ export function createGame(puzzle, savedProgress = null) {
     return tuttiFound ? TUTTI_BONUS : 0;
   }
 
+  function tuttiCount() {
+    let n = 0;
+    for (const e of found.values()) if (e.isTutti) n++;
+    return n;
+  }
+
   function progress() {
     return {
       found: [...found.entries()].map(([c, { text }]) => ({ canonical: c, text })),
@@ -121,6 +127,9 @@ export function createGame(puzzle, savedProgress = null) {
     },
     get tuttiFound() {
       return tuttiFound;
+    },
+    get tuttiCount() {
+      return tuttiCount();
     },
   };
 }

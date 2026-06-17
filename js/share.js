@@ -2,13 +2,14 @@
 
 const SITE_URL = "https://numerologic.cat";
 
-export function buildShareText({ number, rankName, score, found, tuttiFound, breviComplete, streak }) {
+export function buildShareText({ number, rankName, score, found, tuttiFound, tuttiCount, breviComplete, streak }) {
   const lines = [
     `Numerològic #${number} · ${rankName}`,
     `${score} punts · ${found} solucions`,
   ];
   if (breviComplete) lines.push("✦ Brevi!");
-  if (tuttiFound) lines.push("★ Tutti!");
+  if (tuttiCount > 1) lines.push(`★ Tutti ×${tuttiCount}`);
+  else if (tuttiFound) lines.push("★ Tutti!");
   if (streak > 0) lines.push(`🔥 Ratxa ${streak}`);
   lines.push(SITE_URL);
   return lines.join("\n");
