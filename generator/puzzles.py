@@ -3,8 +3,8 @@ import math
 from collections import defaultdict
 
 from generator.solver import generate
-from generator.engine import has_pow_or_sqrt, FULL
-from generator.tutti import tutti_exists
+from generator.engine import has_pow_or_sqrt, FULL, reduce1
+from generator.tutti import tutti_exists, meaningful_tutti_exists
 from generator.enumerate_solutions import counted_and_brevi
 
 # (nom, percentatge sobre el total de punts)
@@ -79,8 +79,8 @@ def _leaves_of(ast):
 
 
 def _uses_all_digits(ast, digits):
-    """True si l'expressió fa servir tots els dígits del rusc (un tutti)."""
-    return set(_leaves_of(ast)) == set(digits)
+    """True si l'expressió, un cop reduïda (×1/÷1 absorbits), fa servir tots els dígits."""
+    return set(_leaves_of(reduce1(ast))) == set(digits)
 
 
 def game_total_points(counted, brevi_ops, digits):
@@ -134,7 +134,7 @@ def make_puzzle(digits, central_index, band=(40, 120), max_leaves=4, max_tutti_t
     candidates.sort(key=lambda t: (t[1], -t[0]), reverse=True)
 
     for v, _n in candidates[:max_tutti_tries]:
-        if not tutti_exists(digits, v, variant=variant):
+        if not meaningful_tutti_exists(digits, v, variant=variant):
             continue
         res = counted_and_brevi(digits, central, v, variant)
         if res is None:
