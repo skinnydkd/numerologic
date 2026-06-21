@@ -1,7 +1,7 @@
 // Estat i lògica d'una partida (sense DOM). Reutilitza el nucli del Pla 2a.
 import { parse, ParseError } from "./parser.js";
 import { validate } from "./validate.js";
-import { canonical } from "./canonical.js";
+import { canonical, reduce1 } from "./canonical.js";
 import { solutionPoints, hasPowOrSqrt, countLeaves, usesAllDigits, breviFoundCount } from "./score.js";
 
 export const TUTTI_BONUS = 10;
@@ -35,7 +35,7 @@ export function createGame(puzzle, savedProgress = null) {
         continue; // omet entrades corruptes en lloc de bloquejar la partida
       }
       const isTutti = usesAllDigits(ast, digits);
-      const leaves = isTutti ? digits.length : countLeaves(ast);
+      const leaves = isTutti ? digits.length : countLeaves(reduce1(ast));
       found.set(f.canonical, { text: f.text, points: pointsFor(leaves, isTutti, ast), leaves, isTutti });
     }
     tuttiFound = Boolean(savedProgress.tuttiFound);
@@ -63,7 +63,7 @@ export function createGame(puzzle, savedProgress = null) {
 
     const c = canonical(ast);
     if (found.has(c)) return { status: "duplicate" };
-    const leaves = countLeaves(ast);
+    const leaves = countLeaves(reduce1(ast));
     const points = pointsFor(leaves, false, ast);
     found.set(c, { text: inputText, points, leaves });
     return { status: "found", points, canonical: c };
