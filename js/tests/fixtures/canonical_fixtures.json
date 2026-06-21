@@ -148,6 +148,61 @@
   },
   {
     "ast": [
+      "mul",
+      [
+        "num",
+        7
+      ],
+      [
+        "num",
+        1
+      ]
+    ],
+    "canonical": "7",
+    "value": 7,
+    "valid": true
+  },
+  {
+    "ast": [
+      "div",
+      [
+        "num",
+        7
+      ],
+      [
+        "num",
+        1
+      ]
+    ],
+    "canonical": "7",
+    "value": 7,
+    "valid": true
+  },
+  {
+    "ast": [
+      "add",
+      [
+        "mul",
+        [
+          "num",
+          7
+        ],
+        [
+          "num",
+          1
+        ]
+      ],
+      [
+        "num",
+        2
+      ]
+    ],
+    "canonical": "(+ 2 7)",
+    "value": 9,
+    "valid": true
+  },
+  {
+    "ast": [
       "div",
       [
         "num",

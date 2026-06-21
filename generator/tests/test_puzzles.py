@@ -77,6 +77,18 @@ def test_make_puzzle_includes_brevi_and_difficulty():
     assert pz["brevi"]["count"] <= len(pz["solutions"])
 
 
+def test_game_total_points_adds_guaranteed_tutti():
+    from generator.puzzles import game_total_points
+    digits = [1, 2, 3, 4, 5, 6]  # rusc gran: cap solució de ≤4 operands és tutti
+    counted = {
+        "a": ("mul", ("num", 2), ("num", 3)),                       # 2 ops (brevi)
+        "b": ("add", ("mul", ("num", 2), ("num", 3)), ("num", 4)),  # 3 ops
+    }
+    base = game_total_points(counted, brevi_ops=2, digits=digits, has_tutti=False)
+    with_tutti = game_total_points(counted, brevi_ops=2, digits=digits, has_tutti=True)
+    assert with_tutti == base + 10
+
+
 def test_game_total_points_brevi_and_tutti_worth_ten():
     """totalPoints usa l'escala del joc: Brevi i tutti valen 10, +10 per Brevi complet."""
     from generator.puzzles import game_total_points

@@ -1,4 +1,5 @@
 // Puntuació d'una solució i ajudes de classificació.
+import { reduce1 } from "./canonical.js";
 
 export function solutionPoints(leaves, usesPowSqrt) {
   return leaves + (usesPowSqrt ? 2 : 0);
@@ -26,7 +27,7 @@ function collectDigits(ast, out) {
 
 export function usesAllDigits(ast, digits) {
   const used = new Set();
-  collectDigits(ast, used);
+  collectDigits(reduce1(ast), used);
   const needed = new Set(digits);
   if (used.size !== needed.size) return false;
   for (const d of needed) if (!used.has(d)) return false;

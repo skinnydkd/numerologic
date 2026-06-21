@@ -36,3 +36,31 @@ def test_has_pow_or_sqrt():
     assert has_pow_or_sqrt(('pow', ('num', 2), ('num', 3))) is True
     assert has_pow_or_sqrt(('sqrt', ('num', 9))) is True
     assert has_pow_or_sqrt(('add', ('num', 1), ('mul', ('num', 2), ('num', 3)))) is False
+
+
+def test_reduce1_absorbs_mul_one():
+    from generator.engine import reduce1
+    assert reduce1(('mul', ('num', 7), ('num', 1))) == ('num', 7)
+    assert reduce1(('mul', ('num', 1), ('num', 7))) == ('num', 7)
+
+
+def test_reduce1_absorbs_div_one():
+    from generator.engine import reduce1
+    assert reduce1(('div', ('num', 7), ('num', 1))) == ('num', 7)
+
+
+def test_reduce1_keeps_computed_one():
+    from generator.engine import reduce1
+    # 5-4 = 1 calculat: no es toca
+    e = ('mul', ('sub', ('num', 5), ('num', 4)), ('num', 3))
+    assert reduce1(e) == e
+
+
+def test_canonical_collapses_times_one():
+    a = ('add', ('mul', ('num', 7), ('num', 1)), ('num', 2))  # 7*1+2
+    b = ('add', ('num', 7), ('num', 2))                       # 7+2
+    assert canonical(a) == canonical(b) == "(+ 2 7)"
+
+
+def test_canonical_collapses_div_one():
+    assert canonical(('div', ('num', 7), ('num', 1))) == "7"

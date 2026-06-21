@@ -3,8 +3,8 @@ import math
 from collections import defaultdict
 
 from generator.solver import generate
-from generator.engine import has_pow_or_sqrt, FULL
-from generator.tutti import tutti_exists
+from generator.engine import has_pow_or_sqrt, FULL, reduce1
+from generator.tutti import tutti_exists, meaningful_tutti_exists
 from generator.enumerate_solutions import counted_and_brevi
 
 # (nom, percentatge sobre el total de punts)
@@ -79,24 +79,28 @@ def _leaves_of(ast):
 
 
 def _uses_all_digits(ast, digits):
-    """True si l'expressió fa servir tots els dígits del rusc (un tutti)."""
-    return set(_leaves_of(ast)) == set(digits)
+    """True si l'expressió, un cop reduïda (×1/÷1 absorbits), fa servir tots els dígits."""
+    return set(_leaves_of(reduce1(ast))) == set(digits)
 
 
-def game_total_points(counted, brevi_ops, digits):
+def game_total_points(counted, brevi_ops, digits, has_tutti=False):
     """Punts màxims del repte a l'escala REAL del joc (js/game.js::pointsFor): cada
-    solució Brevi o tutti val 10; la resta, els seus operands (+2 amb ^/√). Inclou el
-    bonus de Brevi complet, que sempre s'assoleix en trobar-ho tot. És el denominador
-    dels rangs, de manera que 'Llegenda' (100%) significa progrés real, no punts base."""
+    solució Brevi o tutti val 10; la resta, els seus operands (forma reduïda; +2 amb ^/√).
+    Inclou el bonus de Brevi complet i, si `has_tutti`, el tutti garantit (+10) quan cap
+    solució comptada ja n'és un. És el denominador dels rangs: 'Llegenda' exigeix el tutti."""
     total = BREVI_COMPLETE_BONUS
+    counted_has_tutti = False
     for ast in counted.values():
-        leaves = len(_leaves_of(ast))
+        leaves = len(_leaves_of(reduce1(ast)))
         if _uses_all_digits(ast, digits):
             total += TUTTI_POINTS
+            counted_has_tutti = True
         elif leaves == brevi_ops:
             total += BREVI_POINTS
         else:
             total += solution_points(leaves, has_pow_or_sqrt(ast))
+    if has_tutti and not counted_has_tutti:
+        total += TUTTI_POINTS
     return total
 
 
@@ -134,14 +138,14 @@ def make_puzzle(digits, central_index, band=(40, 120), max_leaves=4, max_tutti_t
     candidates.sort(key=lambda t: (t[1], -t[0]), reverse=True)
 
     for v, _n in candidates[:max_tutti_tries]:
-        if not tutti_exists(digits, v, variant=variant):
+        if not meaningful_tutti_exists(digits, v, variant=variant):
             continue
         res = counted_and_brevi(digits, central, v, variant)
         if res is None:
             continue
         counted = res["counted"]
         solutions = sorted(counted.keys())
-        total = game_total_points(counted, res["brevi"]["operands"], digits)
+        total = game_total_points(counted, res["brevi"]["operands"], digits, has_tutti=True)
         return {
             "target": v,
             "digits": digits,
