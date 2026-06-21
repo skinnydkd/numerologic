@@ -63,6 +63,28 @@ def evaluate(ast):
     return combine(k, a, b)
 
 
+def reduce1(ast):
+    """Absorbeix ×1 i ÷1 del dígit-fulla 1 (identitats; preserva el valor).
+    És la clau de dedup i de tutti: el 1 trivial no compta com a operand."""
+    k = ast[0]
+    if k == 'num':
+        return ast
+    if k == 'sqrt':
+        return ('sqrt', reduce1(ast[1]))
+    a = reduce1(ast[1])
+    b = reduce1(ast[2])
+    if k == 'mul':
+        if a == ('num', 1):
+            return b
+        if b == ('num', 1):
+            return a
+    elif k == 'div':
+        if b == ('num', 1):
+            return a
+    # ponytail: només ×1/÷1 del dígit-fulla; ^1 fora d'abast (el banc no usa pow)
+    return (k, a, b)
+
+
 def _flatten(ast, k):
     """Aplana fills del mateix operador commutatiu i retorna les seves cadenes canòniques."""
     parts = []
@@ -70,23 +92,28 @@ def _flatten(ast, k):
         if child[0] == k:
             parts.extend(_flatten(child, k))
         else:
-            parts.append(canonical(child))
+            parts.append(_canonical(child))
     return parts
 
 
-def canonical(ast):
-    """Retorna la cadena canònica determinista d'un AST (clau de deduplicació)."""
+def _canonical(ast):
+    """Forma canònica d'un AST ja reduït (sense absorbir; ús intern)."""
     k = ast[0]
     if k == 'num':
         return str(ast[1])
     if k == 'sqrt':
-        return "r(" + canonical(ast[1]) + ")"
+        return "r(" + _canonical(ast[1]) + ")"
     if k == 'add':
         return "(+ " + " ".join(sorted(_flatten(ast, 'add'))) + ")"
     if k == 'mul':
         return "(* " + " ".join(sorted(_flatten(ast, 'mul'))) + ")"
     sym = {'sub': '-', 'div': '/', 'pow': '^'}[k]
-    return "(" + sym + " " + canonical(ast[1]) + " " + canonical(ast[2]) + ")"
+    return "(" + sym + " " + _canonical(ast[1]) + " " + _canonical(ast[2]) + ")"
+
+
+def canonical(ast):
+    """Cadena canònica determinista (clau de deduplicació), amb ×1/÷1 absorbits."""
+    return _canonical(reduce1(ast))
 
 
 def has_pow_or_sqrt(ast):
