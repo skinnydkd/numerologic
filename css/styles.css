@@ -15,9 +15,7 @@ body {
   border-radius: 18px; padding: 16px 16px 20px; box-shadow: 0 8px 26px rgba(0,0,0,.06);
 }
 .topbar { display: flex; justify-content: space-between; align-items: center; }
-.logo { font-family: "Anton", "Arial Black", sans-serif; font-weight: 400; font-size: 26px; letter-spacing: 1px; color: #141414; }
-.logo .o { color: #e8362a; }
-.logo .gic { color: #58b4c4; }
+.logo { height: 28px; width: auto; display: block; }
 .modes { display: flex; gap: 6px; }
 .mode {
   border: 1.5px solid #d8dee4; background: #fff; color: #475569; border-radius: 999px;
