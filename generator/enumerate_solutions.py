@@ -20,7 +20,7 @@ Funcions públiques:
 """
 from itertools import combinations
 
-from generator.engine import combine, do_sqrt, canonical, InvalidExpr, CAP, MAX_EXPONENT, FULL
+from generator.engine import combine, do_sqrt, canonical, reduce1, InvalidExpr, CAP, MAX_EXPONENT, FULL
 from generator.tutti import _reach
 
 
@@ -180,6 +180,12 @@ def _ops_in(ast, acc):
             _ops_in(c, acc)
 
 
+def _leaf_count(ast):
+    if ast[0] == 'num':
+        return 1
+    return sum(_leaf_count(c) for c in ast[1:] if isinstance(c, tuple))
+
+
 def counted_and_brevi(digits, central, target, variant, hard_cap=7):
     """Conjunt comptat, Brevi i recomptes, o None si no hi ha cap solució (amb central).
 
@@ -196,18 +202,24 @@ def counted_and_brevi(digits, central, target, variant, hard_cap=7):
         return None
     max_ops = min(max(4, brevi_ops), len(digits), hard_cap)
     tiers = solutions_by_tier(digits, central, target, variant, max_operands=max_ops)
+    # dedup entre tiers per canònica reductora: els farciments ×1/÷1 col·lapsen
     counted = {}
-    by_leaves = {}
-    by_op = {op: 0 for op in ('add', 'sub', 'mul', 'div', 'pow', 'sqrt')}
     for r, d in tiers.items():
-        by_leaves[r] = len(d)
         for c, ast in d.items():
             counted[c] = ast
-            ops = set()
-            _ops_in(ast, ops)
-            for op in ops:
-                by_op[op] += 1
-    brevi_count = by_leaves.get(brevi_ops, 0)
+    # pistes i Brevi des del conjunt DEDUPAT, comptant operands de la forma REDUÏDA
+    by_leaves = {}
+    by_op = {op: 0 for op in ('add', 'sub', 'mul', 'div', 'pow', 'sqrt')}
+    for ast in counted.values():
+        rast = reduce1(ast)
+        lv = _leaf_count(rast)
+        by_leaves[lv] = by_leaves.get(lv, 0) + 1
+        ops = set()
+        _ops_in(rast, ops)
+        for op in ops:
+            by_op[op] += 1
+    brevi_ops = min(by_leaves)
+    brevi_count = by_leaves[brevi_ops]
     return {
         'counted': counted,
         'brevi': {'operands': brevi_ops, 'count': brevi_count},

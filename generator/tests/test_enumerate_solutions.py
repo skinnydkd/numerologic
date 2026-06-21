@@ -106,3 +106,23 @@ def test_counted_and_brevi_today():
 def test_counted_and_brevi_none_when_unreachable():
     res = counted_and_brevi((1, 3, 4, 5, 6, 7, 9), 6, 999999, BASIC)
     assert res is None
+
+
+import re
+
+
+def _has_trivial_one(c):
+    if re.search(r"\(/ .* 1\)", c):
+        return True
+    for m in re.finditer(r"\(\* ([^()]*)\)", c):
+        if "1" in m.group(1).split():
+            return True
+    return False
+
+
+def test_counted_has_no_trivial_one():
+    res = counted_and_brevi((1, 2, 3, 4, 5, 7, 9), 5, 25, BASIC)
+    assert res is not None
+    for c in res["counted"]:
+        assert not _has_trivial_one(c), c
+    assert sum(res["byLeaves"].values()) == len(res["counted"])
