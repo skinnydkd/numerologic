@@ -16,6 +16,10 @@ HANDPICKED = [
     ("add", ("add", ("num", 1), ("num", 2)), ("num", 3)),
     ("mul", ("num", 3), ("num", 8)),
     ("mul", ("num", 4), ("num", 6)),
+    # ×1 / ÷1 del dígit-fulla 1 -> absorbits
+    ("mul", ("num", 7), ("num", 1)),                       # 7×1 -> "7"
+    ("div", ("num", 7), ("num", 1)),                       # 7÷1 -> "7"
+    ("add", ("mul", ("num", 7), ("num", 1)), ("num", 2)),  # 7×1+2 -> "(+ 2 7)"
     # invalids
     ("div", ("num", 7), ("num", 2)),                       # divisio inexacta
     ("div", ("num", 4), ("num", 0)),                       # divisio per zero
