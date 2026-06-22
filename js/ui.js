@@ -191,6 +191,7 @@ export function instructionsHTML(rules) {
       <li><b>★ Tutti</b>: una solució que fa servir <b>tots els dígits</b> del rusc. Cadascun val <b>10 punts</b> i en pots trobar <b>més d'un</b>.</li>
       <li>Acumulant punts puges de <b>rang</b> (de Principiant a Llegenda).</li>
       <li>Multiplicar o dividir per <b>1</b> no crea una solució nova.</li>
+      <li>Canviar el <b>signe</b> (× o ÷ per negatius) tampoc no crea una solució nova: (−3)×(−7) és la mateixa que 3×7.</li>
       <li>La mateixa solució no compta dues vegades (3×4 i 4×3 són la mateixa); si la repeteixes, l'expressió s'esborra sola.</li>
     </ul>
 
