@@ -14,14 +14,8 @@ body {
   width: 100%; max-width: 400px; background: #fff; border: 1px solid #eef2f4;
   border-radius: 18px; padding: 16px 16px 20px; box-shadow: 0 8px 26px rgba(0,0,0,.06);
 }
-.topbar { display: flex; justify-content: space-between; align-items: center; }
-.logo { height: 28px; width: auto; display: block; }
-.modes { display: flex; gap: 6px; }
-.mode {
-  border: 1.5px solid #d8dee4; background: #fff; color: #475569; border-radius: 999px;
-  padding: 6px 12px; font-size: 13px; cursor: pointer;
-}
-.mode.active { background: #58b4c4; border-color: #58b4c4; color: #fff; }
+.topbar { text-align: center; }
+.logo { width: 86%; max-width: 320px; height: auto; display: block; margin: 4px auto 8px; }
 
 .goal { text-align: center; color: #6b7280; font-size: 13px; margin-top: 12px; }
 .goal b { display: block; font-size: 38px; color: #1f2937; line-height: 1.15; }
@@ -65,6 +59,7 @@ body {
 .status, .links { color: #6b7280; font-size: 13px; }
 .status { margin-top: 8px; }
 .links { margin-top: 6px; }
+.num { color: #1f2937; font-weight: 600; }
 .rankbtn { background: none; border: none; color: #1f2937; font-weight: 600; cursor: pointer; font-size: 13px; }
 .star { color: #eab308; }
 .star.done { color: #eab308; font-weight: 700; }

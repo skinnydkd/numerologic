@@ -145,6 +145,72 @@ export function completionHTML(byLeaves, foundMap, breviOperands) {
   return `<ul>${rows}</ul>` + foundListHTML(foundMap);
 }
 
+// --- Render canònic (S-expr prefix) → infix llegible ---
+// Format nou: suma plana amb signe `(+ t … (~ neg) …)`, productes `(* …)`, quocients `(/ a b)`.
+const MUL_SYM = { "*": " × ", "/": " ÷ " };
+
+function parseSexpr(s) {
+  let i = 0;
+  const node = () => {
+    if (s[i] === "(") {
+      i++; // (
+      const op = s[i++]; // operador: + * / ~
+      const args = [];
+      while (s[i] !== ")") {
+        if (s[i] === " ") { i++; continue; }
+        args.push(node());
+      }
+      i++; // )
+      return { op, args };
+    }
+    let j = i;
+    while (i < s.length && /[0-9]/.test(s[i])) i++;
+    return { num: s.slice(j, i) };
+  };
+  return node();
+}
+
+// Parèntesis mínims. parentPrec: 0 res · 1 dins d'una suma · 2 dins d'un producte/quocient.
+function infix(node, parentPrec) {
+  if (node.num !== undefined) return node.num;
+  if (node.op === "+") {
+    const pos = [], neg = [];
+    for (const a of node.args) {
+      if (a.op === "~") neg.push(infix(a.args[0], 1));
+      else pos.push(infix(a, 1));
+    }
+    const s = pos.length
+      ? pos.join(" + ") + neg.map((t) => " − " + t).join("")
+      : "−" + neg.join(" − ");
+    return parentPrec > 1 ? `(${s})` : s;
+  }
+  if (node.op === "~") return "−" + infix(node.args[0], 3); // menys unari aïllat (rar)
+  const nonAssoc = node.op === "/"; // el divisor de la dreta s'ha de parentitzar si és producte
+  const s = node.args
+    .map((a, k) => infix(a, nonAssoc && k > 0 ? 3 : 2))
+    .join(MUL_SYM[node.op]);
+  return parentPrec > 2 ? `(${s})` : s;
+}
+
+export function sexprToInfix(s) {
+  return infix(parseSexpr(s), 0);
+}
+
+// Solució d'ahir: objectiu + les solucions Brevi (les més curtes) en infix.
+export function yesterdayHTML(puzzle, number) {
+  const bo = puzzle.brevi ? puzzle.brevi.operands : null;
+  const sols = bo
+    ? puzzle.solutions.filter((s) => (s.match(/\d+/g) || []).length === bo).map(sexprToInfix)
+    : [];
+  const list = sols.length
+    ? `<ul>${sols.map((e) => `<li>${e}</li>`).join("")}</ul>`
+    : "<p>—</p>";
+  return `
+    <p>Repte <b>Núm. ${number}</b> — objectiu <b>${puzzle.target}</b>.</p>
+    <p>✦ <b>Brevi</b> (${sols.length} ${sols.length === 1 ? "solució" : "solucions"} de ${bo} operands, les més curtes):</p>
+    ${list}`;
+}
+
 export function ranksHTML(ranks, score) {
   const items = ranks
     .map(([name, th]) => `<li>${score >= th ? "✓" : "·"} ${name} <small>(${th} pts)</small></li>`)
