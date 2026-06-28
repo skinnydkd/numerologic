@@ -22,9 +22,9 @@ def test_basic_norepeat_small_is_hand_verifiable():
     sols = generate([3, 4], max_leaves=2, variant=BASIC_NOREPEAT)
     assert {c: m["value"] for c, m in sols.items()} == {
         "(+ 3 4)": 7,
-        "(- 3 4)": -1,
+        "(+ (~ 4) 3)": -1,
         "(* 3 4)": 12,
-        "(- 4 3)": 1,
+        "(+ (~ 3) 4)": 1,
     }
 
 

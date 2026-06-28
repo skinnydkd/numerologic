@@ -16,9 +16,24 @@ def test_add_flatten():
     assert canonical(a) == "(+ 1 2 3)"
 
 
+def test_subtraction_is_signed_addition():
+    # La resta s'aplana a suma amb signe (termes negatius com (~ x)), conservant el valor.
+    assert canonical(('sub', ('num', 5), ('num', 3))) == "(+ (~ 3) 5)"
+    assert canonical(('sub', ('num', 3), ('num', 5))) == "(+ (~ 5) 3)"
+
+
+def test_additive_reorder_dedup():
+    # 7×2×5−6−4 ≡ −6−4+7×5×2 ≡ 7×2×5−(6+4): mateixa suma de termes amb signe.
+    m = ('mul', ('mul', ('num', 7), ('num', 2)), ('num', 5))
+    a = ('sub', ('sub', m, ('num', 6)), ('num', 4))     # 7×2×5 − 6 − 4
+    b = ('sub', ('sub', m, ('num', 4)), ('num', 6))     # 7×2×5 − 4 − 6
+    c = ('sub', m, ('add', ('num', 6), ('num', 4)))     # 7×2×5 − (6+4)
+    assert canonical(a) == canonical(b) == canonical(c) == "(+ (* 2 5 7) (~ 4) (~ 6))"
+    # però signes diferents NO es fusionen:
+    assert canonical(('sub', ('num', 9), ('num', 3))) != canonical(('sub', ('num', 3), ('num', 9)))
+
+
 def test_non_commutative_keeps_order():
-    assert canonical(('sub', ('num', 5), ('num', 3))) == "(- 5 3)"
-    assert canonical(('sub', ('num', 3), ('num', 5))) == "(- 3 5)"
     assert canonical(('div', ('num', 8), ('num', 4))) == "(/ 8 4)"
     assert canonical(('pow', ('num', 2), ('num', 3))) == "(^ 2 3)"
 

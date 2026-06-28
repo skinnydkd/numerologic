@@ -2,7 +2,9 @@
 // Paritat byte a byte amb generator/engine.py::canonical per a expressions SENSE menys
 // unari (amb ×1/÷1 absorbits). El menys unari (`neg`, només al client) es plega: el signe
 // travessa × i ÷ i els dobles negatius s'anul·len, de manera que (−3)×(−7) ≡ 3×7.
-// +, −, ^ i √ són neutres respecte del signe (preserven la paritat amb el generador).
+// La capa additiva (+ i −) s'aplana en un multiconjunt ordenat de termes amb signe: el −
+// és +(−) i el signe distribueix sobre la suma, de manera que 7×2×5−6−4 ≡ −6−4+7×2×5
+// ≡ 7×2×5−(6+4). ^ i √ són neutres respecte del signe (preserven la paritat amb el generador).
 
 function isOne(ast) {
   return ast[0] === "num" && ast[1] === 1;
@@ -30,6 +32,22 @@ function flatten(node, op, out) {
   for (const child of [node[1], node[2]]) {
     if (child[0] === op) flatten(child, op, out);
     else out.push(signed(child));
+  }
+}
+
+// Aplana la capa additiva (+, − i el menys unari) en termes amb signe: el − és +(−)
+// i el signe distribueix sobre la suma (−(a+b) ≡ −a−b). Recull {neg,key} a `out`.
+function collect(ast, flip, out) {
+  const k = ast[0];
+  if (k === "add") {
+    collect(ast[1], flip, out);
+    collect(ast[2], flip, out);
+  } else if (k === "sub") {
+    collect(ast[1], flip, out);
+    collect(ast[2], !flip, out);
+  } else {
+    const s = signed(ast);
+    out.push({ neg: flip !== s.neg, key: s.key });
   }
 }
 
@@ -61,12 +79,12 @@ function signed(ast) {
     return { neg: a.neg !== b.neg, key: "(/ " + a.key + " " + b.key + ")" };
   }
   if (k === "sqrt") return { neg: false, key: "r(" + wrap(signed(ast[1])) + ")" };
-  if (k === "add") {
+  if (k === "add" || k === "sub") {
     const parts = [];
-    flatten(ast, "add", parts);
+    collect(ast, false, parts);
     return { neg: false, key: "(+ " + parts.map(wrap).sort().join(" ") + ")" };
   }
-  const sym = { sub: "-", pow: "^" }[k];
+  const sym = { pow: "^" }[k];
   return { neg: false, key: "(" + sym + " " + wrap(signed(ast[1])) + " " + wrap(signed(ast[2])) + ")" };
 }
 

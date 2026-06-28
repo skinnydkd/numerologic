@@ -96,6 +96,21 @@ def _flatten(ast, k):
     return parts
 
 
+def _add_terms(ast, flip, out):
+    """Aplana la capa additiva (+ i −) en termes amb signe: el − és +(−); el signe
+    distribueix sobre la suma (−(a+b) ≡ −a−b). Cada termе negatiu es marca amb (~ ...)."""
+    k = ast[0]
+    if k == 'add':
+        _add_terms(ast[1], flip, out)
+        _add_terms(ast[2], flip, out)
+    elif k == 'sub':
+        _add_terms(ast[1], flip, out)
+        _add_terms(ast[2], not flip, out)
+    else:
+        key = _canonical(ast)
+        out.append("(~ " + key + ")" if flip else key)
+
+
 def _canonical(ast):
     """Forma canònica d'un AST ja reduït (sense absorbir; ús intern)."""
     k = ast[0]
@@ -103,11 +118,13 @@ def _canonical(ast):
         return str(ast[1])
     if k == 'sqrt':
         return "r(" + _canonical(ast[1]) + ")"
-    if k == 'add':
-        return "(+ " + " ".join(sorted(_flatten(ast, 'add'))) + ")"
     if k == 'mul':
         return "(* " + " ".join(sorted(_flatten(ast, 'mul'))) + ")"
-    sym = {'sub': '-', 'div': '/', 'pow': '^'}[k]
+    if k in ('add', 'sub'):
+        terms = []
+        _add_terms(ast, False, terms)
+        return "(+ " + " ".join(sorted(terms)) + ")"
+    sym = {'div': '/', 'pow': '^'}[k]
     return "(" + sym + " " + _canonical(ast[1]) + " " + _canonical(ast[2]) + ")"
 
 

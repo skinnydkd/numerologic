@@ -2,7 +2,7 @@
 import { createGame } from "./game.js";
 import { loadProgress, saveProgress, loadStreak, saveStreak } from "./storage.js";
 import { computeStreak, streakDisplay, todayStr } from "./streak.js";
-import { dailyIndex, practiceIndex } from "./modes.js";
+import { dailyIndex } from "./modes.js";
 import * as ui from "./ui.js";
 import { buildShareText } from "./share.js";
 import { parse } from "./parser.js";
@@ -15,7 +15,7 @@ const els = {
   hive: $("hive"), ops: $("ops"), del: $("del"), shuffle: $("shuffle"),
   send: $("send"), count: $("count"), rankBtn: $("rankBtn"), tutti: $("tutti"),
   panel: $("panel"), share: $("share"), result: $("result"), difficulty: $("difficulty"),
-  help: $("help"), pistes: $("pistes"), practiceNew: $("practiceNew"), newPractice: $("newPractice"),
+  help: $("help"), pistes: $("pistes"), num: $("num"), yesterday: $("yesterday"),
   brevi: $("brevi"),
 };
 
@@ -33,7 +33,6 @@ try {
   throw e;
 }
 
-let mode = "daily";
 let poolIndex = 0;
 let game = null;
 let expr = "";
@@ -77,6 +76,7 @@ function start(index) {
   els.difficulty.innerHTML = `<span class="${dkey}">${DIFF_LABEL[dkey]}</span>`;
   ui.renderHive(els.hive, puzzle.digits, puzzle.centralIndex, addToken);
   ui.renderOps(els.ops, addToken, puzzle.rules);
+  els.num.textContent = `Núm. ${index + 1}`;
   showExpr();
   els.flash.textContent = "";
   refreshFooter();
@@ -111,8 +111,8 @@ function send() {
   ui.flash(els.flash, res);
   if (res.status === "found" || res.status === "tutti") {
     saveProgress(localStorage, poolIndex, game.progress());
-    // ratxa: només en mode diari i just quan el Brevi acaba de completar-se
-    if (mode === "daily" && !wasBreviComplete && game.breviComplete()) {
+    // ratxa: just quan el Brevi acaba de completar-se
+    if (!wasBreviComplete && game.breviComplete()) {
       saveStreak(localStorage, computeStreak(loadStreak(localStorage), todayStr(Date.now())));
       els.flash.className = "flash tutti";
       els.flash.textContent = "✦ Brevi complet!";
@@ -123,14 +123,6 @@ function send() {
     expr = "";
     showExpr();
   }
-}
-
-function setMode(next) {
-  mode = next;
-  document.querySelectorAll(".mode").forEach((b) => b.classList.toggle("active", b.dataset.mode === next));
-  els.practiceNew.classList.toggle("hidden", next !== "practice");
-  if (next === "daily") start(dailyIdx());
-  else start(practiceIndex(Math.random, pool.puzzles.length, dailyIdx()));
 }
 
 // Events
@@ -155,9 +147,10 @@ els.count.addEventListener("click", () =>
 els.rankBtn.addEventListener("click", () =>
   ui.openPanel(els.panel, "Rangs", ui.ranksHTML(game.puzzle.ranks, game.score()))
 );
-els.newPractice.addEventListener("click", () =>
-  start(practiceIndex(Math.random, pool.puzzles.length, dailyIdx()))
-);
+els.yesterday.addEventListener("click", () => {
+  const yIdx = dailyIndex(pool.startDate, Date.now() - 86400000, pool.puzzles.length);
+  ui.openPanel(els.panel, "Solució d'ahir", ui.yesterdayHTML(pool.puzzles[yIdx], yIdx + 1));
+});
 els.help.addEventListener("click", () =>
   ui.openPanel(els.panel, "Com jugar", ui.instructionsHTML(game.puzzle.rules))
 );
@@ -187,10 +180,6 @@ els.share.addEventListener("click", async () => {
     // l'usuari ha cancel·lat o no s'ha pogut compartir; ignora
   }
 });
-document.querySelectorAll(".mode").forEach((b) =>
-  b.addEventListener("click", () => setMode(b.dataset.mode))
-);
-
 document.addEventListener("keydown", (e) => {
   if (e.key === "Enter") { send(); e.preventDefault(); }
   else if (e.key === "Backspace") { del(); e.preventDefault(); }
