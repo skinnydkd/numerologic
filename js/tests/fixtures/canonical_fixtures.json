@@ -32,7 +32,7 @@
         3
       ]
     ],
-    "canonical": "(- 5 3)",
+    "canonical": "(+ (~ 3) 5)",
     "value": 2,
     "valid": true
   },
@@ -333,7 +333,7 @@
         1000000
       ]
     ],
-    "canonical": "(- 0 1000000)",
+    "canonical": "(+ (~ 1000000) 0)",
     "value": null,
     "valid": false
   },
@@ -356,7 +356,7 @@
         ]
       ]
     ],
-    "canonical": "(^ 2 (- 1 3))",
+    "canonical": "(^ 2 (+ (~ 3) 1))",
     "value": null,
     "valid": false
   },
@@ -388,7 +388,7 @@
         2
       ]
     ],
-    "canonical": "(- 2 2)",
+    "canonical": "(+ (~ 2) 2)",
     "value": 0,
     "valid": true
   },
@@ -525,7 +525,7 @@
         3
       ]
     ],
-    "canonical": "(- 2 3)",
+    "canonical": "(+ (~ 3) 2)",
     "value": -1,
     "valid": true
   },
@@ -573,7 +573,7 @@
         2
       ]
     ],
-    "canonical": "(- 3 2)",
+    "canonical": "(+ (~ 2) 3)",
     "value": 1,
     "valid": true
   },
@@ -640,7 +640,7 @@
         5
       ]
     ],
-    "canonical": "(- 2 5)",
+    "canonical": "(+ (~ 5) 2)",
     "value": -3,
     "valid": true
   },
@@ -688,7 +688,7 @@
         2
       ]
     ],
-    "canonical": "(- 5 2)",
+    "canonical": "(+ (~ 2) 5)",
     "value": 3,
     "valid": true
   },
@@ -755,7 +755,7 @@
         3
       ]
     ],
-    "canonical": "(- 3 3)",
+    "canonical": "(+ (~ 3) 3)",
     "value": 0,
     "valid": true
   },
@@ -854,7 +854,7 @@
         5
       ]
     ],
-    "canonical": "(- 3 5)",
+    "canonical": "(+ (~ 5) 3)",
     "value": -2,
     "valid": true
   },
@@ -902,7 +902,7 @@
         3
       ]
     ],
-    "canonical": "(- 5 3)",
+    "canonical": "(+ (~ 3) 5)",
     "value": 2,
     "valid": true
   },
@@ -950,7 +950,7 @@
         5
       ]
     ],
-    "canonical": "(- 5 5)",
+    "canonical": "(+ (~ 5) 5)",
     "value": 0,
     "valid": true
   },
@@ -1063,7 +1063,7 @@
         ]
       ]
     ],
-    "canonical": "(- 2 (+ 2 2))",
+    "canonical": "(+ (~ 2) (~ 2) 2)",
     "value": -2,
     "valid": true
   },
@@ -1132,30 +1132,7 @@
         ]
       ]
     ],
-    "canonical": "(+ (- 2 2) 2)",
-    "value": 2,
-    "valid": true
-  },
-  {
-    "ast": [
-      "sub",
-      [
-        "num",
-        2
-      ],
-      [
-        "sub",
-        [
-          "num",
-          2
-        ],
-        [
-          "num",
-          2
-        ]
-      ]
-    ],
-    "canonical": "(- 2 (- 2 2))",
+    "canonical": "(+ (~ 2) 2 2)",
     "value": 2,
     "valid": true
   },
@@ -1178,7 +1155,7 @@
         ]
       ]
     ],
-    "canonical": "(* (- 2 2) 2)",
+    "canonical": "(* (+ (~ 2) 2) 2)",
     "value": 0,
     "valid": true
   },
@@ -1201,7 +1178,7 @@
         ]
       ]
     ],
-    "canonical": "(^ 2 (- 2 2))",
+    "canonical": "(^ 2 (+ (~ 2) 2))",
     "value": 1,
     "valid": true
   },
@@ -1247,8 +1224,31 @@
         ]
       ]
     ],
-    "canonical": "(- 2 (* 2 2))",
+    "canonical": "(+ (~ (* 2 2)) 2)",
     "value": -2,
+    "valid": true
+  },
+  {
+    "ast": [
+      "mul",
+      [
+        "num",
+        2
+      ],
+      [
+        "mul",
+        [
+          "num",
+          2
+        ],
+        [
+          "num",
+          2
+        ]
+      ]
+    ],
+    "canonical": "(* 2 2 2)",
+    "value": 8,
     "valid": true
   }
 ]

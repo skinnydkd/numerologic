@@ -18,8 +18,12 @@ test("aplanat add", () => {
   assert.equal(canonical(a), "(+ 1 2 3)");
 });
 
-test("no commutatius mantenen l'ordre", () => {
-  assert.equal(canonical(["sub", ["num", 5], ["num", 3]]), "(- 5 3)");
+test("la resta s'aplana a suma amb signe", () => {
+  assert.equal(canonical(["sub", ["num", 5], ["num", 3]]), "(+ (~ 3) 5)");
+  assert.equal(canonical(["sub", ["num", 3], ["num", 5]]), "(+ (~ 5) 3)");
+});
+
+test("no commutatius (÷, ^) mantenen l'ordre", () => {
   assert.equal(canonical(["div", ["num", 8], ["num", 4]]), "(/ 8 4)");
   assert.equal(canonical(["pow", ["num", 2], ["num", 3]]), "(^ 2 3)");
 });
