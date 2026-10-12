@@ -5,21 +5,21 @@ import { buildShareText } from "../share.js";
 test("buildShareText sense tutti", () => {
   assert.equal(
     buildShareText({ number: 12, rankName: "Expert", score: 87, found: 20, tuttiFound: false }),
-    "Numerològic #12 · Expert\n87 punts · 20 solucions\nhttps://numerologic.cat"
+    "Numerològic #12 · Expert\n87 punts · 20 solucions\nhttps://numerologic.cat/?utm_source=compartir"
   );
 });
 
 test("buildShareText amb tutti", () => {
   assert.equal(
     buildShareText({ number: 12, rankName: "Geni", score: 441, found: 100, tuttiFound: true }),
-    "Numerològic #12 · Geni\n441 punts · 100 solucions\n★ Tutti!\nhttps://numerologic.cat"
+    "Numerològic #12 · Geni\n441 punts · 100 solucions\n★ Tutti!\nhttps://numerologic.cat/?utm_source=compartir"
   );
 });
 
 test("buildShareText amb diversos tuttis -> ×N", () => {
   assert.equal(
     buildShareText({ number: 12, rankName: "Geni", score: 460, found: 102, tuttiFound: true, tuttiCount: 3 }),
-    "Numerològic #12 · Geni\n460 punts · 102 solucions\n★ Tutti ×3\nhttps://numerologic.cat"
+    "Numerològic #12 · Geni\n460 punts · 102 solucions\n★ Tutti ×3\nhttps://numerologic.cat/?utm_source=compartir"
   );
 });
 
@@ -27,7 +27,7 @@ test("buildShareText amb Brevi i ratxa", () => {
   assert.equal(
     buildShareText({ number: 5, rankName: "Expert", score: 30, found: 6,
                      tuttiFound: false, breviComplete: true, streak: 4 }),
-    "Numerològic #5 · Expert\n30 punts · 6 solucions\n✦ Brevi!\n🔥 Ratxa 4\nhttps://numerologic.cat"
+    "Numerològic #5 · Expert\n30 punts · 6 solucions\n✦ Brevi!\n🔥 Ratxa 4\nhttps://numerologic.cat/?utm_source=compartir"
   );
 });
 

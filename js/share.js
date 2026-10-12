@@ -1,6 +1,6 @@
 // Genera el text de compartir (estil Wordle). Mai inclou cap solució.
 
-const SITE_URL = "https://numerologic.cat";
+const SITE_URL = "https://numerologic.cat/?utm_source=compartir"; // utm: mesura a Web Analytics les visites que venen de compartir
 
 export function buildShareText({ number, rankName, score, found, tuttiFound, tuttiCount, breviComplete, streak }) {
   const lines = [
