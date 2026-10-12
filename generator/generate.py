@@ -18,11 +18,14 @@ PROFILES = [
 ]
 
 
-def build_pool(count, max_leaves=4, seed=0, start_date="2026-06-01", variant=FULL):
-    """Construeix `count` reptes dosificant l'espectre de dificultat (ciclant perfils)."""
+def build_pool(count, max_leaves=4, seed=0, start_date="2026-06-01", variant=FULL, existing=None):
+    """Construeix `count` reptes dosificant l'espectre de dificultat (ciclant perfils).
+
+    Amb `existing`, conserva aquests reptes al davant (mateix índex) i hi afegeix nous fins a `count`.
+    """
     rng = random.Random(seed)
-    puzzles = []
-    seen = set()
+    puzzles = list(existing or [])
+    seen = {(pz["target"], tuple(pz["digits"]), pz["centralIndex"]) for pz in puzzles}
     attempts = 0
     while len(puzzles) < count and attempts < count * 400:
         attempts += 1
@@ -59,7 +62,13 @@ def main():
                         help="cada dígit del rusc s'usa com a molt un cop per expressió")
     parser.add_argument("--no-pow-sqrt", action="store_true",
                         help="només +-*/ (sense potència ni arrel)")
+    parser.add_argument("--append", action="store_true",
+                        help="conserva els reptes de --out i n'hi afegeix fins a --count en total")
     args = parser.parse_args()
+    existing = None
+    if args.append:
+        with open(args.out, encoding="utf-8") as f:
+            existing = json.load(f)["puzzles"]
 
     ops = ("add", "sub", "mul", "div") if args.no_pow_sqrt else ("add", "sub", "mul", "div", "pow")
     variant = Variant(ops=ops, use_sqrt=not args.no_pow_sqrt, allow_repeat=not args.no_repeat)
@@ -70,6 +79,7 @@ def main():
         seed=args.seed,
         start_date=args.start_date,
         variant=variant,
+        existing=existing,
     )  # nota: la banda i el rang d'objectiu venen ara del perfil de dificultat (PROFILES)
     dirpart = os.path.dirname(args.out)
     if dirpart:

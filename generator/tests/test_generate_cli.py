@@ -20,3 +20,14 @@ def test_build_pool_small():
     # reptes diferents (objectiu, dígits o central)
     keys = {(pz["target"], tuple(pz["digits"]), pz["centralIndex"]) for pz in pool["puzzles"]}
     assert len(keys) == 3
+
+
+def test_build_pool_append_keeps_existing():
+    base = build_pool(count=3, max_leaves=4, seed=42, variant=BASIC)
+    pool = build_pool(count=6, max_leaves=4, seed=42, variant=BASIC, existing=base["puzzles"])
+    assert len(pool["puzzles"]) == 6
+    assert pool["puzzles"][:3] == base["puzzles"]  # els antics no es toquen (calendari i progrés estables)
+    keys = {(pz["target"], tuple(pz["digits"]), pz["centralIndex"]) for pz in pool["puzzles"]}
+    assert len(keys) == 6  # cap repte nou repeteix un d'antic
+    # l'espectre continua ciclant on s'havia quedat
+    assert [pz["difficulty"] for pz in pool["puzzles"][3:]] == ["facil", "mitja", "dificil"]
