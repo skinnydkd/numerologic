@@ -31,9 +31,10 @@ Es revisa cada dilluns amb 10 minuts a Web Analytics: visitants, referrers i utm
 ## Fase 0 — Preparar el terreny (aquesta setmana, cost ~0)
 
 1. **Descobrir d'on va sortir el pic del 7/10.** Pregunta-ho als contactes i cerca "numerològic" a X/Bluesky/Instagram de l'1 al 8/10. Si ve d'un mitjà o d'un compte, agraeix-ho i manté-hi el contacte.
-2. **Enllaç de compartir amb `?utm_source=compartir`** (`js/share.js`, una línia). Sense això no sabrem si el boca-orella funciona.
-3. **Text de compartir pensat per a WhatsApp.** És el canal on circula aquest tipus de joc. Ha de ser curt, amb els emojis de la ratxa i l'enllaç al final.
-4. **Kit de premsa d'una pàgina**: què és, qui l'ha fet, 3 captures, el logo, l'og-image i un correu de contacte. És el que demanen els mitjans.
+2. ✅ **Enllaç de compartir amb `?utm_source=compartir`** (13/10).
+3. ✅ **Text de compartir pensat per a WhatsApp**: ja és curt, amb la ratxa i l'enllaç al final.
+4. ✅ **Kit de premsa**: https://numerologic.cat/premsa/ (13/10). ⚠️ Falta que **hola@numerologic.cat** funcioni: cal configurar-ne la redirecció al panell del registrador.
+5. Textos per a xarxes i correus a punt: [marketing.md](marketing.md).
 
 ## Fase 1 — Comunitat que ja juga a jocs en català (setmanes 1–4)
 
