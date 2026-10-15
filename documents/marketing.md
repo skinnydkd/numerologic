@@ -33,12 +33,12 @@ No és a la web: afegeix-la a /premsa o fes-la servir als correus quan l'hagis v
 > Cada dia, un número objectiu i un rusc de dígits. Amb + − × ÷ i parèntesis, troba totes les operacions que hi arriben.
 >
 > Gratuït, sense anuncis i en català 👇
-> numerologic.cat/?utm_source=llancament
+> numerologic.cat/l
 
 ### Missatge per a WhatsApp / Telegram (amics, grups)
 
 > Us passo un joc que he fet: és com el Paraulògic però amb números. Cada dia un repte nou 🔢
-> numerologic.cat/?utm_source=whatsapp
+> numerologic.cat/w
 > A veure qui trau el Brevi abans 😏
 
 ### Publicació diària (compte del joc, cada dia a les 8 h)
@@ -46,7 +46,7 @@ No és a la web: afegeix-la a /premsa o fes-la servir als correus quan l'hagis v
 > 🔢 Numerològic #[N] · [Fàcil/Mitjà/Difícil]
 > Arriba a **[OBJECTIU]** amb [DÍGITS] (el [CENTRAL] és obligatori)
 > Brevi: [K] solucions de [B] operands. Quantes en trobaràs?
-> numerologic.cat/?utm_source=diari
+> numerologic.cat/d
 
 I en un fil, la nit d'abans o l'endemà: «Solució d'ahir: [una solució Brevi]. L'havíeu vista?»
 
@@ -99,13 +99,13 @@ I en un fil, la nit d'abans o l'endemà: «Solució d'ahir: [una solució Brevi]
 
 ## Mesurar cada canal
 
-Fes servir sempre un `utm_source` diferent per canal i, cada dilluns, mira'ls a Web Analytics → *UTM Source*:
+Fes servir sempre l'enllaç curt de cada canal i, cada dilluns, mira'ls a Web Analytics → *Pages* (el pla gratuït no desglossa per `utm`, però sí per camí). Tots porten a la portada (`vercel.json`):
 
 | Canal | Enllaç |
 |---|---|
-| Resultats compartits (automàtic) | `?utm_source=compartir` |
-| Publicació de llançament | `?utm_source=llancament` |
-| Compte diari | `?utm_source=diari` |
-| WhatsApp/Telegram | `?utm_source=whatsapp` |
-| Correus a mitjans | `?utm_source=premsa` |
-| Docents / associacions | `?utm_source=docents` |
+| Resultats compartits (automàtic) | `numerologic.cat/c` |
+| Publicació de llançament | `numerologic.cat/l` |
+| Compte diari | `numerologic.cat/d` |
+| WhatsApp/Telegram | `numerologic.cat/w` |
+| Correus a mitjans | `numerologic.cat/p` |
+| Docents / associacions | `numerologic.cat/e` |

@@ -1,0 +1,5 @@
+{
+  "rewrites": [
+    { "source": "/:canal(c|w|d|l|p|e)", "destination": "/index.html" }
+  ]
+}

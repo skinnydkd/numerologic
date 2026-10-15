@@ -9,7 +9,7 @@
 - D'on venen: Google ~37%, el mateix numerologic.cat ~33% i directe ~30% (WhatsApp/Telegram surten com a "directe").
 - **El salt del 7/10 no és SEO.** Google va passar de 0 a 38 visites en un dia. Això és gent que **buscava el nom** perquè l'havia vist en algun lloc. **Cal identificar on**: és el canal que ja ha funcionat.
 - Els que tornen són ~10–20% segons la IP, però la xifra real és més alta (les IPs mòbils canvien i la PWA carrega des de la memòria cau).
-- Web Analytics està activat des del 13/10. Els esdeveniments personalitzats (repte completat, compartir…) **no estan inclosos al pla Hobby**. Mesurarem amb visites, referrers i `utm_*`.
+- Web Analytics està activat des del 13/10. Els esdeveniments personalitzats (repte completat, compartir…) **no estan inclosos al pla Hobby**. Tampoc no desglossa per `utm`: mesurem amb visites, referrers i **camins curts per canal** (`/c`, `/w`, `/d`… → [marketing.md](marketing.md)).
 
 ## Posicionament
 
@@ -23,15 +23,15 @@
 | Mètrica | Ara | Objectiu |
 |---|---|---|
 | Visitants únics/dia (Web Analytics) | ~50 | **300** |
-| Visites que venen de compartir (`utm_source=compartir`) | — | ≥25% |
+| Visites que venen de compartir (camí `/c`) | — | ≥25% |
 | Visitants que tornen a la setmana | ~15% | 30% |
 
-Es revisa cada dilluns amb 10 minuts a Web Analytics: visitants, referrers i utm.
+Es revisa cada dilluns amb 10 minuts a Web Analytics: visitants, referrers i camins (*Pages*).
 
 ## Fase 0 — Preparar el terreny (aquesta setmana, cost ~0)
 
 1. **Descobrir d'on va sortir el pic del 7/10.** Pregunta-ho als contactes i cerca "numerològic" a X/Bluesky/Instagram de l'1 al 8/10. Si ve d'un mitjà o d'un compte, agraeix-ho i manté-hi el contacte.
-2. ✅ **Enllaç de compartir amb `?utm_source=compartir`** (13/10).
+2. ✅ **Enllaç de compartir amb camí propi `numerologic.cat/c`** (16/10; el `utm` del 13/10 no es podia llegir al pla Hobby).
 3. ✅ **Text de compartir pensat per a WhatsApp**: ja és curt, amb la ratxa i l'enllaç al final.
 4. ✅ **Kit de premsa**: https://numerologic.cat/premsa/ (13/10). ⚠️ Falta que **hola@numerologic.cat** funcioni: cal configurar-ne la redirecció al panell del registrador.
 5. Textos per a xarxes i correus a punt: [marketing.md](marketing.md).
@@ -72,7 +72,7 @@ Aquí tens avantatge per ser docent. El joc treballa el càlcul mental i la prio
 
 | Setmana | Acció |
 |---|---|
-| 1 | Origen del pic del 7/10 · utm al compartir · kit de premsa |
+| 1 | Origen del pic del 7/10 · camí /c al compartir · kit de premsa |
 | 1–2 | Publicació de llançament + compte diari |
 | 3–4 | Grups de Telegram/WhatsApp · primer contacte amb FEEMCAT/SEMCV/ABEAM |
 | 5–8 | Fitxa per a docents · primers mitjans |
