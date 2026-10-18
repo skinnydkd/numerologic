@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<!-- Plantilla d'imatge per a xarxes (1080×1080). Paràmetres per URL:
+     ?t=31&d=1246789&c=9&title=🎃 Castanyada&date=31 d'octubre&hex=%23d97706&center=%237c2d12
+     Instruccions: documents/publicacions/2026-10-31-castanyada.md (final). -->
+<html lang="ca">
+<head>
+<meta charset="utf-8" />
+<style>
+  @font-face { font-family: "Anton"; src: url("../../fonts/anton.woff2") format("woff2"); }
+  * { box-sizing: border-box; margin: 0; }
+  body { width: 1080px; height: 1080px; background: color-mix(in srgb, var(--hex) 22%, #fff); font-family: system-ui, sans-serif; color: #1f2937;
+    display: flex; align-items: center; justify-content: center; }
+  .card { width: 960px; height: 960px; background: #fff; border-radius: 48px; box-shadow: 0 20px 60px rgba(0,0,0,.08);
+    display: flex; flex-direction: column; align-items: center; padding: 52px 40px 44px; }
+  .logo { width: 520px; }
+  .title { margin-top: 22px; font-size: 38px; font-weight: 800; color: var(--center); }
+  .date { font-size: 26px; color: #64748b; margin-top: 4px; }
+  .goal { margin-top: 20px; font-size: 30px; color: #6b7280; text-align: center; }
+  .goal b { display: block; text-align: center; font-size: 120px; line-height: 1; color: #1f2937; }
+  .hive { display: flex; flex-direction: column; align-items: center; margin-top: 24px; }
+  .row { display: flex; gap: 12px; } .row + .row { margin-top: -24px; }
+  .hex { width: 118px; height: 136px; background: var(--hex); color: #fff; font-size: 50px; font-weight: 800;
+    display: flex; align-items: center; justify-content: center;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%); }
+  .hex.center { background: var(--center); }
+  .hex.empty { background: #e2e8f0; }
+  .url { margin-top: auto; font-size: 34px; font-weight: 800; color: #0e7490; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <img class="logo" src="../../logo.png" alt="" />
+    <div class="title" id="title"></div>
+    <div class="date" id="date"></div>
+    <div class="goal">Arriba a <b id="t"></b></div>
+    <div class="hive" id="hive"></div>
+    <div class="url">numerologic.cat</div>
+  </div>
+<script>
+  const q = new URLSearchParams(location.search);
+  document.body.style.setProperty("--hex", q.get("hex") || "#58b4c4");
+  document.body.style.setProperty("--center", q.get("center") || "#ec5a52");
+  document.getElementById("title").textContent = q.get("title") || "";
+  document.getElementById("date").textContent = q.get("date") || "";
+  document.getElementById("t").textContent = q.get("t");
+  const c = q.get("c");
+  const rest = [...q.get("d")].filter((x) => x !== c);
+  while (rest.length < 6) rest.push("");               // reptes de 5–6 dígits: cel·les grises
+  const cells = [rest[0], rest[1], rest[2], c, rest[3], rest[4], rest[5]];
+  const rows = [[0, 1], [2, 3, 4], [5, 6]];
+  document.getElementById("hive").innerHTML = rows.map((r) =>
+    `<div class="row">${r.map((i) => `<div class="hex${i === 3 ? " center" : ""}${cells[i] === "" ? " empty" : ""}">${cells[i]}</div>`).join("")}</div>`
+  ).join("");
+</script>
+</body>
+</html>
