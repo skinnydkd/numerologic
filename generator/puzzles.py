@@ -138,32 +138,46 @@ def make_puzzle(digits, central_index, band=(40, 120), max_leaves=4, max_tutti_t
     candidates.sort(key=lambda t: (t[1], -t[0]), reverse=True)
 
     for v, _n in candidates[:max_tutti_tries]:
-        if not meaningful_tutti_exists(digits, v, variant=variant):
-            continue
-        res = counted_and_brevi(digits, central, v, variant)
-        if res is None:
-            continue
-        counted = res["counted"]
-        solutions = sorted(counted.keys())
-        total = game_total_points(counted, res["brevi"]["operands"], digits, has_tutti=True)
-        return {
-            "target": v,
-            "digits": digits,
-            "centralIndex": central_index,
-            "maxOperands": res["maxOperands"],
-            "difficulty": difficulty,
-            "solutions": solutions,
-            "totalPoints": total,
-            "ranks": build_ranks(total),
-            "hasTutti": True,
-            "brevi": res["brevi"],
-            "hints": {
-                "byLeaves": {str(k): res["byLeaves"][k] for k in sorted(res["byLeaves"])},
-                "byOp": res["byOp"],
-            },
-            "rules": {
-                "allowRepeat": variant.allow_repeat,
-                "ops": list(variant.ops) + (["sqrt"] if variant.use_sqrt else []),
-            },
-        }
+        pz = make_special_puzzle(digits, central_index, v, variant=variant, difficulty=difficulty)
+        if pz is not None:
+            return pz
     return None
+
+
+def make_special_puzzle(digits, central_index, target, variant=FULL, difficulty="dificil",
+                        count_operands=4):
+    """Repte amb objectiu FIXAT per a aquests dígits/central (amb tutti), o None.
+
+    Salta la cerca d'objectiu de `make_puzzle` (no cal `generate`, car amb 6 operands).
+    `count_operands` > 4 amplia el conjunt comptat més enllà del Brevi per als objectius
+    grans (p. ex. 314 al rusc de π: Brevi de 5 amb 2 solucions, 44 fins a 6 operands).
+    """
+    digits = list(digits)
+    central = digits[central_index]
+    if not meaningful_tutti_exists(digits, target, variant=variant):
+        return None
+    res = counted_and_brevi(digits, central, target, variant, min_max_ops=count_operands)
+    if res is None:
+        return None
+    counted = res["counted"]
+    total = game_total_points(counted, res["brevi"]["operands"], digits, has_tutti=True)
+    return {
+        "target": target,
+        "digits": digits,
+        "centralIndex": central_index,
+        "maxOperands": res["maxOperands"],
+        "difficulty": difficulty,
+        "solutions": sorted(counted.keys()),
+        "totalPoints": total,
+        "ranks": build_ranks(total),
+        "hasTutti": True,
+        "brevi": res["brevi"],
+        "hints": {
+            "byLeaves": {str(k): res["byLeaves"][k] for k in sorted(res["byLeaves"])},
+            "byOp": res["byOp"],
+        },
+        "rules": {
+            "allowRepeat": variant.allow_repeat,
+            "ops": list(variant.ops) + (["sqrt"] if variant.use_sqrt else []),
+        },
+    }

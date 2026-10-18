@@ -186,11 +186,12 @@ def _leaf_count(ast):
     return sum(_leaf_count(c) for c in ast[1:] if isinstance(c, tuple))
 
 
-def counted_and_brevi(digits, central, target, variant, hard_cap=7):
+def counted_and_brevi(digits, central, target, variant, hard_cap=7, min_max_ops=4):
     """Conjunt comptat, Brevi i recomptes, o None si no hi ha cap solució (amb central).
 
     Enumera tiers ascendents; el primer no buit és el Brevi. El conjunt comptat acumula
-    tiers fins a maxOperands = max(4, brevi.operands), acotat a hard_cap i a len(digits)."""
+    tiers fins a maxOperands = max(min_max_ops, brevi.operands), acotat a hard_cap i a
+    len(digits). `min_max_ops` > 4 només per a reptes especials d'objectiu gran."""
     # tier mínim no buit (Brevi); els tiers buits són barats (la reachability els poda)
     brevi_ops = None
     for r in range(2, min(len(digits), hard_cap) + 1):
@@ -200,7 +201,7 @@ def counted_and_brevi(digits, central, target, variant, hard_cap=7):
             break
     if brevi_ops is None:
         return None
-    max_ops = min(max(4, brevi_ops), len(digits), hard_cap)
+    max_ops = min(max(min_max_ops, brevi_ops), len(digits), hard_cap)
     tiers = solutions_by_tier(digits, central, target, variant, max_operands=max_ops)
     # dedup entre tiers per canònica reductora: els farciments ×1/÷1 col·lapsen
     counted = {}
