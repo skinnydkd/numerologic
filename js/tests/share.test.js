@@ -36,3 +36,10 @@ test("buildShareText no revela cap solució", () => {
                                tuttiFound: true, breviComplete: true, streak: 7 });
   assert.ok(!/[0-9]\s*[+\-*/×÷]/.test(txt)); // cap expressió aritmètica
 });
+
+test("buildShareText d'un repte especial porta l'etiqueta", () => {
+  assert.equal(
+    buildShareText({ number: 213, rankName: "Mestre", score: 120, found: 9, special: "π Dia del Pi" }),
+    "Numerològic #213 · Mestre\nπ Dia del Pi\n120 punts · 9 solucions\nhttps://numerologic.cat/c"
+  );
+});

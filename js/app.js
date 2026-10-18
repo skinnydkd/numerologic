@@ -16,7 +16,7 @@ const els = {
   send: $("send"), count: $("count"), rankBtn: $("rankBtn"), tutti: $("tutti"),
   panel: $("panel"), share: $("share"), result: $("result"), difficulty: $("difficulty"),
   help: $("help"), pistes: $("pistes"), num: $("num"), yesterday: $("yesterday"),
-  brevi: $("brevi"),
+  brevi: $("brevi"), specialNote: $("specialNote"),
 };
 
 const DIFF_LABEL = { facil: "Fàcil", mitja: "Mitjà", dificil: "Difícil" };
@@ -74,6 +74,21 @@ function start(index) {
   // dificultat: usa el camp del repte (espectre real del generador); si no hi és, l'heurística del client
   const dkey = DIFF_LABEL[puzzle.difficulty] ? puzzle.difficulty : DIFF_CLASS[difficulty(puzzle.hints, puzzle.rules)];
   els.difficulty.innerHTML = `<span class="${dkey}">${DIFF_LABEL[dkey]}</span>`;
+  // repte especial: etiqueta, cartell explicatiu i colors del rusc (via variables CSS a .pl)
+  const sp = puzzle.special || {};
+  if (sp.title) {
+    const tag = document.createElement("span");
+    tag.className = "special";
+    tag.textContent = sp.title; // textContent: el títol no s'interpreta com a HTML
+    els.difficulty.append(" ", tag);
+  }
+  els.specialNote.textContent = sp.note || "";
+  els.specialNote.classList.toggle("hidden", !sp.note);
+  const pl = document.querySelector(".pl");
+  for (const [prop, val] of [["--hex", sp.hex], ["--hex-center", sp.center]]) {
+    if (val) pl.style.setProperty(prop, val);
+    else pl.style.removeProperty(prop);
+  }
   ui.renderHive(els.hive, puzzle.digits, puzzle.centralIndex, addToken);
   ui.renderOps(els.ops, addToken, puzzle.rules);
   els.num.textContent = `Núm. ${index + 1}`;
@@ -167,6 +182,7 @@ els.share.addEventListener("click", async () => {
     tuttiCount: game.tuttiCount,
     breviComplete: game.breviComplete(),
     streak: streakDisplay(loadStreak(localStorage), todayStr(Date.now())),
+    special: game.puzzle.special && game.puzzle.special.title,
   });
   try {
     if (navigator.share) {
