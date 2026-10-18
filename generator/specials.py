@@ -45,7 +45,7 @@ SPECIALS = [
             note="Avui és el repte número 100 del Numerològic. Gràcies per jugar! Arriba a 100.",
             hex="#ca8a04", center="#b45309"),
     Special(D(2026, 11, 23), "🌀 Dia de Fibonacci", 233, [1, 2, 3, 6, 8, 9], 2, count_operands=6,
-            note="23/11 → 1, 1, 2, 3: comença la successió de Fibonacci. I 233 també n'és un terme (…89, 144, 233).",
+            note="Avui és el Dia de Fibonacci: escrit a l'americana, 11/23, són els primers termes de la successió (1, 1, 2, 3). I 233 també n'és un terme (…89, 144, 233).",
             hex="#059669", center="#065f46"),
     Special(D(2026, 12, 12), "12/12", 1212, [2, 4, 5, 6, 7, 8, 9], 5, count_operands=6,
             note="12/12: el dia i el mes coincideixen. Arriba a 1212! Repte gros: calen 6 operands.",
