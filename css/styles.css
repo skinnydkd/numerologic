@@ -80,3 +80,26 @@ body {
 .panel-card ul { margin: 0; padding-left: 18px; }
 .panel-card li { margin: 4px 0; }
 .hidden { display: none; }
+
+/* Rànquing */
+.rk-note { margin: 6px 0; color: #6b7280; font-size: 13px; }
+.rk-msg { margin: 8px 0; color: #b45309; font-size: 13px; font-weight: 600; }
+.rk-sep { border: none; border-top: 1px solid #e2e8f0; margin: 12px 0; }
+.rk-tabs { display: flex; gap: 6px; margin: 8px 0; }
+.rk-btn { padding: 8px 12px; border: 1.5px solid #d8dee4; border-radius: 999px; background: #fff; color: #374151; font-size: 13px; cursor: pointer; }
+.rk-btn:hover { background: #f1f5f9; }
+.rk-btn:active { background: #e2e8f0; }
+.rk-btn:disabled { opacity: .5; cursor: default; }
+.rk-tab { flex: 1; padding: 7px 4px; }
+.rk-tab[aria-pressed="true"] { background: #0e7490; border-color: #0e7490; color: #fff; font-weight: 700; }
+.rk-main { border-color: #58b4c4; color: #0e7490; font-weight: 700; }
+.rk-list { list-style: none; margin: 8px 0 0; padding: 0; }
+.rk-own { margin-top: 4px; padding-top: 4px; border-top: 1px dashed #cbd5e1; }
+.rk-row { display: flex; gap: 10px; align-items: baseline; padding: 5px 6px; border-radius: 8px; font-size: 14px; }
+.rk-row.jo { background: #cffafe; font-weight: 700; }
+.rk-pos { width: 2em; text-align: right; color: #6b7280; }
+.rk-alias { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.rk-punts { font-variant-numeric: tabular-nums; }
+.rk-codi { margin: 4px 0; text-align: center; font-family: "Anton", system-ui, sans-serif; font-size: 40px; letter-spacing: 6px; color: #1f2937; }
+.rk-join { display: flex; gap: 6px; }
+.rk-input { flex: 1; min-width: 0; padding: 8px 10px; border: 1.5px solid #d8dee4; border-radius: 10px; font-size: 14px; text-transform: uppercase; }

@@ -1,5 +1,5 @@
 // Service worker cache-first: app shell + puzzles.json. Offline-first.
-const CACHE = "numerologic-v29";
+const CACHE = "numerologic-v30";
 const ASSETS = [
   "./",
   "./index.html",
@@ -18,6 +18,7 @@ const ASSETS = [
   "./js/share.js",
   "./js/difficulty.js",
   "./js/streak.js",
+  "./js/ranking.js",
   "./data/puzzles.json",
   "./manifest.json",
   "./icon.svg",
@@ -43,6 +44,7 @@ self.addEventListener("activate", (e) => {
 
 self.addEventListener("fetch", (e) => {
   if (e.request.method !== "GET") return;
+  if (new URL(e.request.url).pathname.startsWith("/api/")) return; // rànquing: sempre a la xarxa
   e.respondWith(
     caches.match(e.request).then((cached) =>
       cached ||

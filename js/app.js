@@ -8,6 +8,7 @@ import { buildShareText } from "./share.js";
 import { parse } from "./parser.js";
 import { evaluate } from "./evaluator.js";
 import { difficulty } from "./difficulty.js";
+import { setupRanquing, requestSync } from "./ranking.js";
 
 const $ = (id) => document.getElementById(id);
 const els = {
@@ -15,7 +16,7 @@ const els = {
   hive: $("hive"), ops: $("ops"), del: $("del"), shuffle: $("shuffle"),
   send: $("send"), count: $("count"), rankBtn: $("rankBtn"), tutti: $("tutti"),
   panel: $("panel"), share: $("share"), result: $("result"), difficulty: $("difficulty"),
-  help: $("help"), pistes: $("pistes"), num: $("num"), yesterday: $("yesterday"),
+  help: $("help"), ranquing: $("ranquing"), pistes: $("pistes"), num: $("num"), yesterday: $("yesterday"),
   brevi: $("brevi"), specialNote: $("specialNote"),
 };
 
@@ -109,6 +110,10 @@ function refreshFooter() {
   });
 }
 
+function foundTexts() {
+  return [...game.found.values()].map((f) => f.text);
+}
+
 function addToken(t) {
   expr += t;
   showExpr();
@@ -133,6 +138,7 @@ function send() {
       els.flash.textContent = "✦ Brevi complet!";
     }
     refreshFooter();
+    requestSync(foundTexts()); // rànquing: només si t'hi has apuntat
   }
   if (res.status === "found" || res.status === "tutti" || res.status === "duplicate") {
     expr = "";
@@ -206,6 +212,9 @@ document.addEventListener("keydown", (e) => {
 });
 
 start(dailyIdx());
+
+els.ranquing.addEventListener("click", setupRanquing(els.panel, foundTexts));
+if (game.found.size > 0) requestSync(foundTexts());
 
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker.register("sw.js").catch(() => {});
