@@ -269,7 +269,10 @@ export function instructionsHTML(rules) {
       <li><b>Modes</b>: repte <b>diari</b> (igual per a tothom) i <b>pràctica</b> lliure.</li>
       <li><b>Comparteix</b> el resultat sense revelar cap solució.</li>
       <li><b>Rànquing</b>: és opcional. Si hi entres, tens un àlies a l'atzar, no es guarda cap dada personal i «Surt del rànquing» ho esborra tot.</li>
-    </ul>`;
+    </ul>
+
+    <p><b>Qui hi ha darrere</b></p>
+    <p>Numerològic l'ha fet <b>Pau Monterde</b>, professor de secundària de Vila-real. És gratuït, sense anuncis i en català. Si n'escrius o en parles: <a href="/premsa/">kit de premsa</a>.</p>`;
 }
 
 export function hintsHTML(hints, rules, brevi) {
