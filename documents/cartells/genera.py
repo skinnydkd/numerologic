@@ -21,16 +21,17 @@ def make_qr(path: str) -> None:
     img.save(str(DIR / f"qr-{path}.svg"))
 
 
-def render(lloc: str) -> None:
-    url = (DIR / "cartell.html").as_uri() + f"?lloc={lloc}"
+def render(lloc: str, nom: str, extra: str = "") -> None:
+    url = (DIR / "cartell.html").as_uri() + f"?lloc={lloc}{extra}"
     common = [CHROME, "--headless=new", "--disable-gpu", "--allow-file-access-from-files"]
-    subprocess.run(common + ["--no-pdf-header-footer", f"--print-to-pdf={DIR / f'cartell-{lloc}.pdf'}", url], check=True)
+    subprocess.run(common + ["--no-pdf-header-footer", f"--print-to-pdf={DIR / f'{nom}.pdf'}", url], check=True)
     subprocess.run(common + ["--window-size=794,1123", "--hide-scrollbars",
-                             f"--screenshot={DIR / f'cartell-{lloc}.png'}", url], check=True)
+                             f"--screenshot={DIR / f'{nom}.png'}", url], check=True)
 
 
 if __name__ == "__main__":
     for lloc, path in LLOCS.items():
         make_qr(path)
-        render(lloc)
-        print(f"{lloc}: cartell-{lloc}.pdf (QR: numerologic.cat/{path})")
+        render(lloc, f"cartell-{lloc}")
+        render(lloc, f"cartell-{lloc}-sense-tires", "&tires=no")
+        print(f"{lloc}: cartell-{lloc}.pdf + -sense-tires.pdf (QR: numerologic.cat/{path})")

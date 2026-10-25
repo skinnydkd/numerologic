@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- Cartell A4 per imprimir. ?lloc=institut|facultat (canvia el text i el QR).
+<!-- Cartell A4 per imprimir. ?lloc=institut|facultat (canvia el text i el QR); &tires=no treu els retallables.
      Es genera amb: python documents/cartells/genera.py -->
 <html lang="ca">
 <head>
@@ -49,6 +49,8 @@
   .tab { flex: 1; border-left: 0.4mm dashed #94a3b8; display: flex; align-items: center; justify-content: center; }
   .tab:first-child { border-left: none; }
   .tab span { transform: rotate(-90deg); white-space: nowrap; font-size: 3mm; font-weight: 700; color: #0e7490; }
+  .net .tabs, .net .scissors { display: none; }
+  .net { padding-bottom: 16mm; justify-content: space-between; }
   .scissors { position: absolute; bottom: 26mm; left: 6mm; transform: translateY(50%); font-size: 4mm; color: #94a3b8; background: #fff; padding: 0 1mm; }
 </style>
 </head>
@@ -93,7 +95,9 @@
     institut: { qr: "qr-i.svg", extra: "Professorat: funciona com a rutina de 5 minuts a l'inici de classe." },
     facultat: { qr: "qr-f.svg", extra: "Ideal per a la pausa entre classes. Qui fa més punts del grup?" },
   };
-  const v = VARIANTS[new URLSearchParams(location.search).get("lloc")] || VARIANTS.institut;
+  const params = new URLSearchParams(location.search);
+  if (params.get("tires") === "no") document.querySelector(".page").classList.add("net");
+  const v = VARIANTS[params.get("lloc")] || VARIANTS.institut;
   document.getElementById("qr").src = v.qr;
   document.getElementById("extra").textContent = v.extra;
   document.getElementById("tabs").innerHTML = Array.from({ length: 9 }, () => '<div class="tab"><span>numerologic.cat</span></div>').join("");
