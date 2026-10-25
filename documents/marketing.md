@@ -109,3 +109,5 @@ Fes servir sempre l'enllaç curt de cada canal i, cada dilluns, mira'ls a Web An
 | WhatsApp/Telegram | `numerologic.cat/w` |
 | Correus a mitjans | `numerologic.cat/p` |
 | Docents / associacions | `numerologic.cat/e` |
+| Cartell a l'institut (QR) | `numerologic.cat/i` |
+| Cartell a la facultat (QR) | `numerologic.cat/f` |

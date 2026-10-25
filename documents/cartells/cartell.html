@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<!-- Cartell A4 per imprimir. ?lloc=institut|facultat (canvia el text i el QR).
+     Es genera amb: python documents/cartells/genera.py -->
+<html lang="ca">
+<head>
+<meta charset="utf-8" />
+<title>Cartell Numerològic</title>
+<style>
+  @font-face { font-family: "Anton"; src: url("../../fonts/anton.woff2") format("woff2"); }
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 210mm; height: 297mm; }
+  body { font-family: "Segoe UI", system-ui, sans-serif; color: #1f2937; background: #fff;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .page { position: relative; width: 210mm; height: 297mm; padding: 11mm 16mm 0; display: flex; flex-direction: column; }
+  .logo { display: block; width: 120mm; margin: 0 auto; }
+  h1 { font-family: "Anton", sans-serif; font-weight: 400; text-transform: uppercase; text-align: center;
+    font-size: 15mm; line-height: 1.05; letter-spacing: .3mm; margin-top: 4mm; }
+  h1 span { color: #ec5a52; }
+  .lead { text-align: center; font-size: 5.2mm; line-height: 1.4; color: #475569; margin: 4mm auto 0; max-width: 160mm; }
+
+  .main { display: flex; align-items: center; justify-content: space-between; gap: 8mm; margin-top: 6mm; }
+  .example { flex: 1; text-align: center; }
+  .example .goal { font-size: 4.6mm; color: #64748b; }
+  .example .goal b { display: block; font-size: 16mm; line-height: 1; color: #1f2937; font-weight: 800; }
+  .hive { display: flex; flex-direction: column; align-items: center; margin-top: 4mm; }
+  .row { display: flex; gap: 1.6mm; } .row + .row { margin-top: -3.2mm; }
+  .hex { width: 15.5mm; height: 17.9mm; background: #58b4c4; color: #fff; font-weight: 800; font-size: 7mm;
+    display: flex; align-items: center; justify-content: center;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%); }
+  .hex.c { background: #ec5a52; }
+  .sol { margin-top: 4mm; font-size: 6mm; font-weight: 700; letter-spacing: .3mm; }
+  .sol em { font-style: normal; color: #16a34a; }
+
+  .qr { width: 78mm; text-align: center; border: 0.6mm solid #1f2937; border-radius: 5mm; padding: 5mm 5mm 4mm; }
+  .qr img { width: 66mm; height: 66mm; display: block; margin: 0 auto; }
+  .qr .cta { font-family: "Anton", sans-serif; text-transform: uppercase; font-size: 7mm; margin-top: 2mm; }
+  .qr .url { font-size: 5mm; font-weight: 700; color: #0e7490; }
+
+  .rules { list-style: none; margin-top: 7mm; display: grid; grid-template-columns: repeat(3, 1fr); gap: 6mm; }
+  .rules li { font-size: 4.3mm; line-height: 1.4; border-top: 0.6mm solid #1f2937; padding-top: 2.5mm; }
+  .rules b { display: block; font-family: "Anton", sans-serif; font-weight: 400; font-size: 6mm; color: #ec5a52; }
+
+  .tagline { text-align: center; font-size: 4.6mm; font-weight: 700; margin-top: 6mm; }
+  .extra { text-align: center; font-size: 4.2mm; color: #475569; margin-top: 2mm; }
+  .credit { text-align: center; font-size: 3.4mm; color: #94a3b8; margin-top: 3mm; }
+
+  .tabs { position: absolute; left: 0; right: 0; bottom: 0; height: 26mm; display: flex; border-top: 0.4mm dashed #94a3b8; }
+  .tab { flex: 1; border-left: 0.4mm dashed #94a3b8; display: flex; align-items: center; justify-content: center; }
+  .tab:first-child { border-left: none; }
+  .tab span { transform: rotate(-90deg); white-space: nowrap; font-size: 3mm; font-weight: 700; color: #0e7490; }
+  .scissors { position: absolute; bottom: 26mm; left: 6mm; transform: translateY(50%); font-size: 4mm; color: #94a3b8; background: #fff; padding: 0 1mm; }
+</style>
+</head>
+<body>
+<div class="page">
+  <img class="logo" src="../../logo.png" alt="Numerològic" />
+  <h1>El Paraulògic de les <span>matemàtiques</span></h1>
+  <p class="lead">Cada dia, un número objectiu i un rusc de dígits. Combina'ls amb sumes, restes, multiplicacions i divisions per arribar-hi de totes les maneres possibles.</p>
+
+  <div class="main">
+    <div class="example">
+      <div class="goal">Per exemple, arriba a <b>30</b></div>
+      <div class="hive">
+        <div class="row"><div class="hex">1</div><div class="hex">2</div></div>
+        <div class="row"><div class="hex">4</div><div class="hex c">3</div><div class="hex">5</div></div>
+        <div class="row"><div class="hex">7</div><div class="hex">9</div></div>
+      </div>
+      <div class="sol">(2 × 7 − 4) × 3 = <em>30</em></div>
+    </div>
+    <div class="qr">
+      <img id="qr" src="qr-i.svg" alt="Codi QR cap a numerologic.cat" />
+      <div class="cta">Escaneja i juga</div>
+      <div class="url" id="url">numerologic.cat</div>
+    </div>
+  </div>
+
+  <ul class="rules">
+    <li><b>1. El centre, sempre</b>El dígit vermell ha de sortir a totes les operacions.</li>
+    <li><b>2. Un sol cop</b>Cada dígit del rusc es pot fer servir com a molt una vegada.</li>
+    <li><b>3. Com més, millor</b>Cada solució suma punts. Les més curtes i les que usen tots els dígits en valen 10.</li>
+  </ul>
+
+  <p class="tagline">Gratis · En català · Sense registre · Un repte nou cada dia</p>
+  <p class="extra" id="extra"></p>
+  <p class="credit">Fet a Benicarló per Pau M., professor de secundària</p>
+
+  <span class="scissors">✂</span>
+  <div class="tabs" id="tabs"></div>
+</div>
+<script>
+  const VARIANTS = {
+    institut: { qr: "qr-i.svg", extra: "Professorat: funciona com a rutina de 5 minuts a l'inici de classe." },
+    facultat: { qr: "qr-f.svg", extra: "Ideal per a la pausa entre classes. Qui fa més punts del grup?" },
+  };
+  const v = VARIANTS[new URLSearchParams(location.search).get("lloc")] || VARIANTS.institut;
+  document.getElementById("qr").src = v.qr;
+  document.getElementById("extra").textContent = v.extra;
+  document.getElementById("tabs").innerHTML = Array.from({ length: 9 }, () => '<div class="tab"><span>numerologic.cat</span></div>').join("");
+</script>
+</body>
+</html>
