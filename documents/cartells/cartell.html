@@ -43,7 +43,7 @@
 
   .tagline { text-align: center; font-size: 4.6mm; font-weight: 700; margin-top: 6mm; }
   .extra { text-align: center; font-size: 4.2mm; color: #475569; margin-top: 2mm; }
-  .credit { text-align: center; font-size: 3.4mm; color: #94a3b8; margin-top: 3mm; }
+  .lliga { text-align: center; font-size: 4.4mm; font-weight: 700; color: #0e7490; margin-top: 3mm; }
 
   .tabs { position: absolute; left: 0; right: 0; bottom: 0; height: 26mm; display: flex; border-top: 0.4mm dashed #94a3b8; }
   .tab { flex: 1; border-left: 0.4mm dashed #94a3b8; display: flex; align-items: center; justify-content: center; }
@@ -85,21 +85,24 @@
 
   <p class="tagline">Gratuït · En català · Sense registre · Un repte nou cada dia</p>
   <p class="extra" id="extra"></p>
-  <p class="credit">Fet a Benicarló per Pau M., professor de secundària</p>
+  <p class="lliga" id="lliga"></p>
 
   <span class="scissors">✂</span>
   <div class="tabs" id="tabs"></div>
 </div>
 <script>
   const VARIANTS = {
-    institut: { qr: "qr-i.svg", extra: "Professorat: funciona com a rutina de 5 minuts a l'inici de classe." },
-    facultat: { qr: "qr-f.svg", extra: "Ideal per a la pausa entre classes. Qui fa més punts del grup?" },
+    institut: { qr: "qr-i.svg", extra: "Professorat: funciona com a rutina de 5 minuts a l'inici de classe.",
+      lliga: "Rànquing diari: crea la lliga de la teua classe i mireu qui fa més punts." },
+    facultat: { qr: "qr-f.svg", extra: "Ideal per a la pausa entre classes.",
+      lliga: "Rànquing diari: crea una lliga amb el teu grup i mireu qui fa més punts." },
   };
   const params = new URLSearchParams(location.search);
   if (params.get("tires") === "no") document.querySelector(".page").classList.add("net");
   const v = VARIANTS[params.get("lloc")] || VARIANTS.institut;
   document.getElementById("qr").src = v.qr;
   document.getElementById("extra").textContent = v.extra;
+  document.getElementById("lliga").textContent = v.lliga;
   document.getElementById("tabs").innerHTML = Array.from({ length: 9 }, () => '<div class="tab"><span>numerologic.cat</span></div>').join("");
 </script>
 </body>
