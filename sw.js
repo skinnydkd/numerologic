@@ -1,5 +1,5 @@
 // Service worker cache-first: app shell + puzzles.json. Offline-first.
-const CACHE = "numerologic-v31";
+const CACHE = "numerologic-v32";
 const ASSETS = [
   "./",
   "./index.html",
@@ -37,7 +37,8 @@ self.addEventListener("install", (e) => {
 self.addEventListener("activate", (e) => {
   e.waitUntil(
     caches.keys()
-      .then((keys) => Promise.all(keys.filter((k) => k !== CACHE).map((k) => caches.delete(k))))
+      // Només esborra caches pròpies: els jocs germans (/igualogic/…) comparteixen origen.
+      .then((keys) => Promise.all(keys.filter((k) => k.startsWith("numerologic-") && k !== CACHE).map((k) => caches.delete(k))))
       .then(() => self.clients.claim())
   );
 });
