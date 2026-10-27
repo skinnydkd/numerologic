@@ -1,0 +1,88 @@
+@font-face {
+  font-family: "Anton";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../../fonts/anton.woff2") format("woff2");
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: #f1f5f9; font-family: system-ui, sans-serif; color: #1f2937;
+  display: flex; justify-content: center; padding: 16px;
+}
+.pl {
+  width: 100%; max-width: 400px; background: #fff; border: 1px solid #eef2f4;
+  border-radius: 18px; padding: 16px 16px 20px; box-shadow: 0 8px 26px rgba(0,0,0,.06);
+}
+.topbar { text-align: center; }
+.logo { font-family: "Anton", system-ui, sans-serif; font-weight: 400; font-size: 44px; letter-spacing: 1px; line-height: 1; margin: 6px 0 4px; color: #1f2937; }
+.logo .t { color: #58b4c4; }
+.logo .r { color: #ec5a52; }
+
+.goal { text-align: center; color: #6b7280; font-size: 13px; margin-top: 8px; }
+.difficulty { text-align: center; margin-top: 6px; }
+.difficulty span { display: inline-block; padding: 2px 12px; border-radius: 999px; font-size: 12px; font-weight: 700; }
+.difficulty .facil { background: #dcfce7; color: #166534; }
+.difficulty .mitja { background: #fef3c7; color: #92400e; }
+.difficulty .dificil { background: #fee2e2; color: #991b1b; }
+.difficulty .special { background: #ecfeff; color: #0e7490; border: 1px solid #a5f3fc; }
+
+.goal b { display: block; font-size: 38px; color: #1f2937; line-height: 1.15; }
+.route { text-align: center; font-size: 15px; color: #475569; min-height: 22px; margin-top: 6px; }
+.result { text-align: center; min-height: 24px; font-size: 20px; font-weight: 700; color: #94a3b8; }
+.result.hit { color: #16a34a; }
+
+.hive { display: flex; flex-direction: column; align-items: center; margin: 6px 0 14px; }
+.hrow { display: flex; gap: 5px; }
+.hrow + .hrow { margin-top: -12px; }
+.hex {
+  position: relative; width: 60px; height: 69px; background: #58b4c4; color: #fff; font-size: 18px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; cursor: pointer; border: none; padding: 0;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+.hex.center { background: #ec5a52; font-size: 24px; cursor: default; }
+.hex.on { background: #0e7490; }
+.hex.on.here { background: #eab308; }
+.hex.off { background: #e2e8f0; color: #94a3b8; cursor: default; }
+.hex small { position: absolute; bottom: 9px; font-size: 10px; font-weight: 600; opacity: .85; }
+.hex:not(.off):not(.center):active { filter: brightness(.92); }
+.pill:disabled { opacity: .5; cursor: default; }
+.dup { color: #d97706; }
+.flash.dup { color: #d97706; }
+
+.flash { text-align: center; min-height: 22px; font-size: 14px; font-weight: 600; margin: 4px 0; }
+.flash.found { color: #16a34a; }
+.flash.tutti { color: #eab308; }
+.flash.error { color: #dc2626; }
+
+.keys { display: grid; grid-template-columns: repeat(11, 1fr); gap: 4px; margin: 6px 0 12px; }
+.key {
+  padding: 11px 0; border: 1.5px solid #e2e8f0; border-radius: 999px; background: #fff; color: #334155;
+  font-size: 18px; font-weight: 600; cursor: pointer;
+}
+.key:active, .pill:active { filter: brightness(.92); }
+.actions { display: flex; align-items: center; justify-content: center; gap: 14px; }
+.pill { padding: 11px 22px; border: 1.5px solid #d8dee4; border-radius: 999px; background: #fff; color: #374151; font-size: 14px; cursor: pointer; }
+.send { border-color: #58b4c4; color: #0e7490; font-weight: 700; }
+
+.foot { text-align: center; margin-top: 16px; }
+.found { background: none; border: none; color: #374151; font-size: 14px; cursor: pointer; }
+.status, .links { color: #6b7280; font-size: 13px; }
+.status { margin-top: 8px; }
+.links { margin-top: 6px; }
+.num { color: #1f2937; font-weight: 600; }
+.rankbtn { background: none; border: none; color: #1f2937; font-weight: 600; cursor: pointer; font-size: 13px; }
+.goalst.done { color: #0e7490; font-weight: 700; }
+.star { color: #eab308; }
+.star.done { font-weight: 700; }
+.streak:empty { display: none; }
+.streak::before { content: " · "; color: #6b7280; }
+
+.panel { position: fixed; inset: 0; background: rgba(15,23,42,.45); display: flex; align-items: center; justify-content: center; padding: 20px; }
+.panel-card { background: #fff; border-radius: 14px; padding: 18px 20px; max-width: 360px; width: 100%; max-height: 70vh; overflow: auto; }
+.panel-card h3 { margin: 0 0 10px; }
+.panel-card ul { margin: 0; padding-left: 18px; }
+.panel-card li { margin: 4px 0; }
+.panel-card .mini { display: inline-block; width: 18px; height: 18px; border-radius: 4px; vertical-align: -3px; }
+.hint-btn { margin-left: 6px; padding: 3px 10px; font-size: 12px; }
+.hidden { display: none; }
