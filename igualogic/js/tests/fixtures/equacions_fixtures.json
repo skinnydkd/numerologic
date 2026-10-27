@@ -1,0 +1,4171 @@
+{
+"equations": [
+{
+"eq": "3*7-4=17",
+"valid": true,
+"lhs": 17
+},
+{
+"eq": "2+3*4=14",
+"valid": true,
+"lhs": 14
+},
+{
+"eq": "8/4*3=6",
+"valid": true,
+"lhs": 6
+},
+{
+"eq": "9-10+6=5",
+"valid": true,
+"lhs": 5
+},
+{
+"eq": "246/3=82",
+"valid": true,
+"lhs": 82
+},
+{
+"eq": "7/2=3",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "5/0=0",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "17=17",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "05+3=8",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "5+3=08",
+"valid": false,
+"lhs": 8
+},
+{
+"eq": "-3+9=6",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "3+4=5+2",
+"valid": false,
+"lhs": 7
+},
+{
+"eq": "3+4=8",
+"valid": false,
+"lhs": 7
+},
+{
+"eq": "3++4=7",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "3+4=",
+"valid": false,
+"lhs": 7
+},
+{
+"eq": "=7",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "3+4==7",
+"valid": false,
+"lhs": 7
+},
+{
+"eq": "0+0=0",
+"valid": true,
+"lhs": 0
+},
+{
+"eq": "10-10=0",
+"valid": true,
+"lhs": 0
+},
+{
+"eq": "0*5=0",
+"valid": true,
+"lhs": 0
+},
+{
+"eq": "12/4/3=1",
+"valid": true,
+"lhs": 1
+},
+{
+"eq": "12/4*3=9",
+"valid": true,
+"lhs": 9
+},
+{
+"eq": "2*3/4=1",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "19-92+77=4",
+"valid": true,
+"lhs": 4
+},
+{
+"eq": "6/4*2=3",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "3+4=07",
+"valid": false,
+"lhs": 7
+},
+{
+"eq": "3+4*",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "100/10=10",
+"valid": true,
+"lhs": 10
+},
+{
+"eq": "",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "526+01/8",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "1590=830",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "16613186",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "0/913++9",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "09960308",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "/2462819",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "48/+2199",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "+3518-19",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "0937+86*",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "579=7543",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "*2-*3194",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "87=5-749",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "11862*52",
+"valid": false,
+"lhs": 616824
+},
+{
+"eq": "=760+1*8",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "9*=/55-5",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "979*71/1",
+"valid": false,
+"lhs": 69509
+},
+{
+"eq": "47-+10--",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "4+9+/74-",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "6=+50752",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "91703*42",
+"valid": false,
+"lhs": 3851526
+},
+{
+"eq": "-366=/71",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "27684=2/",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "6/84-65+",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "=6321223",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "+307/924",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "40268599",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "52-/89++",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "-07=/*/+",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "*8666617",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "+6031372",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "15901092",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "815901/3",
+"valid": false,
+"lhs": 271967
+},
+{
+"eq": "962+4595",
+"valid": false,
+"lhs": 5557
+},
+{
+"eq": "711/7777",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "4121-5-4",
+"valid": false,
+"lhs": 4112
+},
+{
+"eq": "7/-28038",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "52-8=0*8",
+"valid": false,
+"lhs": 44
+},
+{
+"eq": "4+/1-/48",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "5=25*388",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "*85+39**",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "*/3*3/6-",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "*33875-0",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "0*4743-9",
+"valid": false,
+"lhs": -9
+},
+{
+"eq": "57*=-551",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "31373537",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "9=9/07=+",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "5*+1/+1=",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "6*-*37=2",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "6*+51*-6",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "76-1-222",
+"valid": false,
+"lhs": -147
+},
+{
+"eq": "029=7*+2",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "9/97+=52",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "88200*-+",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "18-=26/3",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "//304348",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "3*95486/",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "20=-5=7+",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "9/=86/==",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "8282880/",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "7*290**2",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "2279-180",
+"valid": false,
+"lhs": 2099
+},
+{
+"eq": "5+8887**",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "1=803340",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "*18780*=",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "=1759898",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "3-4788*7",
+"valid": false,
+"lhs": -33513
+},
+{
+"eq": "83-8===4",
+"valid": false,
+"lhs": 75
+},
+{
+"eq": "=8=3/726",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "16751+36",
+"valid": false,
+"lhs": 16787
+},
+{
+"eq": "13+4*1=*",
+"valid": false,
+"lhs": 17
+},
+{
+"eq": "2-++524=",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "273-16=7",
+"valid": false,
+"lhs": 257
+},
+{
+"eq": "2+/32-68",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "6563551-",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "505877-0",
+"valid": false,
+"lhs": 505877
+},
+{
+"eq": "65894811",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "=*3=1144",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "0=*24*2/",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "6/=+/462",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "8=897-51",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "40*-26=1",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "40+1*419",
+"valid": false,
+"lhs": 459
+},
+{
+"eq": "/314/170",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "586==492",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "08-31240",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "23=4+48*",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "3478+245",
+"valid": false,
+"lhs": 3723
+},
+{
+"eq": "*04000-8",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "83873=71",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "+/+6+78/",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "=684-335",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "3/=--+26",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "50/201+-",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "=46201+/",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "6/8+493-",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "40722470",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "4558530=",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "43520561",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "748+338*",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "014/1269",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "06044+31",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "98/*2+=-",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "*=96*5-7",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "24-9+20/",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "/-=8+6--",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "*82=8*89",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "//*0/+9*",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "=-+-+310",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "02+516/7",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "80+0+8+3",
+"valid": false,
+"lhs": 91
+},
+{
+"eq": "7407*1-=",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "8=81+81-",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "-74*1/43",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "-*33-+77",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "/617=+4*",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "09++3192",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "54+--499",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "207074+1",
+"valid": false,
+"lhs": 207075
+},
+{
+"eq": "-3+74-84",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "777*1=83",
+"valid": false,
+"lhs": 777
+},
+{
+"eq": "41=70471",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "/87463==",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "31912-84",
+"valid": false,
+"lhs": 31828
+},
+{
+"eq": "529/+84=",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "1-537==7",
+"valid": false,
+"lhs": -536
+},
+{
+"eq": "60207+76",
+"valid": false,
+"lhs": 60283
+},
+{
+"eq": "4-265651",
+"valid": false,
+"lhs": -265647
+},
+{
+"eq": "/505*5/6",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "1=3-0=-4",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "45166/91",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "5=6*4/04",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "10/+4+=2",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "346853*5",
+"valid": false,
+"lhs": 1734265
+},
+{
+"eq": "*6=0**+6",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "==883-10",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "=-679*2+",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "/470==82",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "2765444-",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "-+46+347",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "8+612+21",
+"valid": false,
+"lhs": 641
+},
+{
+"eq": "38=*7837",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "=5*76283",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "31258153",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "54*93=0-",
+"valid": false,
+"lhs": 5022
+},
+{
+"eq": "/666-836",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "45*07495",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "2+88+*//",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "314=366+",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "764///02",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "06-*=*79",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "7016===/",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "8/773*13",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "228+1/--",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "+/*=718*",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "00*239=0",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "+-42+48+",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "6-*11148",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "93643*90",
+"valid": false,
+"lhs": 8427870
+},
+{
+"eq": "084745+/",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "=3783830",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "6-+40037",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "=++6143+",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "6=5370-5",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "-65+630*",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "4-/81373",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "4*/33734",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "*=419792",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "=376=+09",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "2=603092",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "60-0267=",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "-=5-11=2",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "532+=8-7",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "04+-6/55",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "72101415",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "6=18*365",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "*/4/*610",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "-7358=73",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "55-=70+6",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "3*+*6060",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "71*=043-",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "1=955459",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "04---5=4",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "40-*9=*+",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "10/317-7",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "*6*4=6/7",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "2=720*=-",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "4/-*2935",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "/575**91",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "836*2361",
+"valid": false,
+"lhs": 1973796
+},
+{
+"eq": "+0788526",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "=1149131",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "67-72326",
+"valid": false,
+"lhs": -72259
+},
+{
+"eq": "79=+3-8/",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "*+*1*/44",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "49454-43",
+"valid": false,
+"lhs": 49411
+},
+{
+"eq": "7323324=",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "=9351643",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "883+*1+7",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "0107=/3/",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "7=50=431",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "039/93=1",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "58/2794*",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "*+01+9-9",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "53055203",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "409-+=3/",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "0/56+529",
+"valid": false,
+"lhs": 529
+},
+{
+"eq": "4130*787",
+"valid": false,
+"lhs": 3250310
+},
+{
+"eq": "161*6+82",
+"valid": false,
+"lhs": 1048
+},
+{
+"eq": "+81+26-4",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "64+4604-",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "9=5660/*",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "*5+36-63",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "06=261/1",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "69=57*22",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "0082+*=6",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "199=5-82",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "254282=1",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "167****3",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "42/0=750",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "9=+61=-9",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "-/=2+*/3",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "969/3/72",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "93068265",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "123-/=30",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "=8/*+0+/",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "516978/+",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "*4+64936",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "6+578720",
+"valid": false,
+"lhs": 578726
+},
+{
+"eq": "097737*9",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "*/7/2*76",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "1125651*",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "788+00+2",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "1=-5*-81",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "0*8=6+*2",
+"valid": false,
+"lhs": 0
+},
+{
+"eq": "0/19--/1",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "32=74*=*",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "2+*-=31/",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "59*425=9",
+"valid": false,
+"lhs": 25075
+},
+{
+"eq": "4=/7248=",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "73949835",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "503262+=",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "4+5=62**",
+"valid": false,
+"lhs": 9
+},
+{
+"eq": "41*80+/5",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "/7889-==",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "148+/6-*",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "54659255",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "*17329-0",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "4/844+/9",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "=+=5-0-0",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "3249+668",
+"valid": false,
+"lhs": 3917
+},
+{
+"eq": "5=02739+",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "00009541",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "85836949",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "2359/722",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "0=*3-271",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "1+2/+*46",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "*400+/8=",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "59+979=8",
+"valid": false,
+"lhs": 1038
+},
+{
+"eq": "-732=000",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "8062320=",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "*1098+32",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "6389+8++",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "6/928414",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "+0=-*7-8",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "06/6-=71",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "-+723143",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "+015=-=-",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "/4-04+8+",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "6+*=844+",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "==31=802",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "4=3/-32-",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "=53=6593",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "6=/+=-+/",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "877/8-0/",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "06-39=4*",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "369919=2",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "200119=2",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "52-0002-",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "++0-1-01",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "/9*53//8",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "=+1=/*=-",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "61333100",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "/=**+1/*",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "++47121*",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "*+345564",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "054=40-*",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "5=5*987/",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "49-0*606",
+"valid": false,
+"lhs": 49
+},
+{
+"eq": "8*157-08",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "93-//19/",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "4260834*",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "*005717-",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "*/2795/8",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "4924/3-3",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "721+*17*",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "-8*1+551",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "6=6==-16",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "=+053446",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "=8826=+3",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "7289*-*9",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "82*1=82",
+"valid": true,
+"lhs": 82
+},
+{
+"eq": "66/4=141",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "94-10=84",
+"valid": true,
+"lhs": 84
+},
+{
+"eq": "88*24=2112",
+"valid": true,
+"lhs": 2112
+},
+{
+"eq": "16/10=60",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "64*6=384",
+"valid": true,
+"lhs": 384
+},
+{
+"eq": "90-26=63",
+"valid": false,
+"lhs": 64
+},
+{
+"eq": "92*10=920",
+"valid": true,
+"lhs": 920
+},
+{
+"eq": "41-30=11",
+"valid": true,
+"lhs": 11
+},
+{
+"eq": "93-3=26",
+"valid": false,
+"lhs": 90
+},
+{
+"eq": "25-12=77",
+"valid": false,
+"lhs": 13
+},
+{
+"eq": "93/9=70",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "25+3=28",
+"valid": true,
+"lhs": 28
+},
+{
+"eq": "113/12=8",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "1/12=56",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "64*20=1280",
+"valid": true,
+"lhs": 1280
+},
+{
+"eq": "18/8=1",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "94/7=146",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "75/23=58",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "85-23=31",
+"valid": false,
+"lhs": 62
+},
+{
+"eq": "58*13=754",
+"valid": true,
+"lhs": 754
+},
+{
+"eq": "89/3=62",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "100-12=88",
+"valid": true,
+"lhs": 88
+},
+{
+"eq": "54/15=5",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "79/27=132",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "86-21=83",
+"valid": false,
+"lhs": 65
+},
+{
+"eq": "99/0=125",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "116+3=119",
+"valid": true,
+"lhs": 119
+},
+{
+"eq": "27-5=22",
+"valid": true,
+"lhs": 22
+},
+{
+"eq": "12/27=138",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "26/22=131",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "2*20=40",
+"valid": true,
+"lhs": 40
+},
+{
+"eq": "52/23=53",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "87/5=131",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "97+29=91",
+"valid": false,
+"lhs": 126
+},
+{
+"eq": "81*1=81",
+"valid": true,
+"lhs": 81
+},
+{
+"eq": "51+1=52",
+"valid": true,
+"lhs": 52
+},
+{
+"eq": "117*13=1521",
+"valid": true,
+"lhs": 1521
+},
+{
+"eq": "13*7=134",
+"valid": false,
+"lhs": 91
+},
+{
+"eq": "28/25=118",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "27-5=17",
+"valid": false,
+"lhs": 22
+},
+{
+"eq": "103-25=78",
+"valid": true,
+"lhs": 78
+},
+{
+"eq": "71-23=37",
+"valid": false,
+"lhs": 48
+},
+{
+"eq": "45/21=119",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "37-24=120",
+"valid": false,
+"lhs": 13
+},
+{
+"eq": "45-25=20",
+"valid": true,
+"lhs": 20
+},
+{
+"eq": "48*21=47",
+"valid": false,
+"lhs": 1008
+},
+{
+"eq": "61*0=0",
+"valid": true,
+"lhs": 0
+},
+{
+"eq": "83*9=747",
+"valid": true,
+"lhs": 747
+},
+{
+"eq": "54+19=92",
+"valid": false,
+"lhs": 73
+},
+{
+"eq": "19*29=14",
+"valid": false,
+"lhs": 551
+},
+{
+"eq": "10*26=35",
+"valid": false,
+"lhs": 260
+},
+{
+"eq": "67*26=3",
+"valid": false,
+"lhs": 1742
+},
+{
+"eq": "84-0=75",
+"valid": false,
+"lhs": 84
+},
+{
+"eq": "32+19=51",
+"valid": true,
+"lhs": 51
+},
+{
+"eq": "109-7=88",
+"valid": false,
+"lhs": 102
+},
+{
+"eq": "100-4=136",
+"valid": false,
+"lhs": 96
+},
+{
+"eq": "21+19=140",
+"valid": false,
+"lhs": 40
+},
+{
+"eq": "100*20=2000",
+"valid": true,
+"lhs": 2000
+},
+{
+"eq": "88+6=112",
+"valid": false,
+"lhs": 94
+},
+{
+"eq": "85+28=113",
+"valid": true,
+"lhs": 113
+},
+{
+"eq": "33-13=121",
+"valid": false,
+"lhs": 20
+},
+{
+"eq": "63+17=80",
+"valid": true,
+"lhs": 80
+},
+{
+"eq": "115/4=63",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "63+5=68",
+"valid": true,
+"lhs": 68
+},
+{
+"eq": "41/14=75",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "107*14=1498",
+"valid": true,
+"lhs": 1498
+},
+{
+"eq": "86-2=7",
+"valid": false,
+"lhs": 84
+},
+{
+"eq": "2+19=84",
+"valid": false,
+"lhs": 21
+},
+{
+"eq": "103/3=124",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "96-28=68",
+"valid": true,
+"lhs": 68
+},
+{
+"eq": "91-13=78",
+"valid": true,
+"lhs": 78
+},
+{
+"eq": "110*21=2310",
+"valid": true,
+"lhs": 2310
+},
+{
+"eq": "99-16=83",
+"valid": true,
+"lhs": 83
+},
+{
+"eq": "43*13=559",
+"valid": true,
+"lhs": 559
+},
+{
+"eq": "105*9=945",
+"valid": true,
+"lhs": 945
+},
+{
+"eq": "63*12=756",
+"valid": true,
+"lhs": 756
+},
+{
+"eq": "34*27=126",
+"valid": false,
+"lhs": 918
+},
+{
+"eq": "101*3=303",
+"valid": true,
+"lhs": 303
+},
+{
+"eq": "91-9=82",
+"valid": true,
+"lhs": 82
+},
+{
+"eq": "81+2=83",
+"valid": true,
+"lhs": 83
+},
+{
+"eq": "70/28=139",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "73/1=73",
+"valid": true,
+"lhs": 73
+},
+{
+"eq": "0-1=121",
+"valid": false,
+"lhs": -1
+},
+{
+"eq": "77+24=139",
+"valid": false,
+"lhs": 101
+},
+{
+"eq": "78-12=21",
+"valid": false,
+"lhs": 66
+},
+{
+"eq": "27/1=44",
+"valid": false,
+"lhs": 27
+},
+{
+"eq": "12-21=9",
+"valid": false,
+"lhs": -9
+},
+{
+"eq": "53+24=3",
+"valid": false,
+"lhs": 77
+},
+{
+"eq": "47-27=143",
+"valid": false,
+"lhs": 20
+},
+{
+"eq": "90*8=720",
+"valid": true,
+"lhs": 720
+},
+{
+"eq": "4+10=14",
+"valid": true,
+"lhs": 14
+},
+{
+"eq": "82+18=100",
+"valid": true,
+"lhs": 100
+},
+{
+"eq": "66+1=107",
+"valid": false,
+"lhs": 67
+},
+{
+"eq": "73/22=114",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "8/0=39",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "60/24=140",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "13/2=54",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "114+4=118",
+"valid": true,
+"lhs": 118
+},
+{
+"eq": "1+21=22",
+"valid": true,
+"lhs": 22
+},
+{
+"eq": "27+27=54",
+"valid": true,
+"lhs": 54
+},
+{
+"eq": "2-8=115",
+"valid": false,
+"lhs": -6
+},
+{
+"eq": "93-23=93",
+"valid": false,
+"lhs": 70
+},
+{
+"eq": "99-23=21",
+"valid": false,
+"lhs": 76
+},
+{
+"eq": "37/20=117",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "85*29=13",
+"valid": false,
+"lhs": 2465
+},
+{
+"eq": "91+1=92",
+"valid": true,
+"lhs": 92
+},
+{
+"eq": "113+20=133",
+"valid": true,
+"lhs": 133
+},
+{
+"eq": "39-23=124",
+"valid": false,
+"lhs": 16
+},
+{
+"eq": "77*1=77",
+"valid": true,
+"lhs": 77
+},
+{
+"eq": "73/23=120",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "86-5=29",
+"valid": false,
+"lhs": 81
+},
+{
+"eq": "46-30=106",
+"valid": false,
+"lhs": 16
+},
+{
+"eq": "61/12=69",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "100*24=2400",
+"valid": true,
+"lhs": 2400
+},
+{
+"eq": "7*19=3",
+"valid": false,
+"lhs": 133
+},
+{
+"eq": "106*4=424",
+"valid": true,
+"lhs": 424
+},
+{
+"eq": "113/7=99",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "87-12=72",
+"valid": false,
+"lhs": 75
+},
+{
+"eq": "88*0=0",
+"valid": true,
+"lhs": 0
+},
+{
+"eq": "54+5=59",
+"valid": true,
+"lhs": 59
+},
+{
+"eq": "18-25=70",
+"valid": false,
+"lhs": -7
+},
+{
+"eq": "108/25=88",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "68/2=51",
+"valid": false,
+"lhs": 34
+},
+{
+"eq": "100-24=76",
+"valid": true,
+"lhs": 76
+},
+{
+"eq": "7/21=119",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "90*6=540",
+"valid": true,
+"lhs": 540
+},
+{
+"eq": "1/25=117",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "69*2=59",
+"valid": false,
+"lhs": 138
+},
+{
+"eq": "50*18=133",
+"valid": false,
+"lhs": 900
+},
+{
+"eq": "41-15=26",
+"valid": true,
+"lhs": 26
+},
+{
+"eq": "24-2=74",
+"valid": false,
+"lhs": 22
+},
+{
+"eq": "46*18=828",
+"valid": true,
+"lhs": 828
+},
+{
+"eq": "66-27=39",
+"valid": true,
+"lhs": 39
+},
+{
+"eq": "118*15=95",
+"valid": false,
+"lhs": 1770
+},
+{
+"eq": "80+14=94",
+"valid": true,
+"lhs": 94
+},
+{
+"eq": "76*0=0",
+"valid": true,
+"lhs": 0
+},
+{
+"eq": "77+0=77",
+"valid": true,
+"lhs": 77
+},
+{
+"eq": "111/27=150",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "72*6=71",
+"valid": false,
+"lhs": 432
+},
+{
+"eq": "54/3=33",
+"valid": false,
+"lhs": 18
+},
+{
+"eq": "32+26=58",
+"valid": true,
+"lhs": 58
+},
+{
+"eq": "23+12=35",
+"valid": true,
+"lhs": 35
+},
+{
+"eq": "4*17=117",
+"valid": false,
+"lhs": 68
+},
+{
+"eq": "62+30=101",
+"valid": false,
+"lhs": 92
+},
+{
+"eq": "118+3=121",
+"valid": true,
+"lhs": 121
+},
+{
+"eq": "72+7=129",
+"valid": false,
+"lhs": 79
+},
+{
+"eq": "50/5=94",
+"valid": false,
+"lhs": 10
+},
+{
+"eq": "30-23=7",
+"valid": true,
+"lhs": 7
+},
+{
+"eq": "120*8=960",
+"valid": true,
+"lhs": 960
+},
+{
+"eq": "70+28=12",
+"valid": false,
+"lhs": 98
+},
+{
+"eq": "33/25=14",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "12*4=50",
+"valid": false,
+"lhs": 48
+},
+{
+"eq": "86*23=1978",
+"valid": true,
+"lhs": 1978
+},
+{
+"eq": "56+24=80",
+"valid": true,
+"lhs": 80
+},
+{
+"eq": "47/8=31",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "47/15=43",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "56-7=3",
+"valid": false,
+"lhs": 49
+},
+{
+"eq": "59-22=40",
+"valid": false,
+"lhs": 37
+},
+{
+"eq": "118-26=92",
+"valid": true,
+"lhs": 92
+},
+{
+"eq": "79*27=35",
+"valid": false,
+"lhs": 2133
+},
+{
+"eq": "99+14=98",
+"valid": false,
+"lhs": 113
+},
+{
+"eq": "107+0=107",
+"valid": true,
+"lhs": 107
+},
+{
+"eq": "43-10=33",
+"valid": true,
+"lhs": 33
+},
+{
+"eq": "80-11=69",
+"valid": true,
+"lhs": 69
+},
+{
+"eq": "94-1=141",
+"valid": false,
+"lhs": 93
+},
+{
+"eq": "113/4=38",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "34/13=63",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "19*0=0",
+"valid": true,
+"lhs": 0
+},
+{
+"eq": "37-10=27",
+"valid": true,
+"lhs": 27
+},
+{
+"eq": "13/10=123",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "14+4=54",
+"valid": false,
+"lhs": 18
+},
+{
+"eq": "71*15=1065",
+"valid": true,
+"lhs": 1065
+},
+{
+"eq": "96*6=576",
+"valid": true,
+"lhs": 576
+},
+{
+"eq": "33-7=26",
+"valid": true,
+"lhs": 26
+},
+{
+"eq": "37-13=24",
+"valid": true,
+"lhs": 24
+},
+{
+"eq": "92-9=4",
+"valid": false,
+"lhs": 83
+},
+{
+"eq": "56*25=1400",
+"valid": true,
+"lhs": 1400
+},
+{
+"eq": "56*0=0",
+"valid": true,
+"lhs": 0
+},
+{
+"eq": "55/1=55",
+"valid": true,
+"lhs": 55
+},
+{
+"eq": "73-5=133",
+"valid": false,
+"lhs": 68
+},
+{
+"eq": "98-7=91",
+"valid": true,
+"lhs": 91
+},
+{
+"eq": "10+26=126",
+"valid": false,
+"lhs": 36
+},
+{
+"eq": "97-8=89",
+"valid": true,
+"lhs": 89
+},
+{
+"eq": "78-21=57",
+"valid": true,
+"lhs": 57
+},
+{
+"eq": "25+0=133",
+"valid": false,
+"lhs": 25
+},
+{
+"eq": "52+26=78",
+"valid": true,
+"lhs": 78
+},
+{
+"eq": "44*10=126",
+"valid": false,
+"lhs": 440
+},
+{
+"eq": "11/0=122",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "17*27=459",
+"valid": true,
+"lhs": 459
+},
+{
+"eq": "72*26=1872",
+"valid": true,
+"lhs": 1872
+},
+{
+"eq": "89+11=100",
+"valid": true,
+"lhs": 100
+},
+{
+"eq": "119+14=133",
+"valid": true,
+"lhs": 133
+},
+{
+"eq": "91*7=97",
+"valid": false,
+"lhs": 637
+},
+{
+"eq": "73+24=97",
+"valid": true,
+"lhs": 97
+},
+{
+"eq": "13/30=114",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "65-0=65",
+"valid": true,
+"lhs": 65
+},
+{
+"eq": "11-7=4",
+"valid": true,
+"lhs": 4
+},
+{
+"eq": "39+8=47",
+"valid": true,
+"lhs": 47
+},
+{
+"eq": "118-22=96",
+"valid": true,
+"lhs": 96
+},
+{
+"eq": "107/19=133",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "30/22=26",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "44+27=11",
+"valid": false,
+"lhs": 71
+},
+{
+"eq": "34/3=126",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "74*16=1184",
+"valid": true,
+"lhs": 1184
+},
+{
+"eq": "15-12=3",
+"valid": true,
+"lhs": 3
+},
+{
+"eq": "29-27=2",
+"valid": true,
+"lhs": 2
+},
+{
+"eq": "73/14=42",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "105/0=107",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "76+26=102",
+"valid": true,
+"lhs": 102
+},
+{
+"eq": "120*1=120",
+"valid": true,
+"lhs": 120
+},
+{
+"eq": "30*26=144",
+"valid": false,
+"lhs": 780
+},
+{
+"eq": "102*29=143",
+"valid": false,
+"lhs": 2958
+},
+{
+"eq": "6-10=90",
+"valid": false,
+"lhs": -4
+},
+{
+"eq": "31/27=2",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "46-3=43",
+"valid": true,
+"lhs": 43
+},
+{
+"eq": "55+6=61",
+"valid": true,
+"lhs": 61
+},
+{
+"eq": "53/12=11",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "103+28=131",
+"valid": true,
+"lhs": 131
+},
+{
+"eq": "82*19=69",
+"valid": false,
+"lhs": 1558
+},
+{
+"eq": "80+17=64",
+"valid": false,
+"lhs": 97
+},
+{
+"eq": "15+16=31",
+"valid": true,
+"lhs": 31
+},
+{
+"eq": "5+9=14",
+"valid": true,
+"lhs": 14
+},
+{
+"eq": "82+5=87",
+"valid": true,
+"lhs": 87
+},
+{
+"eq": "117*16=1872",
+"valid": true,
+"lhs": 1872
+},
+{
+"eq": "75-17=58",
+"valid": true,
+"lhs": 58
+},
+{
+"eq": "65*4=147",
+"valid": false,
+"lhs": 260
+},
+{
+"eq": "36-8=139",
+"valid": false,
+"lhs": 28
+},
+{
+"eq": "36/26=145",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "28/20=51",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "70*22=1540",
+"valid": true,
+"lhs": 1540
+},
+{
+"eq": "70/9=120",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "104+9=113",
+"valid": true,
+"lhs": 113
+},
+{
+"eq": "28/6=149",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "50*0=0",
+"valid": true,
+"lhs": 0
+},
+{
+"eq": "30*10=300",
+"valid": true,
+"lhs": 300
+},
+{
+"eq": "36-28=8",
+"valid": true,
+"lhs": 8
+},
+{
+"eq": "98-0=98",
+"valid": true,
+"lhs": 98
+},
+{
+"eq": "77*27=2079",
+"valid": true,
+"lhs": 2079
+},
+{
+"eq": "7/16=112",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "45+23=68",
+"valid": true,
+"lhs": 68
+},
+{
+"eq": "86-23=63",
+"valid": true,
+"lhs": 63
+},
+{
+"eq": "85-11=70",
+"valid": false,
+"lhs": 74
+},
+{
+"eq": "105+26=121",
+"valid": false,
+"lhs": 131
+},
+{
+"eq": "34-25=9",
+"valid": true,
+"lhs": 9
+},
+{
+"eq": "13/0=140",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "74/3=101",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "73/4=71",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "111+19=130",
+"valid": true,
+"lhs": 130
+},
+{
+"eq": "57/22=73",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "92*11=1012",
+"valid": true,
+"lhs": 1012
+},
+{
+"eq": "67/17=82",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "0/25=0",
+"valid": true,
+"lhs": 0
+},
+{
+"eq": "38*5=111",
+"valid": false,
+"lhs": 190
+},
+{
+"eq": "73-12=61",
+"valid": true,
+"lhs": 61
+},
+{
+"eq": "117*10=62",
+"valid": false,
+"lhs": 1170
+},
+{
+"eq": "41/6=2",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "3*1=3",
+"valid": true,
+"lhs": 3
+},
+{
+"eq": "63*9=567",
+"valid": true,
+"lhs": 567
+},
+{
+"eq": "55/16=99",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "59+11=70",
+"valid": true,
+"lhs": 70
+},
+{
+"eq": "44+14=134",
+"valid": false,
+"lhs": 58
+},
+{
+"eq": "29/3=95",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "64-12=107",
+"valid": false,
+"lhs": 52
+},
+{
+"eq": "62/12=150",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "43+22=65",
+"valid": true,
+"lhs": 65
+},
+{
+"eq": "40+11=131",
+"valid": false,
+"lhs": 51
+},
+{
+"eq": "22*3=130",
+"valid": false,
+"lhs": 66
+},
+{
+"eq": "113-13=100",
+"valid": true,
+"lhs": 100
+},
+{
+"eq": "104-16=88",
+"valid": true,
+"lhs": 88
+},
+{
+"eq": "24-13=11",
+"valid": true,
+"lhs": 11
+},
+{
+"eq": "72+19=91",
+"valid": true,
+"lhs": 91
+},
+{
+"eq": "80+20=2",
+"valid": false,
+"lhs": 100
+},
+{
+"eq": "100*0=141",
+"valid": false,
+"lhs": 0
+},
+{
+"eq": "0*29=0",
+"valid": true,
+"lhs": 0
+},
+{
+"eq": "12+18=50",
+"valid": false,
+"lhs": 30
+},
+{
+"eq": "22*15=136",
+"valid": false,
+"lhs": 330
+},
+{
+"eq": "65-4=61",
+"valid": true,
+"lhs": 61
+},
+{
+"eq": "15-4=11",
+"valid": true,
+"lhs": 11
+},
+{
+"eq": "65+3=68",
+"valid": true,
+"lhs": 68
+},
+{
+"eq": "21/30=119",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "78+13=148",
+"valid": false,
+"lhs": 91
+},
+{
+"eq": "41-4=37",
+"valid": true,
+"lhs": 37
+},
+{
+"eq": "21*1=149",
+"valid": false,
+"lhs": 21
+},
+{
+"eq": "8-11=115",
+"valid": false,
+"lhs": -3
+},
+{
+"eq": "79+12=91",
+"valid": true,
+"lhs": 91
+},
+{
+"eq": "113+12=125",
+"valid": true,
+"lhs": 125
+},
+{
+"eq": "79-7=72",
+"valid": true,
+"lhs": 72
+},
+{
+"eq": "20-29=80",
+"valid": false,
+"lhs": -9
+},
+{
+"eq": "0/28=0",
+"valid": true,
+"lhs": 0
+},
+{
+"eq": "77/8=17",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "31/21=149",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "28*13=364",
+"valid": true,
+"lhs": 364
+},
+{
+"eq": "91+15=62",
+"valid": false,
+"lhs": 106
+},
+{
+"eq": "11-5=6",
+"valid": true,
+"lhs": 6
+},
+{
+"eq": "23*0=0",
+"valid": true,
+"lhs": 0
+},
+{
+"eq": "46*3=138",
+"valid": true,
+"lhs": 138
+},
+{
+"eq": "49/10=16",
+"valid": false,
+"lhs": null
+},
+{
+"eq": "15*13=195",
+"valid": true,
+"lhs": 195
+},
+{
+"eq": "49/6=72",
+"valid": false,
+"lhs": null
+}
+],
+"colors": [
+{
+"guess": "3*7-4=17",
+"answer": "3*7-4=17",
+"colors": "gggggggg"
+},
+{
+"guess": "1+1+1=3",
+"answer": "9-3*2=3",
+"colors": "xxxxxgg"
+},
+{
+"guess": "11+1=12",
+"answer": "12-1=11",
+"colors": "gyxgggy"
+},
+{
+"guess": "77-7=70",
+"answer": "70+7=77",
+"colors": "gyxgggy"
+},
+{
+"guess": "32+26=58",
+"answer": "99-16=83",
+"colors": "yxxxggxy"
+},
+{
+"guess": "37-10=27",
+"answer": "9-10+6=5",
+"colors": "xxyyyyxx"
+},
+{
+"guess": "27+27=54",
+"answer": "72+19=91",
+"colors": "yygxxgxx"
+},
+{
+"guess": "2+3*4=14",
+"answer": "80+14=94",
+"colors": "xyxxggyg"
+},
+{
+"guess": "45-25=20",
+"answer": "99-16=83",
+"colors": "xxgxxgxx"
+},
+{
+"guess": "41-30=11",
+"answer": "12/4*3=9",
+"colors": "yyxyxyxx"
+},
+{
+"guess": "63+17=80",
+"answer": "27+27=54",
+"colors": "xxgxggxx"
+},
+{
+"guess": "75-17=58",
+"answer": "41-30=11",
+"colors": "xxgyxgxx"
+},
+{
+"guess": "45+23=68",
+"answer": "96*6=576",
+"colors": "xyxxxyyx"
+},
+{
+"guess": "37-13=24",
+"answer": "99-16=83",
+"colors": "yxggxgxx"
+},
+{
+"guess": "83*9=747",
+"answer": "23+12=35",
+"colors": "xgxxyxxx"
+},
+{
+"guess": "32+26=58",
+"answer": "96-28=68",
+"colors": "xxxgygxg"
+},
+{
+"guess": "43-10=33",
+"answer": "56+24=80",
+"colors": "yxxxygxx"
+},
+{
+"guess": "43+22=65",
+"answer": "73-12=61",
+"colors": "xgxxgggx"
+},
+{
+"guess": "96-28=68",
+"answer": "41-15=26",
+"colors": "xygyxgxx"
+},
+{
+"guess": "78-21=57",
+"answer": "73+24=97",
+"colors": "gxxgxgxg"
+},
+{
+"guess": "96-28=68",
+"answer": "91-13=78",
+"colors": "gxgxxgxg"
+},
+{
+"guess": "96*6=576",
+"answer": "79+12=91",
+"colors": "yxxxyxyx"
+},
+{
+"guess": "41-30=11",
+"answer": "90*8=720",
+"colors": "xxxxyyxx"
+},
+{
+"guess": "63*9=567",
+"answer": "96*6=576",
+"colors": "yxgyggyy"
+},
+{
+"guess": "73-12=61",
+"answer": "23+12=35",
+"colors": "xgxgggxx"
+},
+{
+"guess": "75-17=58",
+"answer": "99-16=83",
+"colors": "xxggxgxy"
+},
+{
+"guess": "43-10=33",
+"answer": "63*9=567",
+"colors": "xgxxxyxx"
+},
+{
+"guess": "73+24=97",
+"answer": "96-28=68",
+"colors": "xxxgxgyx"
+},
+{
+"guess": "41-30=11",
+"answer": "64*6=384",
+"colors": "yxxyxyxx"
+},
+{
+"guess": "79+12=91",
+"answer": "73+24=97",
+"colors": "gxgxyggx"
+},
+{
+"guess": "12/4*3=9",
+"answer": "75-17=58",
+"colors": "yxxxxxyx"
+},
+{
+"guess": "27+27=54",
+"answer": "56+24=80",
+"colors": "xxggxgyy"
+},
+{
+"guess": "2+3*4=14",
+"answer": "72+19=91",
+"colors": "yyxxxgyx"
+},
+{
+"guess": "86-23=63",
+"answer": "45-25=20",
+"colors": "xxggxgxx"
+},
+{
+"guess": "41-15=26",
+"answer": "3*7-4=17",
+"colors": "yyyxxgxx"
+},
+{
+"guess": "56+24=80",
+"answer": "12/4*3=9",
+"colors": "xxxyyyxx"
+},
+{
+"guess": "46*3=138",
+"answer": "32+19=51",
+"colors": "xxxyyyxx"
+},
+{
+"guess": "91-13=78",
+"answer": "66-27=39",
+"colors": "yxgxygyx"
+},
+{
+"guess": "63+17=80",
+"answer": "72+19=91",
+"colors": "xxggygxx"
+},
+{
+"guess": "94-10=84",
+"answer": "12/4/3=1",
+"colors": "xyxyxyxx"
+},
+{
+"guess": "45+23=68",
+"answer": "23+12=35",
+"colors": "xygyygxx"
+},
+{
+"guess": "73+24=97",
+"answer": "41-15=26",
+"colors": "xxxyygxx"
+},
+{
+"guess": "63+17=80",
+"answer": "12/4/3=1",
+"colors": "xyxyxyxx"
+},
+{
+"guess": "41-15=26",
+"answer": "12/4*3=9",
+"colors": "yyxxxyyx"
+},
+{
+"guess": "91-13=78",
+"answer": "90*6=540",
+"colors": "gxxxxyxx"
+},
+{
+"guess": "41-30=11",
+"answer": "43-10=33",
+"colors": "gygyggxx"
+},
+{
+"guess": "90*6=540",
+"answer": "32+26=58",
+"colors": "xxxyyyxx"
+},
+{
+"guess": "43-10=33",
+"answer": "37-13=24",
+"colors": "yyggxgyx"
+},
+{
+"guess": "43+22=65",
+"answer": "43+22=65",
+"colors": "gggggggg"
+},
+{
+"guess": "41-30=11",
+"answer": "27+27=54",
+"colors": "yxxxxgxx"
+},
+{
+"guess": "32+19=51",
+"answer": "2+3*4=14",
+"colors": "yyyyxgxx"
+},
+{
+"guess": "23+12=35",
+"answer": "79+12=91",
+"colors": "xxggggxx"
+},
+{
+"guess": "72+19=91",
+"answer": "46*3=138",
+"colors": "xxxyxyxx"
+},
+{
+"guess": "32+26=58",
+"answer": "80-11=69",
+"colors": "xxxxygxy"
+},
+{
+"guess": "2+3*4=14",
+"answer": "72+19=91",
+"colors": "yyxxxgyx"
+},
+{
+"guess": "46*3=138",
+"answer": "37-13=24",
+"colors": "yxxyyyyx"
+},
+{
+"guess": "99-16=83",
+"answer": "43-10=33",
+"colors": "xxggxgxg"
+},
+{
+"guess": "32+26=58",
+"answer": "43+22=65",
+"colors": "yyggygyx"
+},
+{
+"guess": "94-10=84",
+"answer": "32+19=51",
+"colors": "yxxgxgxx"
+},
+{
+"guess": "90*6=540",
+"answer": "64*6=384",
+"colors": "xxgggxyx"
+},
+{
+"guess": "27+27=54",
+"answer": "63*9=567",
+"colors": "xyxxxyyx"
+},
+{
+"guess": "91-13=78",
+"answer": "79+12=91",
+"colors": "yyxgxgyx"
+},
+{
+"guess": "9-10+6=5",
+"answer": "43-10=33",
+"colors": "xyyyxxyx"
+},
+{
+"guess": "9-10+6=5",
+"answer": "63*9=567",
+"colors": "yxxxxyyy"
+},
+{
+"guess": "83*9=747",
+"answer": "37-10=27",
+"colors": "xyxxyyxg"
+},
+{
+"guess": "63+17=80",
+"answer": "41-15=26",
+"colors": "yxxgxgxx"
+},
+{
+"guess": "45-25=20",
+"answer": "56+24=80",
+"colors": "yyxgxgxg"
+},
+{
+"guess": "9-10+6=5",
+"answer": "45+23=68",
+"colors": "xxxxyyyy"
+},
+{
+"guess": "41-15=26",
+"answer": "43+22=65",
+"colors": "gxxxygyy"
+},
+{
+"guess": "43+22=65",
+"answer": "32+19=51",
+"colors": "xygyxgxy"
+},
+{
+"guess": "86-23=63",
+"answer": "91-13=78",
+"colors": "yxgxggxx"
+},
+{
+"guess": "86-23=63",
+"answer": "52+26=78",
+"colors": "yyxgxgxx"
+},
+{
+"guess": "15+16=31",
+"answer": "90*8=720",
+"colors": "xxxxxyxx"
+},
+{
+"guess": "37-10=27",
+"answer": "72+19=91",
+"colors": "xyxgxgyx"
+},
+{
+"guess": "79+12=91",
+"answer": "86-23=63",
+"colors": "xxxxygxx"
+},
+{
+"guess": "32+26=58",
+"answer": "3*7-4=17",
+"colors": "gxxxxgxx"
+},
+{
+"guess": "64*6=384",
+"answer": "24-13=11",
+"colors": "xgxxyyxx"
+},
+{
+"guess": "90*6=540",
+"answer": "9-10+6=5",
+"colors": "gyxyyyxx"
+},
+{
+"guess": "73-12=61",
+"answer": "63*9=567",
+"colors": "ygxxxygx"
+},
+{
+"guess": "46*3=138",
+"answer": "246/3=82",
+"colors": "yyxyyxxy"
+},
+{
+"guess": "99-16=83",
+"answer": "79+12=91",
+"colors": "ygxgxgxx"
+},
+{
+"guess": "64*6=384",
+"answer": "9-10+6=5",
+"colors": "yxxxyxxx"
+},
+{
+"guess": "66-27=39",
+"answer": "96-28=68",
+"colors": "ygggxgxy"
+},
+{
+"guess": "32+26=58",
+"answer": "12/4*3=9",
+"colors": "ygxxxyxx"
+},
+{
+"guess": "80-11=69",
+"answer": "46*3=138",
+"colors": "yxxyxyyx"
+},
+{
+"guess": "43-10=33",
+"answer": "59+11=70",
+"colors": "xxxgygxx"
+},
+{
+"guess": "91-13=78",
+"answer": "27+27=54",
+"colors": "xxxxxgyx"
+},
+{
+"guess": "15+16=31",
+"answer": "12/4*3=9",
+"colors": "gxxxxyyx"
+},
+{
+"guess": "32+26=58",
+"answer": "37-10=27",
+"colors": "gyxxxgxx"
+},
+{
+"guess": "96*6=576",
+"answer": "80+14=94",
+"colors": "yxxxyxxx"
+},
+{
+"guess": "46*3=138",
+"answer": "73+24=97",
+"colors": "yxxyyxxx"
+},
+{
+"guess": "46*3=138",
+"answer": "43+22=65",
+"colors": "gyxyyxxx"
+},
+{
+"guess": "43+22=65",
+"answer": "96*6=576",
+"colors": "xxxxxyyy"
+},
+{
+"guess": "73+24=97",
+"answer": "246/3=82",
+"colors": "xyxyygxx"
+},
+{
+"guess": "79+12=91",
+"answer": "46*3=138",
+"colors": "xxxyxyxx"
+},
+{
+"guess": "96-28=68",
+"answer": "37-10=27",
+"colors": "xxgyxgxx"
+},
+{
+"guess": "79+12=91",
+"answer": "73+24=97",
+"colors": "gxgxyggx"
+},
+{
+"guess": "41-30=11",
+"answer": "52+26=78",
+"colors": "xxxxxgxx"
+},
+{
+"guess": "63+17=80",
+"answer": "9-10+6=5",
+"colors": "yxyyxyxy"
+},
+{
+"guess": "46*3=138",
+"answer": "45+23=68",
+"colors": "gyxyyxxg"
+},
+{
+"guess": "90*8=720",
+"answer": "32+19=51",
+"colors": "yxxxyxyx"
+},
+{
+"guess": "75-17=58",
+"answer": "83*9=747",
+"colors": "yxxxyyxy"
+},
+{
+"guess": "43+22=65",
+"answer": "99-16=83",
+"colors": "xyxxxgyx"
+},
+{
+"guess": "75-17=58",
+"answer": "90*8=720",
+"colors": "yxxxxyxy"
+},
+{
+"guess": "99-16=83",
+"answer": "246/3=82",
+"colors": "xxxxyggy"
+},
+{
+"guess": "83*9=747",
+"answer": "32+26=58",
+"colors": "yyxxyxxx"
+},
+{
+"guess": "32+26=58",
+"answer": "80-11=69",
+"colors": "xxxxygxy"
+},
+{
+"guess": "12/4*3=9",
+"answer": "63+17=80",
+"colors": "yxxxxyyx"
+},
+{
+"guess": "43+22=65",
+"answer": "41-15=26",
+"colors": "gxxyxgyy"
+},
+{
+"guess": "41-30=11",
+"answer": "41-30=11",
+"colors": "gggggggg"
+},
+{
+"guess": "79+12=91",
+"answer": "52+26=78",
+"colors": "yxgxygxx"
+},
+{
+"guess": "72+19=91",
+"answer": "78-21=57",
+"colors": "gyxyxgxx"
+},
+{
+"guess": "99-16=83",
+"answer": "99-16=83",
+"colors": "gggggggg"
+},
+{
+"guess": "3*7-4=17",
+"answer": "73+24=97",
+"colors": "yxyxggxg"
+},
+{
+"guess": "46*3=138",
+"answer": "96*6=576",
+"colors": "xggxgxxx"
+},
+{
+"guess": "41-30=11",
+"answer": "24-13=11",
+"colors": "yygyxggg"
+},
+{
+"guess": "32+26=58",
+"answer": "46*3=138",
+"colors": "yxxxyyxg"
+},
+{
+"guess": "41-15=26",
+"answer": "41-30=11",
+"colors": "gggyxgxx"
+},
+{
+"guess": "45-25=20",
+"answer": "73-12=61",
+"colors": "xxgyxgxx"
+},
+{
+"guess": "86-23=63",
+"answer": "99-16=83",
+"colors": "yygxxgxg"
+},
+{
+"guess": "80+14=94",
+"answer": "43+22=65",
+"colors": "xxgxygxx"
+},
+{
+"guess": "64*6=384",
+"answer": "45+23=68",
+"colors": "yyxxyyyx"
+},
+{
+"guess": "37-10=27",
+"answer": "83*9=747",
+"colors": "yyxxxyxg"
+},
+{
+"guess": "79+12=91",
+"answer": "72+19=91",
+"colors": "gyggyggg"
+},
+{
+"guess": "45-25=20",
+"answer": "63*9=567",
+"colors": "xyxxxyxx"
+},
+{
+"guess": "37-13=24",
+"answer": "43-10=33",
+"colors": "yxggygxy"
+},
+{
+"guess": "96-28=68",
+"answer": "64*6=384",
+"colors": "xyxxyyyx"
+},
+{
+"guess": "46*3=138",
+"answer": "90*6=540",
+"colors": "yygxgxxx"
+},
+{
+"guess": "3*7-4=17",
+"answer": "23+12=35",
+"colors": "yxxxxgyx"
+},
+{
+"guess": "52+26=78",
+"answer": "96-28=68",
+"colors": "xxxgygxg"
+},
+{
+"guess": "9-10+6=5",
+"answer": "246/3=82",
+"colors": "xxxxxyyx"
+},
+{
+"guess": "27+27=54",
+"answer": "41-15=26",
+"colors": "yxxxxgyy"
+},
+{
+"guess": "63+17=80",
+"answer": "64*6=384",
+"colors": "gyxxxygx"
+},
+{
+"guess": "46*3=138",
+"answer": "41-15=26",
+"colors": "gyxxyyxx"
+},
+{
+"guess": "96*6=576",
+"answer": "64*6=384",
+"colors": "xygggxxx"
+},
+{
+"guess": "83*9=747",
+"answer": "66-27=39",
+"colors": "xyxyyyxx"
+},
+{
+"guess": "96*6=576",
+"answer": "37-13=24",
+"colors": "xxxxyxyx"
+},
+{
+"guess": "86-23=63",
+"answer": "23+12=35",
+"colors": "xxxyygxy"
+},
+{
+"guess": "90*6=540",
+"answer": "83*9=747",
+"colors": "yxgxgxgx"
+},
+{
+"guess": "45+23=68",
+"answer": "12/4/3=1",
+"colors": "yxxyyyxx"
+},
+{
+"guess": "9-10+6=5",
+"answer": "3*7-4=17",
+"colors": "xyyxxxyx"
+},
+{
+"guess": "37-13=24",
+"answer": "52+26=78",
+"colors": "xyxxxgyx"
+},
+{
+"guess": "12/4*3=9",
+"answer": "80+14=94",
+"colors": "yxxyxxyy"
+},
+{
+"guess": "86-23=63",
+"answer": "90*8=720",
+"colors": "yxxyxyxx"
+},
+{
+"guess": "94-10=84",
+"answer": "24-13=11",
+"colors": "xgggxgxx"
+},
+{
+"guess": "52+26=78",
+"answer": "37-10=27",
+"colors": "xyxxxgyx"
+},
+{
+"guess": "52+26=78",
+"answer": "63+17=80",
+"colors": "xxgxygyy"
+},
+{
+"guess": "75-17=58",
+"answer": "66-27=39",
+"colors": "xxgxggxx"
+},
+{
+"guess": "3*7-4=17",
+"answer": "32+26=58",
+"colors": "gxxxxgxx"
+},
+{
+"guess": "12/4*3=9",
+"answer": "24-13=11",
+"colors": "yyxyxyyx"
+},
+{
+"guess": "90*6=540",
+"answer": "43+22=65",
+"colors": "xxxyyyyx"
+},
+{
+"guess": "59+11=70",
+"answer": "24-13=11",
+"colors": "xxxgygxx"
+},
+{
+"guess": "46*3=138",
+"answer": "90*8=720",
+"colors": "xxgxgxxy"
+},
+{
+"guess": "24-13=11",
+"answer": "99-16=83",
+"colors": "xxggygxx"
+},
+{
+"guess": "12/4*3=9",
+"answer": "41-30=11",
+"colors": "yxxyxyyx"
+},
+{
+"guess": "2+3*4=14",
+"answer": "2+3*4=14",
+"colors": "gggggggg"
+},
+{
+"guess": "43-10=33",
+"answer": "45-25=20",
+"colors": "gxgxygxx"
+},
+{
+"guess": "90*6=540",
+"answer": "23+12=35",
+"colors": "xxxxyyxx"
+},
+{
+"guess": "32+19=51",
+"answer": "43+22=65",
+"colors": "yygxxgyx"
+},
+{
+"guess": "15+16=31",
+"answer": "79+12=91",
+"colors": "xxggxgxg"
+},
+{
+"guess": "83*9=747",
+"answer": "94-10=84",
+"colors": "yxxyyxyx"
+},
+{
+"guess": "41-15=26",
+"answer": "59+11=70",
+"colors": "xyxgygxx"
+},
+{
+"guess": "66-27=39",
+"answer": "56+24=80",
+"colors": "xgxgxgxx"
+},
+{
+"guess": "32+19=51",
+"answer": "24-13=11",
+"colors": "yyxgxgxg"
+},
+{
+"guess": "32+26=58",
+"answer": "66-27=39",
+"colors": "yxxgygxx"
+},
+{
+"guess": "91-13=78",
+"answer": "23+12=35",
+"colors": "xxxgygxx"
+},
+{
+"guess": "41-30=11",
+"answer": "45+23=68",
+"colors": "gxxyxgxx"
+},
+{
+"guess": "23+12=35",
+"answer": "90*8=720",
+"colors": "yxxxxyxx"
+},
+{
+"guess": "99-16=83",
+"answer": "246/3=82",
+"colors": "xxxxyggy"
+},
+{
+"guess": "9-10+6=5",
+"answer": "94-10=84",
+"colors": "gyyyxxyx"
+},
+{
+"guess": "86-23=63",
+"answer": "43+22=65",
+"colors": "xxxgyggx"
+},
+{
+"guess": "43-10=33",
+"answer": "246/3=82",
+"colors": "yyxxxgxx"
+},
+{
+"guess": "96-28=68",
+"answer": "52+26=78",
+"colors": "xyxgxgxg"
+},
+{
+"guess": "37-10=27",
+"answer": "52+26=78",
+"colors": "xyxxxgyx"
+},
+{
+"guess": "83*9=747",
+"answer": "41-15=26",
+"colors": "xxxxyxyx"
+},
+{
+"guess": "63*9=567",
+"answer": "73-12=61",
+"colors": "xgxxyxgy"
+},
+{
+"guess": "43+22=65",
+"answer": "12/4*3=9",
+"colors": "yyxyxyxx"
+},
+{
+"guess": "45-25=20",
+"answer": "46*3=138",
+"colors": "gxxxxyxx"
+},
+{
+"guess": "91-13=78",
+"answer": "83*9=747",
+"colors": "yxxxyyyy"
+},
+{
+"guess": "41-30=11",
+"answer": "96*6=576",
+"colors": "xxxxxyxx"
+},
+{
+"guess": "43+22=65",
+"answer": "43-10=33",
+"colors": "ggxxxgxx"
+},
+{
+"guess": "12/4*3=9",
+"answer": "9-10+6=5",
+"colors": "yxxxxxgy"
+},
+{
+"guess": "96*6=576",
+"answer": "78-21=57",
+"colors": "xxxxyyyx"
+},
+{
+"guess": "63+17=80",
+"answer": "96-28=68",
+"colors": "yxxxxgyx"
+},
+{
+"guess": "23+12=35",
+"answer": "3*7-4=17",
+"colors": "xyxyxgxx"
+},
+{
+"guess": "9-10+6=5",
+"answer": "59+11=70",
+"colors": "yxyyyxyy"
+},
+{
+"guess": "73+24=97",
+"answer": "37-10=27",
+"colors": "yyxyxgxg"
+},
+{
+"guess": "45-25=20",
+"answer": "90*6=540",
+"colors": "yyxxxyxg"
+},
+{
+"guess": "12/4/3=1",
+"answer": "72+19=91",
+"colors": "ygxxxxyg"
+},
+{
+"guess": "246/3=82",
+"answer": "73+24=97",
+"colors": "yyxxygxx"
+},
+{
+"guess": "80-11=69",
+"answer": "80+14=94",
+"colors": "ggxgxgxy"
+},
+{
+"guess": "12/4/3=1",
+"answer": "96*6=576",
+"colors": "xxxxxxyx"
+},
+{
+"guess": "3*7-4=17",
+"answer": "72+19=91",
+"colors": "xxyxxgyx"
+},
+{
+"guess": "32+19=51",
+"answer": "83*9=747",
+"colors": "yxxxyyxx"
+},
+{
+"guess": "56+24=80",
+"answer": "90*6=540",
+"colors": "yyxxyyxg"
+},
+{
+"guess": "3*7-4=17",
+"answer": "96*6=576",
+"colors": "xyyxxyxx"
+},
+{
+"guess": "86-23=63",
+"answer": "79+12=91",
+"colors": "xxxyxgxx"
+},
+{
+"guess": "32+26=58",
+"answer": "86-23=63",
+"colors": "yxxgygxy"
+},
+{
+"guess": "63+17=80",
+"answer": "78-21=57",
+"colors": "xxxyygyx"
+},
+{
+"guess": "12/4*3=9",
+"answer": "75-17=58",
+"colors": "yxxxxxyx"
+},
+{
+"guess": "66-27=39",
+"answer": "15+16=31",
+"colors": "yxxxxggx"
+},
+{
+"guess": "37-13=24",
+"answer": "37-10=27",
+"colors": "ggggxggx"
+},
+{
+"guess": "75-17=58",
+"answer": "43+22=65",
+"colors": "xyxxxgxx"
+},
+{
+"guess": "45-25=20",
+"answer": "43-10=33",
+"colors": "gxgxxgxy"
+}
+]
+}
