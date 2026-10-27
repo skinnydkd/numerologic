@@ -57,7 +57,7 @@ export function updateFooter({ countEl, rankEl, goalEl, starEl, streakEl, used, 
   rankEl.textContent = rankName || "En joc";
   goalEl.textContent = won ? "✦ Resolta!" : "✦ Pendent";
   goalEl.classList.toggle("done", won);
-  starEl.textContent = hard ? (won ? "★ Mode difícil!" : "★ Mode difícil") : "★ —";
+  starEl.textContent = hard ? (won ? "★ Proesa!" : "★ Mode difícil actiu") : used === 0 ? "★ Proesa pendent" : "★ Sense proesa";
   starEl.classList.toggle("done", hard && won);
   streakEl.textContent = streak > 0 ? `🔥 Ratxa ${streak}` : "";
 }

@@ -28,7 +28,7 @@ body {
 .difficulty .special { background: #ecfeff; color: #0e7490; border: 1px solid #a5f3fc; }
 
 .hardrow { text-align: center; margin-top: 10px; }
-.hardbtn { padding: 6px 14px; font-size: 13px; }
+.pill.hardbtn { padding: 6px 14px; font-size: 13px; }
 .hardbtn[aria-pressed="true"] { border-color: #eab308; background: #fef9c3; color: #854d0e; font-weight: 700; }
 .hardbtn:disabled { cursor: default; opacity: .6; }
 
