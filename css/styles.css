@@ -59,6 +59,13 @@ body {
 .pill { padding: 11px 22px; border: 1.5px solid #d8dee4; border-radius: 999px; background: #fff; color: #374151; font-size: 14px; cursor: pointer; }
 .round { width: 44px; height: 44px; border: 1.5px solid #d8dee4; border-radius: 999px; background: #fff; color: #58b4c4; font-size: 18px; cursor: pointer; }
 .send { border-color: #58b4c4; color: #0e7490; font-weight: 700; }
+.sharerow { text-align: center; margin-top: 12px; }
+.share { border-color: #58b4c4; color: #0e7490; }
+.share:active { filter: brightness(.92); }
+/* Brevi complet o Tutti trobat: el moment natural de compartir */
+.share.ready { background: #0e7490; border-color: #0e7490; color: #fff; font-weight: 700; animation: nudge .6s ease-out 2; }
+@keyframes nudge { 50% { transform: scale(1.06); } }
+@media (prefers-reduced-motion: reduce) { .share.ready { animation: none; } }
 
 .foot { text-align: center; margin-top: 16px; }
 .found { background: none; border: none; color: #374151; font-size: 14px; cursor: pointer; }

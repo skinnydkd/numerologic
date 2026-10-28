@@ -108,6 +108,7 @@ function refreshFooter() {
     breviComplete: game.breviComplete(),
     streak: streakDisplay(loadStreak(localStorage), todayStr(Date.now())),
   });
+  els.share.classList.toggle("ready", game.breviComplete() || game.tuttiFound);
 }
 
 function foundTexts() {
