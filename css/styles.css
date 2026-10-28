@@ -65,6 +65,13 @@ body {
 .status, .links { color: #6b7280; font-size: 13px; }
 .status { margin-top: 8px; }
 .links { margin-top: 6px; }
+
+/* Jocs germans: fila d'icones al peu */
+.games { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin-top: 16px; padding-top: 14px; border-top: 1px solid #eef2f4; }
+.game { display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 6px 2px; border-radius: 12px; color: #374151; font-size: 11px; font-weight: 600; text-decoration: none; }
+.game:hover { background: #f1f5f9; }
+.game:active { background: #e2e8f0; }
+.game img { display: block; }
 .num { color: #1f2937; font-weight: 600; }
 .rankbtn { background: none; border: none; color: #1f2937; font-weight: 600; cursor: pointer; font-size: 13px; }
 .star { color: #eab308; }
