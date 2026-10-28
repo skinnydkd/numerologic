@@ -275,6 +275,19 @@ export function instructionsHTML(rules) {
     <p>Numerològic l'ha fet <b>Pau Monterde</b>, professor de secundària de Vila-real. És gratuït, sense anuncis i en català. Si n'escrius o en parles: <a href="/premsa/">kit de premsa</a>.</p>`;
 }
 
+// Jocs germans de la família Lògic (mateix domini, cadascun a la seua carpeta).
+const MORE_GAMES = [
+  ["/igualogic/", "Igualògic", "endevina la igualtat amagada en 6 intents"],
+  ["/simbologic/", "Simbològic", "troba quant val cada símbol"],
+  ["/quadrologic/", "Quadrològic", "xifres sense repetir i gàbies amb una operació"],
+  ["/rutalogic/", "Rutalògic", "rutes pel rusc fins a l'objectiu"],
+];
+
+export function moreGamesHTML() {
+  const items = MORE_GAMES.map(([href, name, desc]) => `<li><a href="${href}"><b>${name}</b></a>: ${desc}.</li>`).join("");
+  return `<p>Cada dia, un repte nou en cadascun. Tots són gratuïts i en català.</p><ul>${items}</ul>`;
+}
+
 export function hintsHTML(hints, rules, brevi) {
   if (!hints) return "<p>Aquest repte no té pistes.</p>";
   let OPS = [["add", "+"], ["sub", "−"], ["mul", "×"], ["div", "÷"], ["pow", "^"], ["sqrt", "√"]];

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>Rutalògic — rutes dins del rusc</title>
+  <meta name="description" content="Cada dia un rusc de 19 cel·les amb operacions. Surt del centre i troba rutes que arriben a l'objectiu." />
+  <link rel="canonical" href="https://numerologic.cat/rutalogic/" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#58b4c4" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Rutalògic" />
+  <meta property="og:title" content="Rutalògic — rutes dins del rusc" />
+  <meta property="og:description" content="Surt del centre, passa per cel·les amb operacions i arriba a l'objectiu per tantes rutes com pugues." />
+  <meta property="og:url" content="https://numerologic.cat/rutalogic/" />
+  <meta property="og:image" content="https://numerologic.cat/rutalogic/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="ca_ES" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://numerologic.cat/rutalogic/og-image.png" />
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body>
+  <main class="pl">
+    <header class="topbar">
+      <h1 class="logo" aria-label="Rutalògic">RUTA<span class="t">L</span><span class="r">Ò</span><span class="t">GIC</span></h1>
+    </header>
+
+    <div class="goal">Arriba a <b id="target">—</b></div>
+    <div class="route" id="route"></div>
+    <div class="result" id="value"></div>
+    <div class="flash" id="flash"></div>
+
+    <div class="hive" id="hive"></div>
+
+    <div class="actions">
+      <button class="pill" id="reset">Esborra</button>
+      <button class="pill" id="back">Enrere</button>
+      <button class="pill send" id="send">Envia</button>
+    </div>
+
+    <div class="foot">
+      <button class="found" id="count">—</button>
+      <div class="status">
+        <button class="rankbtn" id="rankBtn">—</button>
+        · <span class="goalst" id="brevi">✦</span>
+        · <span class="star" id="star">★</span><span class="streak" id="streak"></span>
+      </div>
+      <div class="links">
+        <span class="num" id="num">Núm. —</span>
+        · <button class="rankbtn" id="yesterday">Solució d'ahir</button>
+        · <button class="rankbtn" id="pistes">Pistes</button>
+        · <button class="rankbtn" id="help">Com jugar</button>
+        · <button class="rankbtn" id="share">Comparteix</button>
+      </div>
+    </div>
+
+    <nav class="games" aria-label="Jocs de la família Lògic">
+      <a class="game" href="../"><img src="../favicon.svg" alt="" width="28" height="28" /><span>Numerològic</span></a>
+      <a class="game" href="../igualogic/"><img src="../igualogic/favicon.svg" alt="" width="28" height="28" /><span>Igualògic</span></a>
+      <a class="game" href="../simbologic/"><img src="../simbologic/favicon.svg" alt="" width="28" height="28" /><span>Simbològic</span></a>
+      <a class="game" href="../quadrologic/"><img src="../quadrologic/favicon.svg" alt="" width="28" height="28" /><span>Quadrològic</span></a>
+      <a class="game here" href="../rutalogic/" aria-current="page"><img src="../rutalogic/favicon.svg" alt="" width="28" height="28" /><span>Rutalògic</span></a>
+    </nav>
+  </main>
+
+  <div class="panel hidden" id="panel" onclick="if(event.target===this)this.classList.add('hidden')"></div>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

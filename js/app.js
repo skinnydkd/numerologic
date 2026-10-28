@@ -176,6 +176,7 @@ els.yesterday.addEventListener("click", () => {
 els.help.addEventListener("click", () =>
   ui.openPanel(els.panel, "Com jugar", ui.instructionsHTML(game.puzzle.rules))
 );
+$("mesjocs").addEventListener("click", () => ui.openPanel(els.panel, "Més jocs", ui.moreGamesHTML()));
 els.pistes.addEventListener("click", () =>
   ui.openPanel(els.panel, "Pistes", ui.hintsHTML(game.puzzle.hints, game.puzzle.rules, game.puzzle.brevi))
 );
