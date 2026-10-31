@@ -281,7 +281,6 @@ const MORE_GAMES = [
   ["/simbologic/", "Simbològic", "troba quant val cada símbol"],
   ["/quadrologic/", "Quadrològic", "xifres sense repetir i gàbies amb una operació"],
   ["/rutalogic/", "Rutalògic", "rutes pel rusc fins a l'objectiu"],
-  ["https://musicologic.cat/", "Musicològic", "acords, ritmes i cadències: el joc diari de música"],
 ];
 
 export function moreGamesHTML() {

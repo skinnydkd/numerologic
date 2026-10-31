@@ -88,8 +88,8 @@ body {
 .hidden { display: none; }
 
 /* Jocs de la família: fila d'icones al peu */
-.games { display: grid; grid-template-columns: repeat(6, 1fr); gap: 2px; margin-top: 14px; padding-top: 10px; border-top: 1px solid #eef2f4; }
-.game { display: flex; flex-direction: column; align-items: center; gap: 3px; padding: 5px 0; border-radius: 10px; color: #475569; font-size: 9px; letter-spacing: -0.1px; font-weight: 600; text-decoration: none; }
+.games { display: grid; grid-template-columns: repeat(5, 1fr); gap: 2px; margin-top: 14px; padding-top: 10px; border-top: 1px solid #eef2f4; }
+.game { display: flex; flex-direction: column; align-items: center; gap: 3px; padding: 5px 0; border-radius: 10px; color: #475569; font-size: 10px; font-weight: 600; text-decoration: none; }
 .game:hover { background: #f1f5f9; }
 .game:active { background: #e2e8f0; }
 .game.here { color: #0e7490; background: #ecfeff; }

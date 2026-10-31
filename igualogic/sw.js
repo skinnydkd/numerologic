@@ -1,5 +1,5 @@
 // Service worker cache-first d'Igualògic: app shell + puzzles.json. Scope: /igualogic/.
-const CACHE = "igualogic-v3";
+const CACHE = "igualogic-v4";
 const ASSETS = [
   "./",
   "./index.html",
