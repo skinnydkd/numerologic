@@ -1,5 +1,5 @@
 // Service worker cache-first d'Quadrològic: app shell + puzzles.json. Scope: /quadrologic/.
-const CACHE = "quadrologic-v2";
+const CACHE = "quadrologic-v3";
 const ASSETS = [
   "./",
   "./index.html",

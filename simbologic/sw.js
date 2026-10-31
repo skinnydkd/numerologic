@@ -1,5 +1,5 @@
 // Service worker cache-first d'Simbològic: app shell + puzzles.json. Scope: /simbologic/.
-const CACHE = "simbologic-v2";
+const CACHE = "simbologic-v3";
 const ASSETS = [
   "./",
   "./index.html",
