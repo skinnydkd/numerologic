@@ -1,5 +1,5 @@
 // Service worker cache-first d'Rutalògic: app shell + puzzles.json. Scope: /rutalogic/.
-const CACHE = "rutalogic-v2";
+const CACHE = "rutalogic-v3";
 const ASSETS = [
   "./",
   "./index.html",
